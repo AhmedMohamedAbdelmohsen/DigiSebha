@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".RosaryFragment">
+
+    <ImageView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/down_curved_background"
+        app:layout_constraintBottom_toBottomOf="@id/linear1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/iv_rosary"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_margin="20dp"
+        android:background="@drawable/ic_islamic"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_describe"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:shadowRadius="5"
+        android:text="@string/describe"
+        android:textAlignment="center"
+        android:textColor="@android:color/white"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toTopOf="@id/linear1"
+        app:layout_constraintEnd_toEndOf="@id/iv_rosary"
+        app:layout_constraintStart_toStartOf="@id/iv_rosary"
+        app:layout_constraintTop_toBottomOf="@id/iv_rosary" />
+
+    <LinearLayout
+        android:id="@+id/linear1"
+        android:layout_width="0dp"
+        android:layout_height="310dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="30dp"
+        android:background="@drawable/rectangle_radius"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_describe" />
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:shadowRadius="5"
+        android:text="@string/title"
+        android:textColor="@color/lightGreen"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="@id/linear1"
+        app:layout_constraintStart_toStartOf="@id/linear1"
+        app:layout_constraintTop_toTopOf="@id/linear1" />
+
+    <TextView
+        android:id="@+id/tv_counter"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="30dp"
+        android:background="@drawable/stroke_erctangle"
+        android:gravity="center_horizontal|center_vertical"
+        android:padding="5dp"
+        android:text="@string/numbers"
+        android:textColor="@color/lightGreen"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="@id/linear1"
+        app:layout_constraintStart_toStartOf="@id/linear1"
+        app:layout_constraintTop_toBottomOf="@id/tv_title" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_counter"
+        style="@style/Widget.MaterialComponents.FloatingActionButton"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="60dp"
+        android:layout_marginBottom="10dp"
+        android:backgroundTint="@color/colorAccent"
+        app:layout_constraintBottom_toBottomOf="@id/linear1"
+        app:layout_constraintEnd_toEndOf="@id/linear1"
+        app:layout_constraintStart_toStartOf="@id/linear1"
+        app:layout_constraintTop_toBottomOf="@id/tv_counter" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_reset_counter"
+        style="@style/Widget.MaterialComponents.FloatingActionButton"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:backgroundTint="@color/lightBlue"
+        app:layout_constraintEnd_toEndOf="@id/tv_counter"
+        app:layout_constraintStart_toEndOf="@id/fab_counter"
+        app:layout_constraintTop_toBottomOf="@id/tv_counter"
+        app:layout_constraintTop_toTopOf="@id/fab_counter" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/app_nav_graph"
+    app:startDestination="@id/splashFragment">
+
+    <action android:id="@+id/action_to_rosary"
+        app:destination="@id/rosary"/>
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="com.example.digisebhaa.SplashFragment"
+        android:label="fragment_splash"
+        tools:layout="@layout/fragment_splash">
+
+        <action
+            android:id="@+id/splashFragment_to_rosary"
+            app:destination="@id/rosary"
+            app:popUpTo="@id/splashFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/morning"
+        android:name="com.example.digisebhaa.MorningFragment"
+        android:label="fragment_morning"
+        tools:layout="@layout/fragment_morning" />
+    <fragment
+        android:id="@+id/evening"
+        android:name="com.example.digisebhaa.EveningFragment"
+        android:label="fragment_evening"
+        tools:layout="@layout/fragment_evening">
+
+    </fragment>
+    <fragment
+        android:id="@+id/rosary"
+        android:name="com.example.digisebhaa.RosaryFragment"
+        android:label="fragment_rosary"
+        tools:layout="@layout/fragment_rosary">
+
+    </fragment>
+    <fragment
+        android:id="@+id/hadith_sharif"
+        android:name="com.example.digisebhaa.HadithSharifFragment"
+        android:label="fragment_hadith_sharif"
+        tools:layout="@layout/fragment_hadith_sharif">
+
+    </fragment>
+    <fragment
+        android:id="@+id/setting"
+        android:name="com.example.digisebhaa.SettingFragment"
+        android:label="fragment_setting"
+        tools:layout="@layout/fragment_setting">
+
+    </fragment>
+
+
+</navigation>

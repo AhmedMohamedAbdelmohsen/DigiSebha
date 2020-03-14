@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/morning"
+        android:icon="@drawable/ic_morning"
+        android:title="@string/morning" />
+    <item
+        android:id="@+id/evening"
+        android:icon="@drawable/ic_moon"
+        android:title="@string/evening" />
+    <item
+        android:id="@+id/rosary"
+        android:checked="false"
+        android:enabled="false"
+        android:icon="@drawable/ic_prayer_beads"
+        android:title="" />
+    <item
+        android:id="@+id/hadith_sharif"
+        android:icon="@drawable/ic_book"
+        android:title="@string/hadiths" />
+    <item
+        android:id="@+id/setting"
+        android:icon="@drawable/ic_settings"
+        android:title="@string/settings" />
+</menu>

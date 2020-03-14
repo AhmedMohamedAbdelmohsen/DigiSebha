@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Digi Sebhaa</string>
+    <string name="morning">أذكار ص</string>
+    <string name="evening">أذكار م</string>
+    <string name="rosary">السبحة</string>
+    <string name="settings">الإعدادات</string>
+    <string name="hadiths">أحاديث</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="sabeh">سَبِّحِ اسْمَ رَبِّكَ الْأَعْلَى</string>
+    <string name="title">السبحة الإلكترونية</string>
+    <string name="describe">الرُسل والأَنْبِيَاءِ لم يورِّثوا دينارًا ولا درهمًا\n إنَّما ورَّثوا العلم</string>
+    <string name="numbers">0</string>
+    <string name="_0">0</string>
+</resources>
