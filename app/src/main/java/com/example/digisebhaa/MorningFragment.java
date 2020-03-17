@@ -1,6 +1,9 @@
 package com.example.digisebhaa;
 
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -9,15 +12,10 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-
 import com.example.digisebhaa.databinding.FragmentMorningBinding;
 import com.example.digisebhaa.pojo.SebhaModel;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -29,7 +27,7 @@ public class MorningFragment extends Fragment {
     FragmentMorningBinding binding;
     SebhaViewModel viewModel;
     public MorningFragment() {
-        // Required empty public constructor
+        // Required empty constructor
     }
 
 
@@ -46,7 +44,7 @@ public class MorningFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         BottomNavigationView bottomNavigationView = getActivity().findViewById(R.id.bottom_nav_bar);
-        bottomNavigationView.setVisibility(view.VISIBLE);
+        bottomNavigationView.setVisibility(View.VISIBLE);
 
     }
 

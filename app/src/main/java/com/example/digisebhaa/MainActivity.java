@@ -1,29 +1,20 @@
 package com.example.digisebhaa;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
-import androidx.navigation.fragment.NavHostFragment;
-import androidx.navigation.ui.NavigationUI;
-
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 
-import com.example.digisebhaa.databinding.ActivityMainBinding;
-import com.example.digisebhaa.pojo.SebhaModel;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.navigation.fragment.NavHostFragment;
+import androidx.navigation.ui.NavigationUI;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.example.digisebhaa.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
 
     private ActivityMainBinding binding;
     private View view;
     private NavHostFragment navHostFragment;
-    SebhaViewModel viewModel;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,15 +32,7 @@ public class MainActivity extends AppCompatActivity {
         binding.bottomNavBar.setVisibility(View.VISIBLE);
         //move to rosary fragment
         moveToRosaryFragment();
-        final SebhaListAdapter adapter = new SebhaListAdapter(this);
 
-        viewModel = new ViewModelProvider(this).get(SebhaViewModel.class);
-        viewModel.GetAllMorningDhikr().observe(this, new Observer<List<SebhaModel>>() {
-            @Override
-            public void onChanged(List<SebhaModel> words) {
-                adapter.setList(words);
-            }
-        });
     }
 
     private void navHostFragment() {
