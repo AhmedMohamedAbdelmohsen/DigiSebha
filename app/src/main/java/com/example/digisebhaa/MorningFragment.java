@@ -1,5 +1,6 @@
 package com.example.digisebhaa;
 
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,8 +25,10 @@ import java.util.List;
  */
 public class MorningFragment extends Fragment {
 
-    FragmentMorningBinding binding;
-    SebhaViewModel viewModel;
+    private FragmentMorningBinding binding;
+    private SebhaViewModel viewModel;
+    private Typeface typeface;
+
     public MorningFragment() {
         // Required empty constructor
     }
@@ -45,6 +48,8 @@ public class MorningFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         BottomNavigationView bottomNavigationView = getActivity().findViewById(R.id.bottom_nav_bar);
         bottomNavigationView.setVisibility(View.VISIBLE);
+        typeface = Typeface.createFromAsset(getActivity().getAssets(), "almushaf.ttf");
+        binding.tvTitle.setTypeface(typeface);
 
     }
 

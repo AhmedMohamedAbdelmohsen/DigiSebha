@@ -1,6 +1,7 @@
 package com.example.digisebhaa;
 
 import android.content.Context;
+import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,7 +28,7 @@ public class SebhaListAdapter extends RecyclerView.Adapter<SebhaListAdapter.Sebh
     @NonNull
     @Override
     public SebhaViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = layoutInflater.inflate(R.layout.morning_dhikr_item, parent, false);
+        View view = layoutInflater.inflate(R.layout.dhikr_item, parent, false);
         return new SebhaViewHolder(view);
     }
 
@@ -36,9 +37,13 @@ public class SebhaListAdapter extends RecyclerView.Adapter<SebhaListAdapter.Sebh
         if (getList != null) {
             SebhaModel current = getList.get(position);
             holder.text.setText(current.getText());
+            holder.text.setTypeface(holder.typeface);
             holder.description.setText(current.getDescription());
+            holder.description.setTypeface(holder.typeface);
             holder.narated_by.setText(current.getNarated_by());
+            holder.narated_by.setTypeface(holder.typeface);
             holder.repeated.setText(String.valueOf(current.getRepeats()));
+            holder.repeated.setTypeface(holder.typeface);
             holder.materialButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -80,14 +85,28 @@ public class SebhaListAdapter extends RecyclerView.Adapter<SebhaListAdapter.Sebh
         TextView narated_by;
         TextView repeated;
         TextView description;
+        Typeface typeface;
 
         public SebhaViewHolder(@NonNull View itemView) {
             super(itemView);
+            typeface = Typeface.createFromAsset(itemView.getContext().getAssets(), "almushaf.ttf");
+            //this.text.setTypeface(typeface);
             materialButton = itemView.findViewById(R.id.btn_counter);
             text = itemView.findViewById(R.id.tv_text);
             narated_by = itemView.findViewById(R.id.tv_narated_by);
             repeated = itemView.findViewById(R.id.tv_repeats);
             description = itemView.findViewById(R.id.tv_description);
+            materialButton.setText("0");
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int count = Integer.parseInt(materialButton.getText().toString());
+                    if (count < 100) {
+                        materialButton.setText(String.valueOf(count + 1));
+                    }
+                }
+            });
 
         }
     }

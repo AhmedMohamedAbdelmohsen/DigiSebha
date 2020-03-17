@@ -1,13 +1,11 @@
 package com.example.digisebhaa.pojo;
 
-import java.util.List;
-
 import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
-import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
-import androidx.room.Update;
+
+import java.util.List;
 
 @Dao
 public interface SebhaDao {
@@ -20,13 +18,17 @@ public interface SebhaDao {
     @Query("DELETE FROM sebha_table")
     void deleteALL();
 
-    @Query("SELECT * FROM sebha_table ORDER BY text ASC")
-    LiveData<List<SebhaModel>> getAllMorningDhikr();
+    @Query("SELECT * FROM sebha_table WHERE type IN (:x) ORDER BY text ASC")
+    LiveData<List<SebhaModel>> getAllMorningDhikr(int x);
+
+    @Query("SELECT * FROM sebha_table WHERE type IN (:x) ORDER BY text ASC")
+    LiveData<List<SebhaModel>> getAllEveningDhikr(int x);
+
+    @Query("SELECT * FROM sebha_table WHERE type IN (:x) ORDER BY text ASC")
+    LiveData<List<SebhaModel>> getAllHadith(int x);
 
 //    @Query("SELECT * FROM sebha_table WHERE type IN (:x)")
 //    LiveData<List<SebhaModel>> getAllMorningDhikr(int x);
-
-
 
 
 }

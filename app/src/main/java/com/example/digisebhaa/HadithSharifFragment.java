@@ -1,17 +1,23 @@
 package com.example.digisebhaa;
 
+import android.graphics.Typeface;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
+
 import com.example.digisebhaa.databinding.FragmentHadithSharifBinding;
+import com.example.digisebhaa.pojo.SebhaModel;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+import java.util.List;
 
 
 /**
@@ -19,6 +25,8 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
  */
 public class HadithSharifFragment extends Fragment {
     private FragmentHadithSharifBinding binding;
+    private SebhaViewModel viewModel;
+    private Typeface typeface;
 
     public HadithSharifFragment() {
         // Required empty public constructor
@@ -38,6 +46,24 @@ public class HadithSharifFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         BottomNavigationView bottomNavigationView = getActivity().findViewById(R.id.bottom_nav_bar);
-        bottomNavigationView.setVisibility(view.VISIBLE);
+        bottomNavigationView.setVisibility(View.VISIBLE);
+        typeface = Typeface.createFromAsset(getActivity().getAssets(), "almushaf.ttf");
+        binding.tvTitle.setTypeface(typeface);
+
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        final SebhaListAdapter adapter = new SebhaListAdapter(getActivity());
+        binding.rvHadith.setLayoutManager(new LinearLayoutManager(getActivity()));
+        binding.rvHadith.setAdapter(adapter);
+        viewModel = new ViewModelProvider(getActivity()).get(SebhaViewModel.class);
+        viewModel.GetAllHadith().observe(getViewLifecycleOwner(), new Observer<List<SebhaModel>>() {
+            @Override
+            public void onChanged(List<SebhaModel> words) {
+                adapter.setList(words);
+            }
+        });
     }
 }
