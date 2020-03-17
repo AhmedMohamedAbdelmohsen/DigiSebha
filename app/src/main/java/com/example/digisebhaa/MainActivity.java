@@ -22,6 +22,8 @@ public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding binding;
     private View view;
     private NavHostFragment navHostFragment;
+    SebhaViewModel viewModel;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +41,15 @@ public class MainActivity extends AppCompatActivity {
         binding.bottomNavBar.setVisibility(View.VISIBLE);
         //move to rosary fragment
         moveToRosaryFragment();
+        final SebhaListAdapter adapter = new SebhaListAdapter(this);
 
+        viewModel = new ViewModelProvider(this).get(SebhaViewModel.class);
+        viewModel.GetAllMorningDhikr().observe(this, new Observer<List<SebhaModel>>() {
+            @Override
+            public void onChanged(List<SebhaModel> words) {
+                adapter.setList(words);
+            }
+        });
     }
 
     private void navHostFragment() {

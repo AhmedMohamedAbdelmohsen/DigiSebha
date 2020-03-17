@@ -28,7 +28,6 @@ public class MorningFragment extends Fragment {
 
     FragmentMorningBinding binding;
     SebhaViewModel viewModel;
-
     public MorningFragment() {
         // Required empty public constructor
     }
