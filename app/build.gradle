@@ -58,8 +58,5 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-viewmodel:2.2.0"
     // LiveData
     implementation "androidx.lifecycle:lifecycle-livedata:2.2.0"
-    //RecyclerView
-    implementation 'com.android.support:recyclerview-v7:29.0.0'
-    //CardView
-    implementation 'com.android.support:cardview-v7:29.0.0'
+
 }

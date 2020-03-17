@@ -26,7 +26,9 @@ import java.util.List;
  */
 public class MorningFragment extends Fragment {
 
-    private FragmentMorningBinding binding;
+    FragmentMorningBinding binding;
+    SebhaViewModel viewModel;
+
     public MorningFragment() {
         // Required empty public constructor
     }
@@ -46,18 +48,21 @@ public class MorningFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         BottomNavigationView bottomNavigationView = getActivity().findViewById(R.id.bottom_nav_bar);
         bottomNavigationView.setVisibility(view.VISIBLE);
-        final MorningDhikrAdapter adapter = new MorningDhikrAdapter();
-        binding.rvMorningDhikr.setLayoutManager(new LinearLayoutManager(getActivity()));
-        binding.rvMorningDhikr.setAdapter(adapter);
-        binding.rvMorningDhikr.setHasFixedSize(true);
-        SebhaViewModel sebhaViewModel = new ViewModelProvider(getActivity()).get(SebhaViewModel.class);
-        sebhaViewModel.getAllMorningDhikr().observe(getActivity(), new Observer<List<SebhaModel>>() {
-            @Override
-            public void onChanged(List<SebhaModel> sebhaModels) {
-                adapter.getMorningDhikrList((ArrayList<SebhaModel>) sebhaModels);
-            }
-        });
 
     }
 
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        final SebhaListAdapter adapter = new SebhaListAdapter(getActivity());
+        binding.rvMorningDhikr.setLayoutManager(new LinearLayoutManager(getActivity()));
+        binding.rvMorningDhikr.setAdapter(adapter);
+        viewModel = new ViewModelProvider(getActivity()).get(SebhaViewModel.class);
+        viewModel.GetAllMorningDhikr().observe(getViewLifecycleOwner(), new Observer<List<SebhaModel>>() {
+            @Override
+            public void onChanged(List<SebhaModel> words) {
+                adapter.setList(words);
+            }
+        });
+    }
 }

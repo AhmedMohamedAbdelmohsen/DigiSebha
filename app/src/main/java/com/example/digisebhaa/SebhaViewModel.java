@@ -11,41 +11,20 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 
 public class SebhaViewModel extends AndroidViewModel {
-
-    private SebhaRepository sebhaRepository;
+    private SebhaRepository repository;
     private LiveData<List<SebhaModel>> getAllMorningDhikr;
-    private LiveData<List<SebhaModel>> getAllEveningDhikr;
-    private LiveData<List<SebhaModel>> getAllHadith;
 
     public SebhaViewModel(@NonNull Application application) {
         super(application);
-        sebhaRepository = new SebhaRepository(application);
-        getAllMorningDhikr = sebhaRepository.getAllMorningDhikr();
-        getAllEveningDhikr = sebhaRepository.getAllEveningDhikr();
-        getAllHadith = sebhaRepository.getAllHadith();
+        repository = new SebhaRepository(application);
+        getAllMorningDhikr = repository.getGetAllMorningDhikr();
     }
 
-    public void insert(SebhaModel model) {
-        sebhaRepository.insert(model);
-    }
-
-    public void update(SebhaModel model) {
-        sebhaRepository.update(model);
-    }
-
-    public void delete(SebhaModel model) {
-        sebhaRepository.delete(model);
-    }
-
-    public LiveData<List<SebhaModel>> getAllMorningDhikr() {
+    LiveData<List<SebhaModel>> GetAllMorningDhikr(){
         return getAllMorningDhikr;
     }
 
-    public LiveData<List<SebhaModel>> getAllEveningDhikr() {
-        return getAllEveningDhikr;
-    }
-
-    public LiveData<List<SebhaModel>> getAllHadith() {
-        return getAllHadith;
+    public void insert(SebhaModel model){
+        repository.insert(model);
     }
 }

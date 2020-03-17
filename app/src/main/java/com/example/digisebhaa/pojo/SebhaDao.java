@@ -11,24 +11,21 @@ import androidx.room.Update;
 
 @Dao
 public interface SebhaDao {
-
     @Insert
     void insert(SebhaModel model);
 
-    @Update
-    void update(SebhaModel model);
+//    @Update
+//    void update(SebhaModel model);
 
-    @Delete
-    void delete(SebhaModel model);
+    @Query("DELETE FROM sebha_table")
+    void deleteALL();
 
-    @Query("SELECT * FROM sebha_table WHERE type = 0")
+    @Query("SELECT * FROM sebha_table ORDER BY text ASC")
     LiveData<List<SebhaModel>> getAllMorningDhikr();
 
-    @Query("SELECT * FROM sebha_table WHERE type = 1")
-    LiveData<List<SebhaModel>> getAllEveningDhikr();
+//    @Query("SELECT * FROM sebha_table WHERE type IN (:x)")
+//    LiveData<List<SebhaModel>> getAllMorningDhikr(int x);
 
-    @Query("SELECT * FROM sebha_table WHERE type = 2")
-    LiveData<List<SebhaModel>> getAllHadith();
 
 
 
