@@ -97,6 +97,17 @@
         app:layout_constraintStart_toStartOf="@id/linear1"
         app:layout_constraintTop_toBottomOf="@id/tv_counter" />
 
+    <ToggleButton
+        android:id="@+id/tgbtn_vibration"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_margin="4dp"
+        android:background="@drawable/ic_vibrat"
+        app:layout_constraintBottom_toBottomOf="@id/linear1"
+        app:layout_constraintEnd_toStartOf="@id/fab_counter"
+        app:layout_constraintStart_toStartOf="@id/linear1"
+        app:layout_constraintTop_toBottomOf="@id/tv_counter" />
+
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_reset_counter"
         style="@style/Widget.MaterialComponents.FloatingActionButton"
