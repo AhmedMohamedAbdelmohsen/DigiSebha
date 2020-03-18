@@ -1,9 +1,15 @@
 package com.example.digisebhaa;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.LinearLayout;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.NavigationUI;
@@ -23,6 +29,13 @@ public class MainActivity extends AppCompatActivity {
         view = binding.getRoot();
         setContentView(view);
 
+        ImageButton imageButton = findViewById(R.id.btn_exit);
+        imageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                closeApp();
+            }
+        });
 
         //Hide status bar
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
@@ -33,6 +46,34 @@ public class MainActivity extends AppCompatActivity {
         //move to rosary fragment
         moveToRosaryFragment();
 
+    }
+
+    private void closeApp() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this, R.style.AlertDialogStyle);
+        builder.setMessage("هل تريد الخروج من التطبيق ؟").setCancelable(false)
+                .setPositiveButton("نعم", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        finishAndRemoveTask();
+                    }
+                }).setNegativeButton("لا", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
+
+        AlertDialog dialog = builder.create();
+        dialog.setTitle("تنبيه!!");
+        dialog.show();
+
+        final Button lPositiveButton = dialog.getButton(AlertDialog.BUTTON_POSITIVE);
+        // Fetch the LinearLayout.
+        final LinearLayout lParent = (LinearLayout) lPositiveButton.getParent();
+        // Ensure the Parent of the Buttons aligns it's contents to the right.
+        lParent.setGravity(Gravity.LEFT);
+        // Hide the LeftSpacer. (Strict dependence on the order of the layout!)
+        lParent.getChildAt(1).setVisibility(View.GONE);
     }
 
     private void navHostFragment() {

@@ -19,6 +19,18 @@
         app:layout_constraintTop_toTopOf="parent"
         app:navGraph="@navigation/app_nav_graph" />
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btn_exit"
+        style="@style/Widget.MaterialComponents.FloatingActionButton"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_margin="20dp"
+        android:backgroundTint="@android:color/white"
+        android:src="@drawable/ic_exit"
+        app:borderWidth="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_nav_bar"
         android:layout_width="match_parent"

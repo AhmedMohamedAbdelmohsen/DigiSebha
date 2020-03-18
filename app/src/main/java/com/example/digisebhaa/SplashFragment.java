@@ -3,21 +3,19 @@ package com.example.digisebhaa;
 import android.graphics.Typeface;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import androidx.navigation.ActionOnlyNavDirections;
-import androidx.navigation.NavAction;
-import androidx.navigation.NavDirections;
-import androidx.navigation.Navigation;
-
 import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.ImageButton;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.navigation.NavDirections;
+import androidx.navigation.Navigation;
 
 import com.example.digisebhaa.databinding.FragmentSplashBinding;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -56,6 +54,9 @@ public class SplashFragment extends Fragment {
         setAnimations();
         setNavigationViewVisibility();
         setPostDelayed(view);
+
+        ImageButton imageButton = getActivity().findViewById(R.id.btn_exit);
+        imageButton.setVisibility(View.GONE);
 
     }
     //set bottom navigation view gone

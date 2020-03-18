@@ -60,7 +60,7 @@
         android:gravity="center"
         android:text="3"
         android:textColor="@color/lightBlue"
-        android:textSize="30sp"
+        android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@id/view"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_description" />

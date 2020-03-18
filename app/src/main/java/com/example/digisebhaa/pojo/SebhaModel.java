@@ -20,12 +20,12 @@ public class SebhaModel {
     private String description;
 
     @ColumnInfo(name = "repeats")
-    private int repeats;
+    private String repeats;
 
     @ColumnInfo(name = "type")
     private int type;
 
-    public SebhaModel(@NonNull String text, String narated_by, String description, int repeats, int type) {
+    public SebhaModel(@NonNull String text, String narated_by, String description, String repeats, int type) {
         this.text = text;
         this.narated_by = narated_by;
         this.description = description;
@@ -46,7 +46,7 @@ public class SebhaModel {
         return description;
     }
 
-    public int getRepeats() {
+    public String getRepeats() {
         return repeats;
     }
 

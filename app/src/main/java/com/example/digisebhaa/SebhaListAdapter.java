@@ -42,12 +42,12 @@ public class SebhaListAdapter extends RecyclerView.Adapter<SebhaListAdapter.Sebh
             holder.description.setTypeface(holder.typeface);
             holder.narated_by.setText(current.getNarated_by());
             holder.narated_by.setTypeface(holder.typeface);
-            holder.repeated.setText(String.valueOf(current.getRepeats()));
+            holder.repeated.setText(current.getRepeats());
             holder.repeated.setTypeface(holder.typeface);
             holder.materialButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Toast.makeText(v.getContext(), "You Click", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(v.getContext(), "اضغط علي الشاشة لحساب عدد التكرار", Toast.LENGTH_SHORT).show();
                 }
             });
 
