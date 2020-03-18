@@ -12,5 +12,9 @@
     <string name="title">السبحة الإلكترونية</string>
     <string name="describe">الرُسل والأَنْبِيَاءِ لم يورِّثوا دينارًا ولا درهمًا\n إنَّما ورَّثوا العلم</string>
     <string name="numbers">0</string>
+    <string name="des">من قالها حين يصبح</string>
+    <string name="_3">3</string>
+    <string name="narated">رواه البخاري</string>
+    <string name="text_d">لا اله الا الله</string>
     <string name="_0">0</string>
 </resources>
