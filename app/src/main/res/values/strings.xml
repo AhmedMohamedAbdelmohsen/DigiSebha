@@ -26,4 +26,5 @@
     <string name="hadith_title">أحاديث</string>
     <string name="morning_dhikr_title">أذكار الصباح</string>
     <string name="no_text">No Text</string>
+    <string name="enter_counter">العداد</string>
 </resources>

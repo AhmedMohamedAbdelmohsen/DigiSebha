@@ -80,10 +80,26 @@ public class RosaryFragment extends Fragment {
                     vibrator.cancel();
                 }
                 int x = Integer.parseInt(binding.tvCounter.getText().toString());
-                if (x < 1000000) {
-                    x++;
+                String counter = binding.etGetCounter.getText().toString();
+                String status = binding.etGetCounter.getText().toString();
+                if (status.isEmpty()) {
+                    if (x <= 1000000) {
+                        x++;
+                    } else {
+                        Toast.makeText(v.getContext(), "لقد أتممت عدد التسبيح المحدد فى الأعلي", Toast.LENGTH_SHORT).show();
+                        if (binding.tgbtnVibration.isChecked()) {
+                            vibrator.vibrate(400);
+                        }
+                    }
                 } else {
-                    Toast.makeText(v.getContext(), "بارك الله لك لقد أتممت مليون تسبيح", Toast.LENGTH_SHORT).show();
+                    if (x < Integer.parseInt(counter)) {
+                        x++;
+                    } else {
+                        Toast.makeText(v.getContext(), "لقد أتممت عدد التسبيح المحدد فى الأعلي", Toast.LENGTH_SHORT).show();
+                        if (binding.tgbtnVibration.isChecked()) {
+                            vibrator.vibrate(400);
+                        }
+                    }
                 }
                 editor.putInt("counter", x);
                 editor.apply();

@@ -25,12 +25,16 @@ public class SebhaModel {
     @ColumnInfo(name = "type")
     private final int type;
 
-    public SebhaModel(@NonNull String text, String narated_by, String description, String repeats, int type) {
+    @ColumnInfo(name = "counter")
+    private final int counter;
+
+    public SebhaModel(@NonNull String text, String narated_by, String description, String repeats, int type, int counter) {
         this.text = text;
         this.narated_by = narated_by;
         this.description = description;
         this.repeats = repeats;
         this.type = type;
+        this.counter = counter;
     }
 
     @NonNull
@@ -52,5 +56,9 @@ public class SebhaModel {
 
     public int getType() {
         return type;
+    }
+
+    public int getCounter() {
+        return counter;
     }
 }

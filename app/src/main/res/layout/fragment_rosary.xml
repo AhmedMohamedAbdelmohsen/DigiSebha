@@ -10,10 +10,10 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/down_curved_background"
+        android:contentDescription="@string/background"
         app:layout_constraintBottom_toBottomOf="@id/linear1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:contentDescription="@string/background"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
@@ -22,9 +22,27 @@
         android:layout_height="80dp"
         android:layout_margin="20dp"
         android:background="@drawable/ic_islamic"
+        android:contentDescription="@string/logo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:contentDescription="@string/logo"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/et_get_counter"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:background="@drawable/rectangle_radius"
+        android:hint="@string/enter_counter"
+        android:inputType="number"
+        android:maxLength="6"
+        android:padding="5dp"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp"
+        android:singleLine="true"
+        android:textDirection="rtl"
+        app:layout_constraintEnd_toStartOf="@id/iv_rosary"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
@@ -94,10 +112,10 @@
         android:layout_marginEnd="60dp"
         android:layout_marginBottom="10dp"
         android:backgroundTint="@color/colorAccent"
+        android:contentDescription="@string/counterbutton"
         app:layout_constraintBottom_toBottomOf="@id/linear1"
         app:layout_constraintEnd_toEndOf="@id/linear1"
         app:layout_constraintStart_toStartOf="@id/linear1"
-        android:contentDescription="@string/counterbutton"
         app:layout_constraintTop_toBottomOf="@id/tv_counter" />
 
     <ToggleButton
@@ -112,15 +130,18 @@
         app:layout_constraintTop_toBottomOf="@id/tv_counter" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fbtn_reset_counter"
         style="@style/Widget.MaterialComponents.FloatingActionButton"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:id="@+id/fbtn_reset_counter"
         android:backgroundTint="@color/lightBlue"
+        android:contentDescription="@string/resetbutton"
+        android:src="@drawable/ic_zero"
+        app:fabCustomSize="50dp"
         app:layout_constraintEnd_toEndOf="@id/tv_counter"
         app:layout_constraintStart_toEndOf="@id/fab_counter"
         app:layout_constraintTop_toBottomOf="@id/tv_counter"
-        android:contentDescription="@string/resetbutton"
-        app:layout_constraintTop_toTopOf="@id/fab_counter" />
+        app:layout_constraintTop_toTopOf="@id/fab_counter"
+        app:maxImageSize="15dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
