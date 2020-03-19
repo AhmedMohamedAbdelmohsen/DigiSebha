@@ -2,9 +2,9 @@ package com.example.digisebhaa;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.Vibrator;
+import android.provider.Settings;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,35 +15,28 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.example.digisebhaa.databinding.FragmentRosaryBinding;
+import com.example.digisebhaa.databinding.FragmentDarkModeBinding;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-
-import org.jetbrains.annotations.NotNull;
 
 import java.util.Objects;
 
+public class DarkModeFragment extends Fragment {
 
-/**
- * A simple {@link Fragment} subclass.
- */
-public class RosaryFragment extends Fragment {
-
-    private FragmentRosaryBinding binding;
-    private Typeface typeface;
+    private FragmentDarkModeBinding binding;
     private SharedPreferences sharedPreferences;
     private SharedPreferences.Editor editor;
     private Vibrator vibrator;
 
-    public RosaryFragment() {
+    public DarkModeFragment() {
         // Required empty public constructor
     }
 
 
     @Override
-    public View onCreateView(@NotNull LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        binding = FragmentRosaryBinding.inflate(inflater, container, false);
+        binding = FragmentDarkModeBinding.inflate(inflater, container, false);
         View view = binding.getRoot();
         return view;
     }
@@ -51,27 +44,23 @@ public class RosaryFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
         BottomNavigationView bottomNavigationView = Objects.requireNonNull(getActivity()).findViewById(R.id.bottom_nav_bar);
-        bottomNavigationView.setVisibility(View.VISIBLE);
-
-        vibrator = (Vibrator) getActivity().getSystemService(Context.VIBRATOR_SERVICE);
-
-        ImageButton imageButton = getActivity().findViewById(R.id.btn_exit);
-        imageButton.setVisibility(View.VISIBLE);
+        bottomNavigationView.setVisibility(View.GONE);
 
         ImageButton darkModeButton = Objects.requireNonNull(getActivity()).findViewById(R.id.btn_dark_mode);
-        darkModeButton.setVisibility(View.VISIBLE);
+        darkModeButton.setVisibility(View.GONE);
 
+        ImageButton exitButton = Objects.requireNonNull(getActivity()).findViewById(R.id.btn_exit);
+        exitButton.setVisibility(View.GONE);
+
+        vibrator = (Vibrator) getActivity().getSystemService(Context.VIBRATOR_SERVICE);
         binding.tgbtnVibration.setChecked(true);
-
-        typeface = Typeface.createFromAsset(getActivity().getAssets(), "almushaf.ttf");
-        binding.tvTitle.setTypeface(typeface);
-        binding.tvDescribe.setTypeface(typeface);
         sharedPreferences = this.getActivity().getSharedPreferences("pref", Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
         binding.tvCounter.setText(String.valueOf(sharedPreferences.getInt("counter", 0)));
 
-        binding.fabCounter.setOnClickListener(new View.OnClickListener() {
+        binding.viewCounter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //setVibrator(vibrator);
@@ -131,4 +120,10 @@ public class RosaryFragment extends Fragment {
 
     }
 
+    @Override
+    public void onStop() {
+        super.onStop();
+        Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
+                Settings.System.SCREEN_BRIGHTNESS, 60);
+    }
 }

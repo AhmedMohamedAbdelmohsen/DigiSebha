@@ -5,8 +5,13 @@
     android:id="@+id/main"
     app:startDestination="@id/splashFragment">
 
-    <action android:id="@+id/action_to_rosary"
-        app:destination="@id/rosary"/>
+    <action
+        android:id="@+id/action_to_rosary"
+        app:destination="@id/rosary" />
+
+    <action
+        android:id="@+id/action_to_dark_fragment"
+        app:destination="@id/dark_fragment" />
     <fragment
         android:id="@+id/splashFragment"
         android:name="com.example.digisebhaa.SplashFragment"
@@ -53,5 +58,12 @@
 
     </fragment>
 
+    <fragment
+        android:id="@+id/dark_fragment"
+        android:name="com.example.digisebhaa.DarkModeFragment"
+        android:label="fragment_dark_mode"
+        tools:layout="@layout/fragment_dark_mode">
+
+    </fragment>
 
 </navigation>

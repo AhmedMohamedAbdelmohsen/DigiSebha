@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/view_counter"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/background_dark"
+    tools:context=".DarkModeFragment">
+
+    <EditText
+        android:id="@+id/et_get_counter"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:background="@drawable/rectangle_radius"
+        android:hint="@string/enter_counter"
+        android:inputType="number"
+        android:maxLength="6"
+        android:padding="5dp"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp"
+        android:singleLine="true"
+        android:textDirection="rtl"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tgbtn_vibration" />
+
+    <ToggleButton
+        android:id="@+id/tgbtn_vibration"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_margin="20dp"
+        android:background="@drawable/ic_vibrat"
+        android:textColor="@android:color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_counter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:padding="5dp"
+        android:text="@string/numbers"
+        android:textColor="@color/lightBlue"
+        android:textSize="50sp"
+        app:layout_constraintStart_toStartOf="@id/et_get_counter"
+        app:layout_constraintTop_toBottomOf="@id/et_get_counter" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fbtn_reset_counter"
+        style="@style/Widget.MaterialComponents.FloatingActionButton"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginEnd="20dp"
+        android:backgroundTint="@color/lightBlue"
+        android:contentDescription="@string/resetbutton"
+        android:src="@drawable/ic_zero"
+        app:fabCustomSize="50dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tgbtn_vibration"
+        app:maxImageSize="15dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

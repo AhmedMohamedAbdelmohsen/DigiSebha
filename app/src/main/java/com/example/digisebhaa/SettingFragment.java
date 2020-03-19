@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -23,7 +24,6 @@ import java.util.Objects;
 public class SettingFragment extends Fragment {
 
     private FragmentSettingBinding binding;
-
     public SettingFragment() {
         // Required empty public constructor
     }
@@ -43,5 +43,9 @@ public class SettingFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         BottomNavigationView bottomNavigationView = Objects.requireNonNull(getActivity()).findViewById(R.id.bottom_nav_bar);
         bottomNavigationView.setVisibility(View.VISIBLE);
+
+        ImageButton darkModeButton = Objects.requireNonNull(getActivity()).findViewById(R.id.btn_dark_mode);
+        darkModeButton.setVisibility(View.GONE);
+
     }
 }

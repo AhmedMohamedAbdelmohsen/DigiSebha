@@ -2,6 +2,7 @@ package com.example.digisebhaa;
 
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.view.Gravity;
 import android.view.View;
 import android.view.WindowManager;
@@ -47,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
         binding.bottomNavBar.setVisibility(View.VISIBLE);
         //move to rosary fragment
         moveToRosaryFragment();
+        moveToDarkFragment();
 
     }
 
@@ -93,5 +95,16 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    private void moveToDarkFragment() {
+        binding.btnDarkMode.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //set brightness value
+                Settings.System.putInt(getApplicationContext().getContentResolver(),
+                        Settings.System.SCREEN_BRIGHTNESS, 10);
+                navHostFragment.getNavController().navigate(R.id.action_to_dark_fragment);
+            }
+        });
+    }
 
 }

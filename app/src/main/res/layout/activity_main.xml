@@ -2,9 +2,9 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    style="@style/AppTheme"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    style="@style/AppTheme"
     tools:context=".MainActivity">
 
     <androidx.fragment.app.FragmentContainerView
@@ -26,11 +26,27 @@
         android:layout_height="50dp"
         android:layout_margin="20dp"
         android:backgroundTint="@android:color/white"
+        android:contentDescription="@string/exit"
         android:src="@drawable/ic_exit"
         app:borderWidth="0dp"
         app:layout_constraintEnd_toEndOf="parent"
-        android:contentDescription="@string/exit"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btn_dark_mode"
+        style="@style/Widget.MaterialComponents.FloatingActionButton"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_margin="20dp"
+        android:backgroundTint="@android:color/white"
+        android:contentDescription="@string/exit"
+        android:src="@drawable/ic_brightness"
+        android:visibility="gone"
+        app:borderWidth="0dp"
+        app:fabCustomSize="50dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_exit"
+        app:maxImageSize="24dp" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_nav_bar"
@@ -46,10 +62,10 @@
         app:menu="@menu/menu">
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab_rosary"
             style="@style/Widget.MaterialComponents.FloatingActionButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/fab_rosary"
             android:layout_gravity="center_horizontal|center_vertical"
             android:backgroundTint="@color/lightBlue"
             android:contentDescription="@string/rosary"

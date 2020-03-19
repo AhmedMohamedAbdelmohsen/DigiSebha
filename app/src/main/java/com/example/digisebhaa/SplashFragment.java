@@ -59,8 +59,8 @@ public class SplashFragment extends Fragment {
         setNavigationViewVisibility();
         setPostDelayed(view);
 
-        ImageButton imageButton = Objects.requireNonNull(getActivity()).findViewById(R.id.btn_exit);
-        imageButton.setVisibility(View.GONE);
+        ImageButton exitButton = Objects.requireNonNull(getActivity()).findViewById(R.id.btn_exit);
+        exitButton.setVisibility(View.GONE);
 
     }
     //set bottom navigation view gone

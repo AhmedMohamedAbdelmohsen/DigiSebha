@@ -27,4 +27,6 @@
     <string name="morning_dhikr_title">أذكار الصباح</string>
     <string name="no_text">No Text</string>
     <string name="enter_counter">العداد</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

@@ -27,24 +27,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/et_get_counter"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        android:background="@drawable/rectangle_radius"
-        android:hint="@string/enter_counter"
-        android:inputType="number"
-        android:maxLength="6"
-        android:padding="5dp"
-        android:paddingStart="8dp"
-        android:paddingEnd="8dp"
-        android:singleLine="true"
-        android:textDirection="rtl"
-        app:layout_constraintEnd_toStartOf="@id/iv_rosary"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <TextView
         android:id="@+id/tv_describe"
         android:layout_width="wrap_content"
@@ -84,6 +66,24 @@
         app:layout_constraintEnd_toEndOf="@id/linear1"
         app:layout_constraintStart_toStartOf="@id/linear1"
         app:layout_constraintTop_toTopOf="@id/linear1" />
+
+    <EditText
+        android:id="@+id/et_get_counter"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:background="@drawable/rectangle_radius"
+        android:hint="@string/enter_counter"
+        android:inputType="number"
+        android:maxLength="6"
+        android:padding="5dp"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp"
+        android:singleLine="true"
+        android:textDirection="rtl"
+        app:layout_constraintEnd_toStartOf="@id/iv_rosary"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tv_counter"
