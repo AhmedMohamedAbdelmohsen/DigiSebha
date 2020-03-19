@@ -52,9 +52,9 @@ public class SebhaListAdapter extends RecyclerView.Adapter<SebhaListAdapter.Sebh
             });
 
         } else {
-            holder.text.setText("No text");
-            holder.description.setText("No text");
-            holder.narated_by.setText("No text");
+            holder.text.setText(R.string.no_text);
+            holder.description.setText(R.string.no_text);
+            holder.narated_by.setText(R.string.no_text);
             holder.repeated.setText("0");
             holder.materialButton.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -79,13 +79,13 @@ public class SebhaListAdapter extends RecyclerView.Adapter<SebhaListAdapter.Sebh
         }
     }
 
-    public class SebhaViewHolder extends RecyclerView.ViewHolder {
-        MaterialButton materialButton;
-        TextView text;
-        TextView narated_by;
-        TextView repeated;
-        TextView description;
-        Typeface typeface;
+    public static class SebhaViewHolder extends RecyclerView.ViewHolder {
+        final MaterialButton materialButton;
+        final TextView text;
+        final TextView narated_by;
+        final TextView repeated;
+        final TextView description;
+        final Typeface typeface;
 
         public SebhaViewHolder(@NonNull View itemView) {
             super(itemView);

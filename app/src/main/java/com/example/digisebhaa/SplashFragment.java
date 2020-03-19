@@ -20,6 +20,10 @@ import androidx.navigation.Navigation;
 import com.example.digisebhaa.databinding.FragmentSplashBinding;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import org.jetbrains.annotations.NotNull;
+
+import java.util.Objects;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -39,7 +43,7 @@ public class SplashFragment extends Fragment {
 
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NotNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         binding = FragmentSplashBinding.inflate(inflater, container, false);
@@ -55,13 +59,13 @@ public class SplashFragment extends Fragment {
         setNavigationViewVisibility();
         setPostDelayed(view);
 
-        ImageButton imageButton = getActivity().findViewById(R.id.btn_exit);
+        ImageButton imageButton = Objects.requireNonNull(getActivity()).findViewById(R.id.btn_exit);
         imageButton.setVisibility(View.GONE);
 
     }
     //set bottom navigation view gone
     public void setNavigationViewVisibility() {
-        bottomNavigationView = getActivity().findViewById(R.id.bottom_nav_bar);
+        bottomNavigationView = Objects.requireNonNull(getActivity()).findViewById(R.id.bottom_nav_bar);
         bottomNavigationView.setVisibility(View.GONE);
     }
 
@@ -86,7 +90,7 @@ public class SplashFragment extends Fragment {
                         SplashFragmentDirections.splashFragmentToRosary();
                 Navigation.findNavController(view).navigate(action);
             }
-        }, 4500);
+        }, 3500);
     }
 
 }

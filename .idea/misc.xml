@@ -1,5 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="EntryPointsManager">
+    <entry_points version="2.0">
+      <entry_point TYPE="field" FQNAME="com.example.digisebhaa.SplashFragment animationDrawable" />
+      <entry_point TYPE="field" FQNAME="com.example.digisebhaa.SplashFragment binding" />
+      <entry_point TYPE="field" FQNAME="com.example.digisebhaa.SplashFragment bottomNavigationView" />
+      <entry_point TYPE="field" FQNAME="com.example.digisebhaa.SplashFragment typeface" />
+    </entry_points>
+    <pattern value="com.example.digisebhaa.SplashFragment" method="setAnimations" />
+    <pattern value="com.example.digisebhaa.SplashFragment" method="setNavigationViewVisibility" />
+    <pattern value="com.example.digisebhaa.SebhaListAdapter" method="SebhaListAdapter" />
+    <pattern value="com.example.digisebhaa.SebhaListAdapter.SebhaViewHolder" method="SebhaViewHolder" />
+    <pattern value="com.example.digisebhaa.SebhaListAdapter.SebhaViewHolder" />
+  </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>

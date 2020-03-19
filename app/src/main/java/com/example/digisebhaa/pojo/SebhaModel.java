@@ -11,19 +11,19 @@ public class SebhaModel {
     @PrimaryKey()
     @NonNull
     @ColumnInfo(name = "text")
-    private String text;
+    private final String text;
 
     @ColumnInfo(name = "narated")
-    private String narated_by;
+    private final String narated_by;
 
     @ColumnInfo(name = "description")
-    private String description;
+    private final String description;
 
     @ColumnInfo(name = "repeats")
-    private String repeats;
+    private final String repeats;
 
     @ColumnInfo(name = "type")
-    private int type;
+    private final int type;
 
     public SebhaModel(@NonNull String text, String narated_by, String description, String repeats, int type) {
         this.text = text;

@@ -11,10 +11,10 @@ import com.example.digisebhaa.pojo.SebhaModel;
 import java.util.List;
 
 public class SebhaRepository {
-    private SebhaDao sebhaDao;
-    private LiveData<List<SebhaModel>> getAllMorningDhikr;
-    private LiveData<List<SebhaModel>> getAllEveningDhikr;
-    private LiveData<List<SebhaModel>> getAllHadith;
+    private final SebhaDao sebhaDao;
+    private final LiveData<List<SebhaModel>> getAllMorningDhikr;
+    private final LiveData<List<SebhaModel>> getAllEveningDhikr;
+    private final LiveData<List<SebhaModel>> getAllHadith;
 
 
     SebhaRepository(Application application) {
@@ -44,7 +44,7 @@ public class SebhaRepository {
     }
 
     private static class insertAsyncTask extends AsyncTask<SebhaModel, Void, Void> {
-        private SebhaDao sebhaDao;
+        private final SebhaDao sebhaDao;
 
         insertAsyncTask(SebhaDao sebhaDao) {
             this.sebhaDao = sebhaDao;

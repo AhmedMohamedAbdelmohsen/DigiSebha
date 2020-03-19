@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/lightGray"
+    style="@style/AppTheme"
     tools:context=".MainActivity">
 
-    <fragment
+    <androidx.fragment.app.FragmentContainerView
         android:id="@+id/nav_host_fragment"
         android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="0dp"
@@ -29,6 +29,7 @@
         android:src="@drawable/ic_exit"
         app:borderWidth="0dp"
         app:layout_constraintEnd_toEndOf="parent"
+        android:contentDescription="@string/exit"
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
@@ -45,12 +46,13 @@
         app:menu="@menu/menu">
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fab_rosary"
             style="@style/Widget.MaterialComponents.FloatingActionButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:id="@+id/fab_rosary"
             android:layout_gravity="center_horizontal|center_vertical"
             android:backgroundTint="@color/lightBlue"
+            android:contentDescription="@string/rosary"
             android:src="@drawable/ic_prayer_beads" />
     </com.google.android.material.bottomnavigation.BottomNavigationView>
 </androidx.constraintlayout.widget.ConstraintLayout>

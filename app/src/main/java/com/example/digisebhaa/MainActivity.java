@@ -16,6 +16,8 @@ import androidx.navigation.ui.NavigationUI;
 
 import com.example.digisebhaa.databinding.ActivityMainBinding;
 
+import java.util.Objects;
+
 public class MainActivity extends AppCompatActivity {
 
     private ActivityMainBinding binding;
@@ -71,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
         // Fetch the LinearLayout.
         final LinearLayout lParent = (LinearLayout) lPositiveButton.getParent();
         // Ensure the Parent of the Buttons aligns it's contents to the right.
-        lParent.setGravity(Gravity.LEFT);
+        lParent.setGravity(Gravity.START);
         // Hide the LeftSpacer. (Strict dependence on the order of the layout!)
         lParent.getChildAt(1).setVisibility(View.GONE);
     }
@@ -79,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
     private void navHostFragment() {
         navHostFragment = (NavHostFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.nav_host_fragment);
-        NavigationUI.setupWithNavController(binding.bottomNavBar, navHostFragment.getNavController());
+        NavigationUI.setupWithNavController(binding.bottomNavBar, Objects.requireNonNull(navHostFragment).getNavController());
     }
 
     private void moveToRosaryFragment() {

@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:paddingTop="10dp"
-        android:text="أذكار الصباح"
+        android:text="@string/morning_dhikr_title"
         android:textColor="@color/lightBlue"
         android:textSize="50sp"
         app:layout_constraintEnd_toEndOf="parent"

@@ -17,7 +17,10 @@ import com.example.digisebhaa.databinding.FragmentMorningBinding;
 import com.example.digisebhaa.pojo.SebhaModel;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.List;
+import java.util.Objects;
 
 
 /**
@@ -35,7 +38,7 @@ public class MorningFragment extends Fragment {
 
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NotNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         binding = FragmentMorningBinding.inflate(inflater, container, false);
@@ -46,7 +49,7 @@ public class MorningFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        BottomNavigationView bottomNavigationView = getActivity().findViewById(R.id.bottom_nav_bar);
+        BottomNavigationView bottomNavigationView = Objects.requireNonNull(getActivity()).findViewById(R.id.bottom_nav_bar);
         bottomNavigationView.setVisibility(View.VISIBLE);
         typeface = Typeface.createFromAsset(getActivity().getAssets(), "almushaf.ttf");
         binding.tvTitle.setTypeface(typeface);
@@ -59,7 +62,7 @@ public class MorningFragment extends Fragment {
         final SebhaListAdapter adapter = new SebhaListAdapter(getActivity());
         binding.rvMorningDhikr.setLayoutManager(new LinearLayoutManager(getActivity()));
         binding.rvMorningDhikr.setAdapter(adapter);
-        viewModel = new ViewModelProvider(getActivity()).get(SebhaViewModel.class);
+        viewModel = new ViewModelProvider(Objects.requireNonNull(getActivity())).get(SebhaViewModel.class);
         viewModel.GetAllMorningDhikr().observe(getViewLifecycleOwner(), new Observer<List<SebhaModel>>() {
             @Override
             public void onChanged(List<SebhaModel> words) {
