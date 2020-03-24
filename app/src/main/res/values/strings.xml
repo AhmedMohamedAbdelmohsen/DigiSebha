@@ -29,4 +29,12 @@
     <string name="enter_counter">العداد</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="font_text">الخط والألوان</string>
+    <string name="change_font_type">تغيير نوع الخط</string>
+    <string name="font_size">تغيير حجم الخط</string>
+    <string name="font_color">تغيير اللون</string>
+    <string name="change_font_type_title">تغيير نوع الخط للأذكار</string>
+    <string name="color_dhikr_title">تغيير لون الأذكار</string>
+    <string name="size_dhikr_title">تغيير حجم الأذكار</string>
+    <string name="one_time">مرة واحدة</string>
 </resources>

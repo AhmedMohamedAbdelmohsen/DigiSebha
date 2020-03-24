@@ -1,7 +1,9 @@
 package com.example.digisebhaa;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Typeface;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,9 +22,18 @@ public class SebhaListAdapter extends RecyclerView.Adapter<SebhaListAdapter.Sebh
 
     private List<SebhaModel> getList;
     private LayoutInflater layoutInflater;
+    public SharedPreferences sharedPreferences;
+    public Typeface almushaf_font;
+    public int color;
+    public float size;
 
     SebhaListAdapter(Context context) {
         layoutInflater = LayoutInflater.from(context);
+        sharedPreferences = context.getSharedPreferences("pref", Context.MODE_PRIVATE);
+        almushaf_font = Typeface.createFromAsset(context.getAssets(), sharedPreferences.getString("font", "almushaf.ttf"));
+        color = context.getResources().getColor(sharedPreferences.getInt("color", R.color.black)); //get color from shared preference
+        size = context.getResources().getDimension(sharedPreferences.getInt("size", R.dimen.medium)); //get size from shared preference
+
     }
 
     @NonNull
@@ -33,13 +44,14 @@ public class SebhaListAdapter extends RecyclerView.Adapter<SebhaListAdapter.Sebh
     }
 
     @Override
-    public void onBindViewHolder(@NonNull final SebhaViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull final SebhaViewHolder holder, final int position) {
         if (getList != null) {
             final SebhaModel current = getList.get(position);
-
             if (current.getType() == 2) {
                 holder.text.setText(current.getText());
-                holder.text.setTypeface(holder.almushaf_font);
+                holder.text.setTypeface(almushaf_font);
+                holder.text.setTextColor(color);
+                holder.text.setTextSize(TypedValue.COMPLEX_UNIT_PX, size);
                 holder.narated_by.setText(current.getNarated_by());
                 holder.narated_by.setTypeface(holder.almushaf_font);
                 holder.repeated.setText(current.getRepeats());
@@ -48,7 +60,9 @@ public class SebhaListAdapter extends RecyclerView.Adapter<SebhaListAdapter.Sebh
                 holder.counterButton.setVisibility(View.GONE);
             } else {
                 holder.text.setText(current.getText());
-                holder.text.setTypeface(holder.almushaf_font);
+                holder.text.setTypeface(almushaf_font);
+                holder.text.setTextColor(color);
+                holder.text.setTextSize(TypedValue.COMPLEX_UNIT_PX, size);
                 holder.description.setText(current.getDescription());
                 holder.description.setTypeface(holder.quran_font);
                 holder.narated_by.setText(current.getNarated_by());
@@ -69,6 +83,10 @@ public class SebhaListAdapter extends RecyclerView.Adapter<SebhaListAdapter.Sebh
                         if (count < current.getCounter()) {
                             holder.counterButton.setText(String.valueOf(count + 1));
                         } else {
+                            //holder.itemView.setVisibility(View.GONE);
+//                            getList.remove(position);
+//                            notifyItemRemoved(position);
+//                            notifyItemRangeChanged(position, getList.size());
                             holder.resetlButton.setVisibility(View.VISIBLE);
                             Toast.makeText(v.getContext(), "اضغط علي الزر الأحمر لإعادة العد من جديد", Toast.LENGTH_SHORT).show();
                         }

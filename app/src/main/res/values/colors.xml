@@ -8,5 +8,10 @@
     <color name="lightGreen">#18d6a4</color>
     <color name="green">#1ac3b7</color>
     <color name="darkRed">#850202</color>
+    <color name="gray">#A9A9A9</color>
+    <color name="darkGray">#696969</color>
+    <color name="red">@android:color/holo_red_dark</color>
+    <color name="blue">@android:color/holo_blue_dark</color>
+    <color name="black">@android:color/background_dark</color>
 
 </resources>

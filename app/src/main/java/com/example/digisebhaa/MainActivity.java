@@ -2,7 +2,6 @@ package com.example.digisebhaa;
 
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.provider.Settings;
 import android.view.Gravity;
 import android.view.View;
 import android.view.WindowManager;
@@ -99,9 +98,21 @@ public class MainActivity extends AppCompatActivity {
         binding.btnDarkMode.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //set brightness value
-                Settings.System.putInt(getApplicationContext().getContentResolver(),
-                        Settings.System.SCREEN_BRIGHTNESS, 10);
+
+//                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+//                    if (!Settings.System.canWrite(getApplicationContext())) {
+//                        //set brightness value
+//                        Settings.System.putInt(getApplicationContext().getContentResolver(),
+//                                Settings.System.SCREEN_BRIGHTNESS, 10);
+//                    }
+//                } else if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.M) {
+//                    //set brightness value
+//                    Settings.System.putInt(getApplicationContext().getContentResolver(),
+//                            Settings.System.SCREEN_BRIGHTNESS, 10);
+//                } else {
+//                    Toast.makeText(MainActivity.this, "Dark mode", Toast.LENGTH_SHORT).show();
+//                }
+
                 navHostFragment.getNavController().navigate(R.id.action_to_dark_fragment);
             }
         });

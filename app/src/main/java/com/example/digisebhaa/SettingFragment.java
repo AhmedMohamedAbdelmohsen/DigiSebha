@@ -1,5 +1,6 @@
 package com.example.digisebhaa;
 
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,6 +25,9 @@ import java.util.Objects;
 public class SettingFragment extends Fragment {
 
     private FragmentSettingBinding binding;
+    private Typeface almushafFont, quranFont, janna;
+
+
     public SettingFragment() {
         // Required empty public constructor
     }
@@ -46,6 +50,52 @@ public class SettingFragment extends Fragment {
 
         ImageButton darkModeButton = Objects.requireNonNull(getActivity()).findViewById(R.id.btn_dark_mode);
         darkModeButton.setVisibility(View.GONE);
+        setMainFonts();
+        binding.btnChangeFontType.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                changeFont();
+            }
+        });
 
+        binding.btnChangeFontColor.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                changeColor();
+            }
+        });
+
+        binding.btnChangeFontSize.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                changeSize();
+            }
+        });
+    }
+
+    private void setMainFonts() {
+        almushafFont = Typeface.createFromAsset(getActivity().getAssets(), "almushaf.ttf");
+        quranFont = Typeface.createFromAsset(getActivity().getAssets(), "quran.ttf");
+        janna = Typeface.createFromAsset(getActivity().getAssets(), "Janna.ttf");
+        binding.tvTitle.setTypeface(almushafFont);
+        binding.tvFontText.setTypeface(janna);
+        binding.btnChangeFontType.setTypeface(janna);
+        binding.btnChangeFontColor.setTypeface(janna);
+        binding.btnChangeFontSize.setTypeface(janna);
+    }
+
+    private void changeFont() {
+        FontTypeDialog dialog = new FontTypeDialog(getActivity());
+        dialog.show();
+    }
+
+    private void changeColor() {
+        FontColorDialog dialog = new FontColorDialog(getActivity());
+        dialog.show();
+    }
+
+    private void changeSize() {
+        FontSizeDialog dialog = new FontSizeDialog(getActivity());
+        dialog.show();
     }
 }

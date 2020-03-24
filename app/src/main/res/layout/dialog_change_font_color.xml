@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="300dp"
+    android:layout_height="250dp"
+    android:background="@drawable/radius_rectangle"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tv_alert_font_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="@string/color_dhikr_title"
+        android:textColor="@android:color/white"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <RadioGroup
+        android:id="@+id/radio_group"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/top_radius_rectangle"
+        android:gravity="center"
+        android:padding="10dp"
+        android:weightSum="3"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_alert_font_title">
+
+        <RadioButton
+            android:id="@+id/rbtn_first_font"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:button="@android:color/transparent"
+            android:checked="true"
+            android:drawableEnd="@drawable/radio_button"
+            android:drawablePadding="30dp"
+            android:fontFamily="@font/quran"
+            android:text="@string/describe"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+
+        <RadioButton
+            android:id="@+id/rbtn_second_font"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:button="@android:color/transparent"
+            android:checked="false"
+            android:drawableEnd="@drawable/radio_button"
+            android:drawablePadding="30dp"
+            android:fontFamily="@font/quran"
+            android:text="@string/describe"
+            android:textColor="@color/red"
+            android:textSize="20sp" />
+
+        <RadioButton
+            android:id="@+id/rbtn_third_font"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:button="@android:color/transparent"
+            android:checked="false"
+            android:drawableEnd="@drawable/radio_button"
+            android:drawablePadding="30dp"
+            android:fontFamily="@font/quran"
+            android:text="@string/describe"
+            android:textColor="@color/blue"
+            android:textSize="20sp" />
+    </RadioGroup>
+</androidx.constraintlayout.widget.ConstraintLayout>

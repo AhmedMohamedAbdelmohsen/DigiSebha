@@ -6,15 +6,24 @@
     android:layout_height="match_parent"
     tools:context=".MorningFragment">
 
+    <Button
+        android:id="@+id/btn_reset"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="reset"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
         android:id="@+id/tv_title"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="60dp"
+        android:background="@color/lightBlue"
         android:gravity="center"
-        android:paddingTop="10dp"
         android:text="@string/morning_dhikr_title"
-        android:textColor="@color/lightBlue"
-        android:textSize="50sp"
+        android:textColor="@android:color/white"
+        android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -23,8 +32,8 @@
         android:id="@+id/rv_morning_dhikr"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginBottom="60dp"
-        android:padding="10dp"
+        android:layout_marginBottom="70dp"
+        android:paddingTop="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

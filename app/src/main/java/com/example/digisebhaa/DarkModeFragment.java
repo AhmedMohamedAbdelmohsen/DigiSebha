@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Vibrator;
-import android.provider.Settings;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -123,7 +122,18 @@ public class DarkModeFragment extends Fragment {
     @Override
     public void onStop() {
         super.onStop();
-        Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
-                Settings.System.SCREEN_BRIGHTNESS, 60);
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+//            if (!Settings.System.canWrite(getActivity().getApplicationContext())) {
+//                //set brightness value
+//                Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
+//                        Settings.System.SCREEN_BRIGHTNESS, 60);
+//            }
+//        } else if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.M) {
+//            //set brightness value
+//            Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
+//                    Settings.System.SCREEN_BRIGHTNESS, 60);
+//        } else {
+//            Toast.makeText(getContext(), "Dark mode", Toast.LENGTH_SHORT).show();
+//        }
     }
 }

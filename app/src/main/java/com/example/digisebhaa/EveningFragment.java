@@ -74,5 +74,6 @@ public class EveningFragment extends Fragment {
                 adapter.setList(words);
             }
         });
+
     }
 }
