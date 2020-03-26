@@ -11,7 +11,7 @@
         android:layout_height="0dp"
         android:background="@drawable/down_curved_background"
         android:contentDescription="@string/background"
-        app:layout_constraintBottom_toBottomOf="@id/linear1"
+        app:layout_constraintBottom_toBottomOf="@id/first_linear_font"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -36,13 +36,13 @@
         android:textAlignment="center"
         android:textColor="@android:color/white"
         android:textSize="30sp"
-        app:layout_constraintBottom_toTopOf="@id/linear1"
+        app:layout_constraintBottom_toTopOf="@id/first_linear_font"
         app:layout_constraintEnd_toEndOf="@id/iv_rosary"
         app:layout_constraintStart_toStartOf="@id/iv_rosary"
         app:layout_constraintTop_toBottomOf="@id/iv_rosary" />
 
     <LinearLayout
-        android:id="@+id/linear1"
+        android:id="@+id/first_linear_font"
         android:layout_width="0dp"
         android:layout_height="310dp"
         android:layout_marginStart="30dp"
@@ -63,9 +63,9 @@
         android:text="@string/title"
         android:textColor="@color/lightGreen"
         android:textSize="30sp"
-        app:layout_constraintEnd_toEndOf="@id/linear1"
-        app:layout_constraintStart_toStartOf="@id/linear1"
-        app:layout_constraintTop_toTopOf="@id/linear1" />
+        app:layout_constraintEnd_toEndOf="@id/first_linear_font"
+        app:layout_constraintStart_toStartOf="@id/first_linear_font"
+        app:layout_constraintTop_toTopOf="@id/first_linear_font" />
 
     <EditText
         android:id="@+id/et_get_counter"
@@ -98,8 +98,8 @@
         android:text="@string/numbers"
         android:textColor="@color/lightGreen"
         android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="@id/linear1"
-        app:layout_constraintStart_toStartOf="@id/linear1"
+        app:layout_constraintEnd_toEndOf="@id/first_linear_font"
+        app:layout_constraintStart_toStartOf="@id/first_linear_font"
         app:layout_constraintTop_toBottomOf="@id/tv_title" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -113,9 +113,9 @@
         android:layout_marginBottom="10dp"
         android:backgroundTint="@color/colorAccent"
         android:contentDescription="@string/counterbutton"
-        app:layout_constraintBottom_toBottomOf="@id/linear1"
-        app:layout_constraintEnd_toEndOf="@id/linear1"
-        app:layout_constraintStart_toStartOf="@id/linear1"
+        app:layout_constraintBottom_toBottomOf="@id/first_linear_font"
+        app:layout_constraintEnd_toEndOf="@id/first_linear_font"
+        app:layout_constraintStart_toStartOf="@id/first_linear_font"
         app:layout_constraintTop_toBottomOf="@id/tv_counter" />
 
     <ToggleButton
@@ -124,9 +124,9 @@
         android:layout_height="50dp"
         android:layout_margin="4dp"
         android:background="@drawable/ic_vibrat"
-        app:layout_constraintBottom_toBottomOf="@id/linear1"
+        app:layout_constraintBottom_toBottomOf="@id/first_linear_font"
         app:layout_constraintEnd_toStartOf="@id/fab_counter"
-        app:layout_constraintStart_toStartOf="@id/linear1"
+        app:layout_constraintStart_toStartOf="@id/first_linear_font"
         app:layout_constraintTop_toBottomOf="@id/tv_counter" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton

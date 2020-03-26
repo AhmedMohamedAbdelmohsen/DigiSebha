@@ -37,4 +37,17 @@
     <string name="color_dhikr_title">تغيير لون الأذكار</string>
     <string name="size_dhikr_title">تغيير حجم الأذكار</string>
     <string name="one_time">مرة واحدة</string>
+    <string name="dhikr_morn_even">أذكار الصباح والمساء</string>
+    <string name="notif_for_dhikr">تفعيل التنبيهات للأذكار</string>
+    <string name="notif_for_hadith">تفعيل التنبيهات للأحاديث</string>
+    <string name="_6_00">6:00 ص</string>
+    <string name="morning_dhikr_time">موعد التنبيهات لأذكار الصباح</string>
+    <string name="evening_dhikr_time">موعد التنبيهات لأذكار المساء</string>
+    <string name="_6_0">6:00 م</string>
+    <string name="hadith_time">موعد التنبيهات للأحاديث</string>
+    <string name="sadka_garia">صدقة جارية</string>
+    <string name="evaluation_app">تقييم التطبيق</string>
+    <string name="add_evaluation">اضف تقييمك لنستطيع تحسين الخدمة</string>
+    <string name="general">عام</string>
+    <string name="_12_00">12:00 م</string>
 </resources>

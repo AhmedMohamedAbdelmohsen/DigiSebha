@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -10,133 +10,438 @@
         android:id="@+id/tv_title"
         android:layout_width="match_parent"
         android:layout_height="60dp"
+        android:layout_centerHorizontal="true"
         android:background="@color/lightBlue"
+        android:fontFamily="@font/almushaf"
         android:gravity="center"
         android:text="@string/settings"
         android:textColor="@android:color/white"
-        android:textSize="30sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textSize="30sp" />
 
-    <View
-        android:id="@+id/view"
+    <ScrollView
+        android:id="@+id/scroll_view"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:background="@color/lightGray"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_title" />
+        android:layout_height="match_parent"
+        android:layout_below="@id/tv_title"
+        android:layout_marginBottom="70dp">
 
-    <TextView
-        android:id="@+id/tv_font_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        android:text="@string/font_text"
-        android:textColor="@color/gray"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="@id/view"
-        app:layout_constraintEnd_toEndOf="@id/view"
-        app:layout_constraintTop_toTopOf="@id/view" />
-
-    <ImageView
-        android:id="@+id/iv_alif"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        android:alpha="0.5"
-        android:src="@drawable/ic_text_settings"
-        app:layout_constraintBottom_toBottomOf="@id/view"
-        app:layout_constraintStart_toStartOf="@id/view"
-        app:layout_constraintTop_toTopOf="@id/view" />
-
-    <LinearLayout
-        android:id="@+id/linear1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@android:color/white"
-        android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/view">
-
-        <Button
-            android:id="@+id/btn_change_font_type"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="?attr/selectableItemBackground"
-            android:gravity="center|start"
-            android:paddingStart="20dp"
-            android:paddingEnd="20dp"
-            android:text="@string/change_font_type"
-            android:textColor="@color/darkGray"
-            android:textSize="18sp" />
+            android:layout_height="wrap_content">
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="0.3dp"
-            android:background="@color/gray" />
+            <View
+                android:id="@+id/view_font"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:background="@color/lightGray"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-    </LinearLayout>
+            <TextView
+                android:id="@+id/tv_font_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:fontFamily="@font/janna"
+                android:text="@string/font_text"
+                android:textColor="@color/gray"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="@id/view_font"
+                app:layout_constraintEnd_toEndOf="@id/view_font"
+                app:layout_constraintTop_toTopOf="@id/view_font" />
 
-    <LinearLayout
-        android:id="@+id/linear2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@android:color/white"
-        android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/linear1">
+            <ImageView
+                android:id="@+id/iv_font_icon"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:alpha="0.5"
+                android:src="@drawable/ic_text_settings"
+                app:layout_constraintBottom_toBottomOf="@id/view_font"
+                app:layout_constraintStart_toStartOf="@id/view_font"
+                app:layout_constraintTop_toTopOf="@id/view_font" />
 
-        <Button
-            android:id="@+id/btn_change_font_size"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="?attr/selectableItemBackground"
-            android:gravity="center|start"
-            android:paddingStart="20dp"
-            android:paddingEnd="20dp"
-            android:text="@string/font_size"
-            android:textColor="@color/darkGray"
-            android:textSize="18sp" />
+            <LinearLayout
+                android:id="@+id/first_linear_font"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/white"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/view_font">
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="0.3dp"
-            android:background="@color/gray" />
+                <Button
+                    android:id="@+id/btn_change_font_type"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="?attr/selectableItemBackground"
+                    android:fontFamily="@font/janna"
+                    android:gravity="center|start"
+                    android:paddingStart="20dp"
+                    android:paddingEnd="20dp"
+                    android:text="@string/change_font_type"
+                    android:textColor="@color/darkGray"
+                    android:textSize="18sp" />
 
-    </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.3dp"
+                    android:background="@color/gray" />
 
-    <LinearLayout
-        android:id="@+id/linear3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@android:color/white"
-        android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/linear2">
+            </LinearLayout>
 
-        <Button
-            android:id="@+id/btn_change_font_color"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="?attr/selectableItemBackground"
-            android:gravity="center|start"
-            android:paddingStart="20dp"
-            android:paddingEnd="20dp"
-            android:text="@string/font_color"
-            android:textColor="@color/darkGray"
-            android:textSize="18sp" />
+            <LinearLayout
+                android:id="@+id/second_linear_font"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/white"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/first_linear_font">
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="0.3dp"
-            android:background="@color/gray" />
-    </LinearLayout>
+                <Button
+                    android:id="@+id/btn_change_font_size"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="?attr/selectableItemBackground"
+                    android:fontFamily="@font/janna"
+                    android:gravity="center|start"
+                    android:paddingStart="20dp"
+                    android:paddingEnd="20dp"
+                    android:text="@string/font_size"
+                    android:textColor="@color/darkGray"
+                    android:textSize="18sp" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.3dp"
+                    android:background="@color/gray" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/third_linear_font"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/white"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/second_linear_font">
+
+                <Button
+                    android:id="@+id/btn_change_font_color"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="?attr/selectableItemBackground"
+                    android:fontFamily="@font/janna"
+                    android:gravity="center|start"
+                    android:paddingStart="20dp"
+                    android:paddingEnd="20dp"
+                    android:text="@string/font_color"
+                    android:textColor="@color/darkGray"
+                    android:textSize="18sp" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.3dp"
+                    android:background="@color/gray" />
+            </LinearLayout>
+
+            <View
+                android:id="@+id/view_notifications"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:background="@color/lightGray"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/third_linear_font" />
+
+            <TextView
+                android:id="@+id/tv_notif_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:fontFamily="@font/janna"
+                android:text="@string/dhikr_morn_even"
+                android:textColor="@color/gray"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="@id/view_notifications"
+                app:layout_constraintEnd_toEndOf="@id/view_notifications"
+                app:layout_constraintTop_toTopOf="@id/view_notifications" />
+
+            <ImageView
+                android:id="@+id/iv_notif_icon"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:alpha="0.5"
+                android:src="@drawable/ic_day_night"
+                app:layout_constraintBottom_toBottomOf="@id/view_notifications"
+                app:layout_constraintStart_toStartOf="@id/view_notifications"
+                app:layout_constraintTop_toTopOf="@id/view_notifications" />
+
+            <Switch
+                android:id="@+id/switch_dhikr"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/white"
+                android:checked="true"
+                android:layoutDirection="rtl"
+                android:padding="20dp"
+                android:text="@string/notif_for_dhikr"
+                android:textColor="@color/darkGray"
+                android:textSize="18sp"
+                android:theme="@style/SwitchTextAppearance"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/view_notifications" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.3dp"
+                android:background="@color/gray"
+                app:layout_constraintBottom_toBottomOf="@id/switch_dhikr" />
+
+            <Switch
+                android:id="@+id/switch_hadith"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/white"
+                android:buttonTint="@color/lightBlue"
+                android:checked="true"
+                android:layoutDirection="rtl"
+                android:padding="20dp"
+                android:text="@string/notif_for_hadith"
+                android:textColor="@color/darkGray"
+                android:textSize="18sp"
+                android:theme="@style/SwitchTextAppearance"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/switch_dhikr" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.3dp"
+                android:background="@color/gray"
+                app:layout_constraintBottom_toBottomOf="@id/switch_hadith" />
+
+            <RelativeLayout
+                android:id="@+id/first_linear_notif"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/white"
+                android:gravity="center_vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/switch_hadith">
+
+                <Button
+                    android:id="@+id/btn_notif_morning_dhikr"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:background="?attr/selectableItemBackground"
+                    android:fontFamily="@font/janna"
+                    android:gravity="center|start"
+                    android:paddingStart="20dp"
+                    android:paddingEnd="20dp"
+                    android:text="@string/morning_dhikr_time"
+                    android:textColor="@color/darkGray"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/tv_morning_notif_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:fontFamily="@font/janna"
+                    android:paddingStart="20dp"
+                    android:paddingEnd="20dp"
+                    android:text="@string/_6_00"
+                    android:textColor="@color/lightBlue"
+                    android:textSize="16sp" />
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.3dp"
+                android:background="@color/gray"
+                app:layout_constraintBottom_toBottomOf="@id/first_linear_notif" />
+
+            <RelativeLayout
+                android:id="@+id/second_linear_notif"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/white"
+                android:gravity="center_vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/first_linear_notif">
+
+                <Button
+                    android:id="@+id/btn_notif_evening_dhikr"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:background="?attr/selectableItemBackground"
+                    android:fontFamily="@font/janna"
+                    android:gravity="center|start"
+                    android:paddingStart="20dp"
+                    android:paddingEnd="20dp"
+                    android:text="@string/evening_dhikr_time"
+                    android:textColor="@color/darkGray"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/tv_evening_notif_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:fontFamily="@font/janna"
+                    android:paddingStart="20dp"
+                    android:paddingEnd="20dp"
+                    android:text="@string/_6_0"
+                    android:textColor="@color/lightBlue"
+                    android:textSize="16sp" />
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.3dp"
+                android:background="@color/gray"
+                app:layout_constraintBottom_toBottomOf="@id/second_linear_notif" />
+
+            <RelativeLayout
+                android:id="@+id/third_linear_notif"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/white"
+                android:gravity="center_vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/second_linear_notif">
+
+                <Button
+                    android:id="@+id/btn_notif_hadith"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:background="?attr/selectableItemBackground"
+                    android:fontFamily="@font/janna"
+                    android:gravity="center|start"
+                    android:paddingStart="20dp"
+                    android:paddingEnd="20dp"
+                    android:text="@string/hadith_time"
+                    android:textColor="@color/darkGray"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/tv_hadith_notif_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:fontFamily="@font/janna"
+                    android:paddingStart="20dp"
+                    android:paddingEnd="20dp"
+                    android:text="@string/_12_00"
+                    android:textColor="@color/lightBlue"
+                    android:textSize="16sp" />
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.3dp"
+                android:background="@color/gray"
+                app:layout_constraintBottom_toBottomOf="@id/third_linear_notif" />
+
+            <View
+                android:id="@+id/view_general"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:background="@color/lightGray"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/third_linear_notif" />
+
+            <TextView
+                android:id="@+id/tv_general_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:fontFamily="@font/janna"
+                android:text="@string/general"
+                android:textColor="@color/gray"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="@id/view_general"
+                app:layout_constraintEnd_toEndOf="@id/view_general"
+                app:layout_constraintTop_toTopOf="@id/view_general" />
+
+            <ImageView
+                android:id="@+id/iv_general_icon"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:alpha="0.5"
+                android:src="@drawable/ic_chairty"
+                app:layout_constraintBottom_toBottomOf="@id/view_general"
+                app:layout_constraintStart_toStartOf="@id/view_general"
+                app:layout_constraintTop_toTopOf="@id/view_general" />
+
+            <Button
+                android:id="@+id/btn_share_chairty"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/lightGreen"
+                android:fontFamily="@font/mothanna"
+                android:text="@string/sadka_garia"
+                android:textColor="@android:color/white"
+                android:textSize="22sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/view_general" />
+
+            <Button
+                android:id="@+id/btn_evaluation_chairty"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/lightBlue"
+                android:fontFamily="@font/mothanna"
+                android:text="@string/evaluation_app"
+                android:textColor="@android:color/white"
+                android:textSize="22sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/btn_share_chairty" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/janna"
+                android:gravity="center"
+                android:padding="2dp"
+                android:text="@string/add_evaluation"
+                android:textColor="@color/darkGray"
+                app:layout_constraintTop_toBottomOf="@id/btn_evaluation_chairty" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</RelativeLayout>
