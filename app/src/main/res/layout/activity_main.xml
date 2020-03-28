@@ -29,7 +29,7 @@
         android:contentDescription="@string/exit"
         android:src="@drawable/ic_exit"
         app:borderWidth="0dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
