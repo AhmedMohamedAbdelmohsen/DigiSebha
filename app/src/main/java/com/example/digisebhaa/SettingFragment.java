@@ -1,13 +1,17 @@
 package com.example.digisebhaa;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.app.TimePickerDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CompoundButton;
 import android.widget.ImageButton;
 import android.widget.TimePicker;
 
@@ -33,7 +37,9 @@ public class SettingFragment extends Fragment {
 
     private FragmentSettingBinding binding;
     private Typeface almushafFont, quranFont, janna;
-    private Calendar calendar = Calendar.getInstance();
+    private Calendar calendarMorning = Calendar.getInstance();
+    private Calendar calendarEvening = Calendar.getInstance();
+    private Calendar calendarHadith = Calendar.getInstance();
     private String am_pm;
     private String am = " ص ";
     private String pm = " م ";
@@ -64,6 +70,7 @@ public class SettingFragment extends Fragment {
         darkModeButton.setVisibility(View.GONE);
         preferences = this.getActivity().getSharedPreferences("pref", Context.MODE_PRIVATE);
         editor = preferences.edit();
+
         setMainFonts();
         timePicker();
         binding.btnChangeFontType.setOnClickListener(new View.OnClickListener() {
@@ -116,19 +123,65 @@ public class SettingFragment extends Fragment {
         binding.tvMorningNotifTime.setText(preferences.getString("morning_time", "06:00" + am));
         binding.tvEveningNotifTime.setText(preferences.getString("evening_time", "06:00" + pm));
         binding.tvHadithNotifTime.setText(preferences.getString("hadith_time", "12:00" + pm));
+        getSwitchDhikrStatus();
+        getSwitchHadithStatus();
+        binding.switchDhikr.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    editor.putBoolean("dhikr_status", true).apply();
+                    binding.tvSwitchDhikrStatus.setVisibility(View.GONE);
+                    binding.viewMorningDisabled.setVisibility(View.GONE);
+                    binding.viewEveningDisabled.setVisibility(View.GONE);
+                    binding.btnNotifMorningDhikr.setEnabled(true);
+                    binding.btnNotifEveningDhikr.setEnabled(true);
+                } else {
+                    cancelAllNotifications();
+                    editor.putBoolean("dhikr_status", false).apply();
+                    binding.tvSwitchDhikrStatus.setVisibility(View.VISIBLE);
+                    binding.viewMorningDisabled.setVisibility(View.VISIBLE);
+                    binding.viewEveningDisabled.setVisibility(View.VISIBLE);
+                    binding.btnNotifMorningDhikr.setEnabled(false);
+                    binding.btnNotifEveningDhikr.setEnabled(false);
+                }
+            }
+        });
+
+        binding.switchHadith.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    editor.putBoolean("switch_hadith_status", true).apply();
+                    binding.tvSwitchHadithStatus.setVisibility(View.GONE);
+                    binding.viewHadithDisabled.setVisibility(View.GONE);
+                    binding.btnNotifHadith.setEnabled(true);
+
+                } else {
+                    editor.putBoolean("switch_hadith_status", false).apply();
+                    binding.tvSwitchHadithStatus.setVisibility(View.VISIBLE);
+                    binding.viewHadithDisabled.setVisibility(View.VISIBLE);
+                    binding.btnNotifHadith.setEnabled(false);
+                }
+            }
+        });
 
         final TimePickerDialog.OnTimeSetListener timeMorningSetListener = new TimePickerDialog.OnTimeSetListener() {
             @Override
             public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-                calendar.set(Calendar.HOUR_OF_DAY, hourOfDay);
-                calendar.set(Calendar.MINUTE, minute);
+                calendarMorning.set(Calendar.HOUR_OF_DAY, hourOfDay);
+                calendarMorning.set(Calendar.MINUTE, minute);
+                calendarMorning.set(Calendar.SECOND, 0);
                 String myFormat = "HH:mm";
-                if (calendar.get(Calendar.AM_PM) == Calendar.AM)
+                if (calendarMorning.get(Calendar.AM_PM) == Calendar.AM)
                     am_pm = " ص ";
-                else if (calendar.get(Calendar.AM_PM) == Calendar.PM)
+                else if (calendarMorning.get(Calendar.AM_PM) == Calendar.PM)
                     am_pm = " م ";
                 SimpleDateFormat format = new SimpleDateFormat(myFormat, Locale.getDefault());
-                editor.putString("morning_time", format.format(calendar.getTime()) + am_pm).apply();
+                editor.putString("morning_time", format.format(calendarMorning.getTime()) + am_pm).apply();
+                Intent intent = new Intent(getActivity(), MorningAlertReceiver.class);
+                AlarmManager alarmManager = (AlarmManager) getActivity().getSystemService(Context.ALARM_SERVICE);
+                alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendarMorning.getTimeInMillis(), AlarmManager.INTERVAL_DAY
+                        , PendingIntent.getBroadcast(getActivity(), 0, intent, PendingIntent.FLAG_UPDATE_CURRENT));
                 binding.tvMorningNotifTime.setText(preferences.getString("morning_time", "06:00" + am));
             }
         };
@@ -136,15 +189,20 @@ public class SettingFragment extends Fragment {
         final TimePickerDialog.OnTimeSetListener timeEveningSetListener = new TimePickerDialog.OnTimeSetListener() {
             @Override
             public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-                calendar.set(Calendar.HOUR_OF_DAY, hourOfDay);
-                calendar.set(Calendar.MINUTE, minute);
+                calendarEvening.set(Calendar.HOUR_OF_DAY, hourOfDay);
+                calendarEvening.set(Calendar.MINUTE, minute);
+                calendarEvening.set(Calendar.SECOND, 0);
                 String myFormat = "HH:mm";
-                if (calendar.get(Calendar.AM_PM) == Calendar.AM)
+                if (calendarEvening.get(Calendar.AM_PM) == Calendar.AM)
                     am_pm = " ص ";
-                else if (calendar.get(Calendar.AM_PM) == Calendar.PM)
+                else if (calendarEvening.get(Calendar.AM_PM) == Calendar.PM)
                     am_pm = " م ";
                 SimpleDateFormat format = new SimpleDateFormat(myFormat, Locale.getDefault());
-                editor.putString("evening_time", format.format(calendar.getTime()) + am_pm).apply();
+                editor.putString("evening_time", format.format(calendarEvening.getTime()) + am_pm).apply();
+                Intent intent = new Intent(getActivity(), EveningAlertReceiver.class);
+                AlarmManager alarmManager = (AlarmManager) getActivity().getSystemService(Context.ALARM_SERVICE);
+                alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendarEvening.getTimeInMillis(), AlarmManager.INTERVAL_DAY
+                        , PendingIntent.getBroadcast(getActivity(), 1, intent, PendingIntent.FLAG_UPDATE_CURRENT));
                 binding.tvEveningNotifTime.setText(preferences.getString("evening_time", "06:00" + pm));
             }
         };
@@ -152,15 +210,20 @@ public class SettingFragment extends Fragment {
         final TimePickerDialog.OnTimeSetListener timeHadithSetListener = new TimePickerDialog.OnTimeSetListener() {
             @Override
             public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-                calendar.set(Calendar.HOUR_OF_DAY, hourOfDay);
-                calendar.set(Calendar.MINUTE, minute);
+                calendarHadith.set(Calendar.HOUR_OF_DAY, hourOfDay);
+                calendarHadith.set(Calendar.MINUTE, minute);
+                calendarHadith.set(Calendar.SECOND, 0);
                 String myFormat = "HH:mm";
-                if (calendar.get(Calendar.AM_PM) == Calendar.AM)
+                if (calendarHadith.get(Calendar.AM_PM) == Calendar.AM)
                     am_pm = " ص ";
-                else if (calendar.get(Calendar.AM_PM) == Calendar.PM)
+                else if (calendarHadith.get(Calendar.AM_PM) == Calendar.PM)
                     am_pm = " م ";
                 SimpleDateFormat format = new SimpleDateFormat(myFormat, Locale.getDefault());
-                editor.putString("hadith_time", format.format(calendar.getTime()) + am_pm).apply();
+                editor.putString("hadith_time", format.format(calendarHadith.getTime()) + am_pm).apply();
+                Intent intent = new Intent(getActivity(), HadithAlertReceiver.class);
+                AlarmManager alarmManager = (AlarmManager) getActivity().getSystemService(Context.ALARM_SERVICE);
+                alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendarHadith.getTimeInMillis(), AlarmManager.INTERVAL_DAY
+                        , PendingIntent.getBroadcast(getActivity(), 2, intent, PendingIntent.FLAG_UPDATE_CURRENT));
                 binding.tvHadithNotifTime.setText(preferences.getString("hadith_time", "12:00" + pm));
             }
         };
@@ -169,8 +232,8 @@ public class SettingFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 new TimePickerDialog(getActivity(), timeMorningSetListener,
-                        calendar.get(Calendar.HOUR_OF_DAY),
-                        calendar.get(Calendar.MINUTE),
+                        calendarMorning.get(Calendar.HOUR_OF_DAY),
+                        calendarMorning.get(Calendar.MINUTE),
                         false).show();
             }
         });
@@ -179,8 +242,8 @@ public class SettingFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 new TimePickerDialog(getActivity(), timeEveningSetListener,
-                        calendar.get(Calendar.HOUR_OF_DAY),
-                        calendar.get(Calendar.MINUTE),
+                        calendarEvening.get(Calendar.HOUR_OF_DAY),
+                        calendarEvening.get(Calendar.MINUTE),
                         false).show();
             }
         });
@@ -189,10 +252,58 @@ public class SettingFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 new TimePickerDialog(getActivity(), timeHadithSetListener,
-                        calendar.get(Calendar.HOUR_OF_DAY),
-                        calendar.get(Calendar.MINUTE),
+                        calendarHadith.get(Calendar.HOUR_OF_DAY),
+                        calendarHadith.get(Calendar.MINUTE),
                         false).show();
             }
         });
     }
+
+    void getSwitchDhikrStatus() {
+        binding.switchDhikr.setChecked(preferences.getBoolean("dhikr_status", true));
+        if (binding.switchDhikr.isChecked()) {
+            binding.tvSwitchDhikrStatus.setVisibility(View.GONE);
+            binding.viewMorningDisabled.setVisibility(View.GONE);
+            binding.viewEveningDisabled.setVisibility(View.GONE);
+            binding.btnNotifMorningDhikr.setEnabled(true);
+            binding.btnNotifEveningDhikr.setEnabled(true);
+        } else {
+            binding.tvSwitchDhikrStatus.setVisibility(View.VISIBLE);
+            binding.viewMorningDisabled.setVisibility(View.VISIBLE);
+            binding.viewEveningDisabled.setVisibility(View.VISIBLE);
+            binding.btnNotifMorningDhikr.setEnabled(false);
+            binding.btnNotifEveningDhikr.setEnabled(false);
+        }
+    }
+
+    void getSwitchHadithStatus() {
+        binding.switchHadith.setChecked(preferences.getBoolean("switch_hadith_status", true));
+        if (binding.switchHadith.isChecked()) {
+            binding.tvSwitchHadithStatus.setVisibility(View.GONE);
+            binding.viewHadithDisabled.setVisibility(View.GONE);
+            binding.btnNotifHadith.setEnabled(true);
+        } else {
+            binding.tvSwitchHadithStatus.setVisibility(View.VISIBLE);
+            binding.viewHadithDisabled.setVisibility(View.VISIBLE);
+            binding.btnNotifHadith.setEnabled(false);
+        }
+    }
+
+    public void cancelNotification(int requestCode) {
+        try {
+            Intent intent = new Intent(getActivity(), EveningAlertReceiver.class);
+            PendingIntent pendingIntent = PendingIntent.getBroadcast(getActivity(), requestCode, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+            AlarmManager alarmManager = (AlarmManager) getActivity().getSystemService(Context.ALARM_SERVICE);
+            alarmManager.cancel(pendingIntent);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void cancelAllNotifications() {
+        cancelNotification(0);
+        cancelNotification(1);
+        cancelNotification(2);
+    }
+
 }

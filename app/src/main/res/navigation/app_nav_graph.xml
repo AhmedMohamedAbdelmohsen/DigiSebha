@@ -12,6 +12,10 @@
     <action
         android:id="@+id/action_to_dark_fragment"
         app:destination="@id/dark_fragment" />
+
+    <action
+        android:id="@+id/action_to_morning_fragment"
+        app:destination="@id/morning" />
     <fragment
         android:id="@+id/splashFragment"
         android:name="com.example.digisebhaa.SplashFragment"

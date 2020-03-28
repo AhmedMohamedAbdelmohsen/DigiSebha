@@ -3,6 +3,7 @@
     package="com.example.digisebhaa">
 
     <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.SET_ALARM" />
 
     <application
         android:allowBackup="true"
@@ -24,6 +25,11 @@
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
+
+        <receiver android:name=".MorningAlertReceiver" />
+        <receiver android:name=".EveningAlertReceiver" />
+        <receiver android:name=".HadithAlertReceiver" />
+
     </application>
 
 </manifest>

@@ -40,16 +40,18 @@
 
             <TextView
                 android:id="@+id/tv_font_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"
                 android:fontFamily="@font/janna"
+                android:gravity="center_vertical"
                 android:text="@string/font_text"
                 android:textColor="@color/gray"
                 android:textSize="18sp"
                 app:layout_constraintBottom_toBottomOf="@id/view_font"
                 app:layout_constraintEnd_toEndOf="@id/view_font"
+                app:layout_constraintStart_toStartOf="@id/view_font"
                 app:layout_constraintTop_toTopOf="@id/view_font" />
 
             <ImageView
@@ -60,9 +62,9 @@
                 android:layout_marginEnd="20dp"
                 android:alpha="0.5"
                 android:src="@drawable/ic_text_settings"
-                app:layout_constraintBottom_toBottomOf="@id/view_font"
-                app:layout_constraintStart_toStartOf="@id/view_font"
-                app:layout_constraintTop_toTopOf="@id/view_font" />
+                app:layout_constraintBottom_toBottomOf="@id/tv_font_title"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="@id/tv_font_title" />
 
             <LinearLayout
                 android:id="@+id/first_linear_font"
@@ -164,16 +166,18 @@
 
             <TextView
                 android:id="@+id/tv_notif_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"
                 android:fontFamily="@font/janna"
+                android:gravity="center_vertical"
                 android:text="@string/dhikr_morn_even"
                 android:textColor="@color/gray"
                 android:textSize="18sp"
                 app:layout_constraintBottom_toBottomOf="@id/view_notifications"
                 app:layout_constraintEnd_toEndOf="@id/view_notifications"
+                app:layout_constraintStart_toStartOf="@+id/view_notifications"
                 app:layout_constraintTop_toTopOf="@id/view_notifications" />
 
             <ImageView
@@ -184,9 +188,9 @@
                 android:layout_marginEnd="20dp"
                 android:alpha="0.5"
                 android:src="@drawable/ic_day_night"
-                app:layout_constraintBottom_toBottomOf="@id/view_notifications"
-                app:layout_constraintStart_toStartOf="@id/view_notifications"
-                app:layout_constraintTop_toTopOf="@id/view_notifications" />
+                app:layout_constraintBottom_toBottomOf="@id/tv_notif_title"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="@id/tv_notif_title" />
 
             <Switch
                 android:id="@+id/switch_dhikr"
@@ -203,6 +207,19 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/view_notifications" />
+
+            <TextView
+                android:id="@+id/tv_switch_dhikr_status"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:alpha="0.8"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                android:text="@string/switch_notif_dhikr"
+                android:textColor="@color/red"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="@id/switch_dhikr"
+                app:layout_constraintEnd_toEndOf="@id/switch_dhikr" />
 
             <View
                 android:layout_width="match_parent"
@@ -227,149 +244,179 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/switch_dhikr" />
 
+            <TextView
+                android:id="@+id/tv_switch_hadith_status"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:alpha="0.8"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                android:text="@string/switch_notif_hadith"
+                android:textColor="@color/red"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="@id/switch_hadith"
+                app:layout_constraintEnd_toEndOf="@id/switch_hadith" />
+
             <View
                 android:layout_width="match_parent"
                 android:layout_height="0.3dp"
                 android:background="@color/gray"
                 app:layout_constraintBottom_toBottomOf="@id/switch_hadith" />
 
-            <RelativeLayout
-                android:id="@+id/first_linear_notif"
+            <View
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
                 android:background="@android:color/white"
-                android:gravity="center_vertical"
+                app:layout_constraintBottom_toBottomOf="@id/btn_notif_hadith"
+                app:layout_constraintTop_toTopOf="@id/btn_notif_morning_dhikr" />
+
+            <Button
+                android:id="@+id/btn_notif_morning_dhikr"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="?attr/selectableItemBackground"
+                android:clickable="true"
+                android:fontFamily="@font/janna"
+                android:gravity="center|start"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                android:text="@string/morning_dhikr_time"
+                android:textColor="@color/darkGray"
+                android:textSize="18sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/switch_hadith">
+                app:layout_constraintTop_toBottomOf="@id/switch_hadith" />
 
-                <Button
-                    android:id="@+id/btn_notif_morning_dhikr"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentTop="true"
-                    android:layout_alignParentEnd="true"
-                    android:background="?attr/selectableItemBackground"
-                    android:fontFamily="@font/janna"
-                    android:gravity="center|start"
-                    android:paddingStart="20dp"
-                    android:paddingEnd="20dp"
-                    android:text="@string/morning_dhikr_time"
-                    android:textColor="@color/darkGray"
-                    android:textSize="18sp" />
+            <TextView
+                android:id="@+id/tv_morning_notif_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/janna"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                android:text="@string/_6_00"
+                android:textColor="@color/lightBlue"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="@id/btn_notif_morning_dhikr"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="@id/btn_notif_morning_dhikr" />
 
-                <TextView
-                    android:id="@+id/tv_morning_notif_time"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:layout_centerVertical="true"
-                    android:fontFamily="@font/janna"
-                    android:paddingStart="20dp"
-                    android:paddingEnd="20dp"
-                    android:text="@string/_6_00"
-                    android:textColor="@color/lightBlue"
-                    android:textSize="16sp" />
-            </RelativeLayout>
+            <View
+                android:id="@+id/view_morning_disabled"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:alpha="0.3"
+                android:background="@color/red"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="@id/btn_notif_morning_dhikr"
+                app:layout_constraintEnd_toEndOf="@id/btn_notif_morning_dhikr"
+                app:layout_constraintStart_toStartOf="@id/btn_notif_morning_dhikr"
+                app:layout_constraintTop_toTopOf="@id/btn_notif_morning_dhikr" />
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="0.3dp"
                 android:background="@color/gray"
-                app:layout_constraintBottom_toBottomOf="@id/first_linear_notif" />
+                app:layout_constraintBottom_toBottomOf="@id/btn_notif_morning_dhikr" />
 
-            <RelativeLayout
-                android:id="@+id/second_linear_notif"
+            <Button
+                android:id="@+id/btn_notif_evening_dhikr"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@android:color/white"
-                android:gravity="center_vertical"
+                android:background="?attr/selectableItemBackground"
+                android:clickable="true"
+                android:fontFamily="@font/janna"
+                android:gravity="center|start"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                android:text="@string/evening_dhikr_time"
+                android:textColor="@color/darkGray"
+                android:textSize="18sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/first_linear_notif">
+                app:layout_constraintTop_toBottomOf="@id/btn_notif_morning_dhikr" />
 
-                <Button
-                    android:id="@+id/btn_notif_evening_dhikr"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentTop="true"
-                    android:layout_alignParentEnd="true"
-                    android:background="?attr/selectableItemBackground"
-                    android:fontFamily="@font/janna"
-                    android:gravity="center|start"
-                    android:paddingStart="20dp"
-                    android:paddingEnd="20dp"
-                    android:text="@string/evening_dhikr_time"
-                    android:textColor="@color/darkGray"
-                    android:textSize="18sp" />
+            <TextView
+                android:id="@+id/tv_evening_notif_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/janna"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                android:text="@string/_6_0"
+                android:textColor="@color/lightBlue"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="@id/btn_notif_evening_dhikr"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="@id/btn_notif_evening_dhikr" />
 
-                <TextView
-                    android:id="@+id/tv_evening_notif_time"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:layout_centerVertical="true"
-                    android:fontFamily="@font/janna"
-                    android:paddingStart="20dp"
-                    android:paddingEnd="20dp"
-                    android:text="@string/_6_0"
-                    android:textColor="@color/lightBlue"
-                    android:textSize="16sp" />
-            </RelativeLayout>
+            <View
+                android:id="@+id/view_evening_disabled"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:alpha="0.3"
+                android:background="@color/red"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="@id/btn_notif_evening_dhikr"
+                app:layout_constraintEnd_toEndOf="@id/btn_notif_evening_dhikr"
+                app:layout_constraintStart_toStartOf="@id/btn_notif_evening_dhikr"
+                app:layout_constraintTop_toTopOf="@id/btn_notif_evening_dhikr" />
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="0.3dp"
                 android:background="@color/gray"
-                app:layout_constraintBottom_toBottomOf="@id/second_linear_notif" />
+                app:layout_constraintBottom_toBottomOf="@id/btn_notif_evening_dhikr" />
 
-            <RelativeLayout
-                android:id="@+id/third_linear_notif"
+            <Button
+                android:id="@+id/btn_notif_hadith"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@android:color/white"
-                android:gravity="center_vertical"
+                android:background="?attr/selectableItemBackground"
+                android:clickable="true"
+                android:fontFamily="@font/janna"
+                android:gravity="center|start"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                android:text="@string/hadith_time"
+                android:textColor="@color/darkGray"
+                android:textSize="18sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/second_linear_notif">
+                app:layout_constraintTop_toBottomOf="@id/btn_notif_evening_dhikr" />
 
-                <Button
-                    android:id="@+id/btn_notif_hadith"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentTop="true"
-                    android:layout_alignParentEnd="true"
-                    android:background="?attr/selectableItemBackground"
-                    android:fontFamily="@font/janna"
-                    android:gravity="center|start"
-                    android:paddingStart="20dp"
-                    android:paddingEnd="20dp"
-                    android:text="@string/hadith_time"
-                    android:textColor="@color/darkGray"
-                    android:textSize="18sp" />
+            <TextView
+                android:id="@+id/tv_hadith_notif_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/janna"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                android:text="@string/_12_00"
+                android:textColor="@color/lightBlue"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="@id/btn_notif_hadith"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="@id/btn_notif_hadith" />
 
-                <TextView
-                    android:id="@+id/tv_hadith_notif_time"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:layout_centerVertical="true"
-                    android:fontFamily="@font/janna"
-                    android:paddingStart="20dp"
-                    android:paddingEnd="20dp"
-                    android:text="@string/_12_00"
-                    android:textColor="@color/lightBlue"
-                    android:textSize="16sp" />
-            </RelativeLayout>
+
+            <View
+                android:id="@+id/view_hadith_disabled"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:alpha="0.3"
+                android:background="@color/red"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="@id/btn_notif_hadith"
+                app:layout_constraintEnd_toEndOf="@id/btn_notif_hadith"
+                app:layout_constraintStart_toStartOf="@id/btn_notif_hadith"
+                app:layout_constraintTop_toTopOf="@id/btn_notif_hadith" />
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="0.3dp"
                 android:background="@color/gray"
-                app:layout_constraintBottom_toBottomOf="@id/third_linear_notif" />
+                app:layout_constraintBottom_toBottomOf="@id/btn_notif_hadith" />
 
             <View
                 android:id="@+id/view_general"
@@ -378,20 +425,22 @@
                 android:background="@color/lightGray"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/third_linear_notif" />
+                app:layout_constraintTop_toBottomOf="@id/btn_notif_hadith" />
 
             <TextView
                 android:id="@+id/tv_general_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"
                 android:fontFamily="@font/janna"
+                android:gravity="center_vertical"
                 android:text="@string/general"
                 android:textColor="@color/gray"
                 android:textSize="18sp"
                 app:layout_constraintBottom_toBottomOf="@id/view_general"
                 app:layout_constraintEnd_toEndOf="@id/view_general"
+                app:layout_constraintStart_toStartOf="@id/view_general"
                 app:layout_constraintTop_toTopOf="@id/view_general" />
 
             <ImageView
@@ -402,9 +451,9 @@
                 android:layout_marginEnd="20dp"
                 android:alpha="0.5"
                 android:src="@drawable/ic_chairty"
-                app:layout_constraintBottom_toBottomOf="@id/view_general"
-                app:layout_constraintStart_toStartOf="@id/view_general"
-                app:layout_constraintTop_toTopOf="@id/view_general" />
+                app:layout_constraintBottom_toBottomOf="@id/tv_general_title"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="@id/tv_general_title" />
 
             <Button
                 android:id="@+id/btn_share_chairty"

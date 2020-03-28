@@ -50,4 +50,6 @@
     <string name="add_evaluation">اضف تقييمك لنستطيع تحسين الخدمة</string>
     <string name="general">عام</string>
     <string name="_12_00">12:00 م</string>
+    <string name="switch_notif_dhikr">تنبيه:التنبيهات للأذكار غير مفعلة الآن</string>
+    <string name="switch_notif_hadith">تنبيه:التنبيهات للأحاديث غير مفعلة الآن</string>
 </resources>

@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
         view = binding.getRoot();
         setContentView(view);
 
+
         ImageButton imageButton = findViewById(R.id.btn_exit);
         imageButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -98,7 +99,6 @@ public class MainActivity extends AppCompatActivity {
         binding.btnDarkMode.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
 //                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
 //                    if (!Settings.System.canWrite(getApplicationContext())) {
 //                        //set brightness value
@@ -112,7 +112,6 @@ public class MainActivity extends AppCompatActivity {
 //                } else {
 //                    Toast.makeText(MainActivity.this, "Dark mode", Toast.LENGTH_SHORT).show();
 //                }
-
                 navHostFragment.getNavController().navigate(R.id.action_to_dark_fragment);
             }
         });
