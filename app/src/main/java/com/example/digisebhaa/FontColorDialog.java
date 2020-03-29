@@ -59,6 +59,21 @@ public class FontColorDialog extends Dialog {
                         editor.putInt("color", R.color.blue).apply();
                         Toast.makeText(activity, "تم تغيير لون الخط والحفظ", Toast.LENGTH_SHORT).show();
                         break;
+                    case R.id.rbtn_fourth_font:
+                        editor.putInt("id_color", R.id.rbtn_fourth_font).apply();
+                        editor.putInt("color", R.color.darkGreen).apply();
+                        Toast.makeText(activity, "تم تغيير لون الخط والحفظ", Toast.LENGTH_SHORT).show();
+                        break;
+                    case R.id.rbtn_five_font:
+                        editor.putInt("id_color", R.id.rbtn_five_font).apply();
+                        editor.putInt("color", R.color.orange).apply();
+                        Toast.makeText(activity, "تم تغيير لون الخط والحفظ", Toast.LENGTH_SHORT).show();
+                        break;
+                    case R.id.rbtn_six_font:
+                        editor.putInt("id_color", R.id.rbtn_six_font).apply();
+                        editor.putInt("color", R.color.violet).apply();
+                        Toast.makeText(activity, "تم تغيير لون الخط والحفظ", Toast.LENGTH_SHORT).show();
+                        break;
                     default:
                         Toast.makeText(activity, "nothing", Toast.LENGTH_SHORT).show();
                         break;

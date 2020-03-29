@@ -193,6 +193,41 @@
                 app:layout_constraintTop_toTopOf="@id/tv_notif_title" />
 
             <Switch
+                android:id="@+id/switch_vibration_dhikr"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/white"
+                android:checked="true"
+                android:layoutDirection="rtl"
+                android:padding="20dp"
+                android:text="@string/switch_vibration_dhikr"
+                android:textColor="@color/darkGray"
+                android:textSize="18sp"
+                android:theme="@style/SwitchTextAppearance"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/view_notifications" />
+
+            <TextView
+                android:id="@+id/tv_switch_vibration_status"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:alpha="0.8"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                android:text="@string/status_dhikr_vibration_tv"
+                android:textColor="@color/red"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="@id/switch_vibration_dhikr"
+                app:layout_constraintEnd_toEndOf="@id/switch_vibration_dhikr" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.3dp"
+                android:background="@color/gray"
+                app:layout_constraintBottom_toBottomOf="@id/switch_vibration_dhikr" />
+
+            <Switch
                 android:id="@+id/switch_dhikr"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -206,7 +241,7 @@
                 android:theme="@style/SwitchTextAppearance"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/view_notifications" />
+                app:layout_constraintTop_toBottomOf="@id/switch_vibration_dhikr" />
 
             <TextView
                 android:id="@+id/tv_switch_dhikr_status"

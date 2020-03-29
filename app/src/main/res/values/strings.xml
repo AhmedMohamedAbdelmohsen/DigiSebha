@@ -52,4 +52,9 @@
     <string name="_12_00">12:00 م</string>
     <string name="switch_notif_dhikr">تنبيه:التنبيهات للأذكار غير مفعلة الآن</string>
     <string name="switch_notif_hadith">تنبيه:التنبيهات للأحاديث غير مفعلة الآن</string>
+    <string name="sora">قل هو الله أحد الله الصمد، لم يلد وليم يولد ولم يكن له كفوا أحد قل هو الله أحد الله الصمد، لم يلد وليم يولد ولم يكن له كفوا أحد</string>
+    <string name="repeats">التكرار</string>
+    <string name="switch_vibration_dhikr">تفعيل وضع الإهتزاز للأذكار</string>
+    <string name="status_dhikr_vibration_tv">تنبيه:وضع الإهتزاز للأذكار غير مفعل الآن</string>
+    <string name="share">مشاركة</string>
 </resources>

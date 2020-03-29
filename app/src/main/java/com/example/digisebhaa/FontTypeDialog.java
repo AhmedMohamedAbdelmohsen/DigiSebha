@@ -58,6 +58,21 @@ public class FontTypeDialog extends Dialog {
                         editor.putString("font", "quran.ttf").apply();
                         Toast.makeText(activity, "تم تغيير نوع الخط والحفظ", Toast.LENGTH_SHORT).show();
                         break;
+                    case R.id.rbtn_fourth_font:
+                        editor.putInt("id_font", R.id.rbtn_fourth_font).apply();
+                        editor.putString("font", "amine.ttf").apply();
+                        Toast.makeText(activity, "تم تغيير نوع الخط والحفظ", Toast.LENGTH_SHORT).show();
+                        break;
+                    case R.id.rbtn_five_font:
+                        editor.putInt("id_font", R.id.rbtn_five_font).apply();
+                        editor.putString("font", "jamil_nory.ttf").apply();
+                        Toast.makeText(activity, "تم تغيير نوع الخط والحفظ", Toast.LENGTH_SHORT).show();
+                        break;
+                    case R.id.rbtn_six_font:
+                        editor.putInt("id_font", R.id.rbtn_six_font).apply();
+                        editor.putString("font", "Janna.ttf").apply();
+                        Toast.makeText(activity, "تم تغيير نوع الخط والحفظ", Toast.LENGTH_SHORT).show();
+                        break;
                     default:
                         Toast.makeText(activity, "nothing", Toast.LENGTH_SHORT).show();
                         break;

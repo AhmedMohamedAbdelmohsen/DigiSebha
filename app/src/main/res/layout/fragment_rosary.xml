@@ -81,8 +81,8 @@
         android:paddingEnd="8dp"
         android:singleLine="true"
         android:textDirection="rtl"
-        app:layout_constraintEnd_toStartOf="@id/iv_rosary"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/iv_rosary"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
@@ -125,8 +125,8 @@
         android:layout_margin="4dp"
         android:background="@drawable/ic_vibrat"
         app:layout_constraintBottom_toBottomOf="@id/first_linear_font"
-        app:layout_constraintEnd_toStartOf="@id/fab_counter"
-        app:layout_constraintStart_toStartOf="@id/first_linear_font"
+        app:layout_constraintLeft_toLeftOf="@id/first_linear_font"
+        app:layout_constraintRight_toLeftOf="@id/fab_counter"
         app:layout_constraintTop_toBottomOf="@id/tv_counter" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -138,8 +138,8 @@
         android:contentDescription="@string/resetbutton"
         android:src="@drawable/ic_zero"
         app:fabCustomSize="50dp"
-        app:layout_constraintEnd_toEndOf="@id/tv_counter"
-        app:layout_constraintStart_toEndOf="@id/fab_counter"
+        app:layout_constraintLeft_toRightOf="@id/fab_counter"
+        app:layout_constraintRight_toRightOf="@id/tv_counter"
         app:layout_constraintTop_toBottomOf="@id/tv_counter"
         app:layout_constraintTop_toTopOf="@id/fab_counter"
         app:maxImageSize="15dp" />

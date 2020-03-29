@@ -1,12 +1,16 @@
 package com.example.digisebhaa;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Typeface;
+import android.os.Vibrator;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -14,7 +18,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.digisebhaa.pojo.SebhaModel;
-import com.google.android.material.button.MaterialButton;
 
 import java.util.List;
 
@@ -26,14 +29,19 @@ public class SebhaListAdapter extends RecyclerView.Adapter<SebhaListAdapter.Sebh
     public Typeface almushaf_font;
     public int color;
     public float size;
+    private final Boolean vibrationStatus;
+    private Vibrator vibrator;
+    private Context context;
 
     SebhaListAdapter(Context context) {
+        this.context = context;
         layoutInflater = LayoutInflater.from(context);
         sharedPreferences = context.getSharedPreferences("pref", Context.MODE_PRIVATE);
-        almushaf_font = Typeface.createFromAsset(context.getAssets(), sharedPreferences.getString("font", "almushaf.ttf"));
+        almushaf_font = Typeface.createFromAsset(context.getAssets(), sharedPreferences.getString("font", "quran.ttf"));
         color = context.getResources().getColor(sharedPreferences.getInt("color", R.color.black)); //get color from shared preference
         size = context.getResources().getDimension(sharedPreferences.getInt("size", R.dimen.medium)); //get size from shared preference
-
+        vibrator = (Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE);
+        vibrationStatus = sharedPreferences.getBoolean("vibration", true);
     }
 
     @NonNull
@@ -47,17 +55,26 @@ public class SebhaListAdapter extends RecyclerView.Adapter<SebhaListAdapter.Sebh
     public void onBindViewHolder(@NonNull final SebhaViewHolder holder, final int position) {
         if (getList != null) {
             final SebhaModel current = getList.get(position);
+            final String appName = "تطبيق السبحة الإلكترونية";
             if (current.getType() == 2) {
                 holder.text.setText(current.getText());
                 holder.text.setTypeface(almushaf_font);
                 holder.text.setTextColor(color);
                 holder.text.setTextSize(TypedValue.COMPLEX_UNIT_PX, size);
-                holder.narated_by.setText(current.getNarated_by());
-                holder.narated_by.setTypeface(holder.almushaf_font);
                 holder.repeated.setText(current.getRepeats());
                 holder.repeated.setTypeface(holder.almushaf_font);
                 holder.description.setVisibility(View.GONE);
                 holder.counterButton.setVisibility(View.GONE);
+                holder.shareButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(android.content.Intent.ACTION_SEND);
+                        intent.setType("text/plain");
+                        intent.putExtra(android.content.Intent.EXTRA_TEXT, holder.text.getText().toString() + "\n \n" + appName);
+                        intent.putExtra(android.content.Intent.EXTRA_SUBJECT, "حديث شريف");
+                        context.startActivity(Intent.createChooser(intent, "مشاركة الحديث"));
+                    }
+                });
             } else {
                 holder.text.setText(current.getText());
                 holder.text.setTypeface(almushaf_font);
@@ -65,10 +82,18 @@ public class SebhaListAdapter extends RecyclerView.Adapter<SebhaListAdapter.Sebh
                 holder.text.setTextSize(TypedValue.COMPLEX_UNIT_PX, size);
                 holder.description.setText(current.getDescription());
                 holder.description.setTypeface(holder.quran_font);
-                holder.narated_by.setText(current.getNarated_by());
-                holder.narated_by.setTypeface(holder.almushaf_font);
                 holder.repeated.setText(current.getRepeats());
                 holder.repeated.setTypeface(holder.almushaf_font);
+                holder.shareButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(android.content.Intent.ACTION_SEND);
+                        intent.setType("text/plain");
+                        intent.putExtra(android.content.Intent.EXTRA_TEXT, holder.text.getText().toString() + "\n \n" + appName);
+                        intent.putExtra(android.content.Intent.EXTRA_SUBJECT, "أذكار الصباح والمساء");
+                        context.startActivity(Intent.createChooser(intent, "مشاركة الذكر"));
+                    }
+                });
                 holder.counterButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -79,6 +104,11 @@ public class SebhaListAdapter extends RecyclerView.Adapter<SebhaListAdapter.Sebh
                 holder.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        if (vibrationStatus) {
+                            vibrator.vibrate(100);
+                        } else {
+                            vibrator.cancel();
+                        }
                         int count = Integer.parseInt(holder.counterButton.getText().toString());
                         if (count < current.getCounter()) {
                             holder.counterButton.setText(String.valueOf(count + 1));
@@ -87,6 +117,7 @@ public class SebhaListAdapter extends RecyclerView.Adapter<SebhaListAdapter.Sebh
 //                            getList.remove(position);
 //                            notifyItemRemoved(position);
 //                            notifyItemRangeChanged(position, getList.size());
+                            vibrator.vibrate(400);
                             holder.resetlButton.setVisibility(View.VISIBLE);
                             Toast.makeText(v.getContext(), "اضغط علي الزر الأحمر لإعادة العد من جديد", Toast.LENGTH_SHORT).show();
                         }
@@ -96,6 +127,7 @@ public class SebhaListAdapter extends RecyclerView.Adapter<SebhaListAdapter.Sebh
                 holder.resetlButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        vibrator.vibrate(300);
                         holder.counterButton.setText("0");
                         holder.resetlButton.setVisibility(View.GONE);
                     }
@@ -106,7 +138,6 @@ public class SebhaListAdapter extends RecyclerView.Adapter<SebhaListAdapter.Sebh
         } else {
             holder.text.setText(R.string.no_text);
             holder.description.setText(R.string.no_text);
-            holder.narated_by.setText(R.string.no_text);
             holder.repeated.setText("0");
             holder.counterButton.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -132,10 +163,10 @@ public class SebhaListAdapter extends RecyclerView.Adapter<SebhaListAdapter.Sebh
     }
 
     public static class SebhaViewHolder extends RecyclerView.ViewHolder {
-        final MaterialButton counterButton;
-        final MaterialButton resetlButton;
+        final Button counterButton;
+        final Button resetlButton;
+        final ImageButton shareButton;
         final TextView text;
-        final TextView narated_by;
         final TextView repeated;
         final TextView description;
         final Typeface almushaf_font;
@@ -148,8 +179,8 @@ public class SebhaListAdapter extends RecyclerView.Adapter<SebhaListAdapter.Sebh
             //this.text.setTypeface(typeface);
             counterButton = itemView.findViewById(R.id.btn_counter);
             resetlButton = itemView.findViewById(R.id.btn_counter_reset);
+            shareButton = itemView.findViewById(R.id.btn_share);
             text = itemView.findViewById(R.id.tv_text);
-            narated_by = itemView.findViewById(R.id.tv_narated_by);
             repeated = itemView.findViewById(R.id.tv_repeats);
             description = itemView.findViewById(R.id.tv_description);
             counterButton.setText("0");

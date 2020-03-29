@@ -13,5 +13,9 @@
     <color name="red">@android:color/holo_red_dark</color>
     <color name="blue">@android:color/holo_blue_dark</color>
     <color name="black">@android:color/background_dark</color>
+    <color name="orange">@android:color/holo_orange_dark</color>
+    <color name="darkGreen">@android:color/holo_green_dark</color>
+    <color name="violet">@android:color/holo_purple</color>
+
 
 </resources>

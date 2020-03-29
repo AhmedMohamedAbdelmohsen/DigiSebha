@@ -22,7 +22,7 @@
         android:paddingEnd="8dp"
         android:singleLine="true"
         android:textDirection="rtl"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="@id/tgbtn_vibration" />
 
     <ToggleButton
@@ -45,7 +45,7 @@
         android:text="@string/numbers"
         android:textColor="@color/lightBlue"
         android:textSize="50sp"
-        app:layout_constraintStart_toStartOf="@id/et_get_counter"
+        app:layout_constraintLeft_toLeftOf="@id/et_get_counter"
         app:layout_constraintTop_toBottomOf="@id/et_get_counter" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -58,7 +58,7 @@
         android:contentDescription="@string/resetbutton"
         android:src="@drawable/ic_zero"
         app:fabCustomSize="50dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="@id/tgbtn_vibration"
         app:maxImageSize="15dp" />
 

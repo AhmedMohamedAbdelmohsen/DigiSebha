@@ -2,7 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="300dp"
-    android:layout_height="250dp"
+    android:layout_height="300dp"
     android:background="@drawable/radius_rectangle"
     android:orientation="vertical">
 
@@ -43,6 +43,7 @@
             android:drawableEnd="@drawable/radio_button"
             android:drawablePadding="30dp"
             android:fontFamily="@font/almushaf"
+            android:layoutDirection="ltr"
             android:text="@string/describe"
             android:textColor="#000000"
             android:textSize="24sp" />
@@ -57,6 +58,7 @@
             android:drawableEnd="@drawable/radio_button"
             android:drawablePadding="30dp"
             android:fontFamily="@font/mothanna"
+            android:layoutDirection="ltr"
             android:text="@string/describe"
             android:textColor="#000000"
             android:textSize="20sp" />
@@ -71,6 +73,52 @@
             android:drawableEnd="@drawable/radio_button"
             android:drawablePadding="30dp"
             android:fontFamily="@font/quran"
+            android:layoutDirection="ltr"
+            android:text="@string/describe"
+            android:textColor="#000000"
+            android:textSize="20sp" />
+
+        <RadioButton
+            android:id="@+id/rbtn_fourth_font"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:button="@android:color/transparent"
+            android:checked="false"
+            android:drawableEnd="@drawable/radio_button"
+            android:drawablePadding="30dp"
+            android:fontFamily="@font/amine"
+            android:layoutDirection="ltr"
+            android:text="@string/describe"
+            android:textColor="#000000"
+            android:textSize="20sp" />
+
+        <RadioButton
+            android:id="@+id/rbtn_five_font"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:button="@android:color/transparent"
+            android:checked="false"
+            android:drawableEnd="@drawable/radio_button"
+            android:drawablePadding="30dp"
+            android:fontFamily="@font/jamil_nory"
+            android:layoutDirection="ltr"
+            android:text="@string/describe"
+            android:textColor="#000000"
+            android:textSize="20sp" />
+
+        <RadioButton
+            android:id="@+id/rbtn_six_font"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:button="@android:color/transparent"
+            android:checked="false"
+            android:drawableEnd="@drawable/radio_button"
+            android:drawablePadding="30dp"
+            android:fontFamily="@font/janna"
+            android:layoutDirection="ltr"
             android:text="@string/describe"
             android:textColor="#000000"
             android:textSize="20sp" />

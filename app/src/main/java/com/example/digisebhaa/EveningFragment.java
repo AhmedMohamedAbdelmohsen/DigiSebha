@@ -1,5 +1,6 @@
 package com.example.digisebhaa;
 
+import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -32,6 +33,8 @@ public class EveningFragment extends Fragment {
     private FragmentEveningBinding binding;
     private SebhaViewModel viewModel;
     private Typeface typeface;
+    private SharedPreferences preferences;
+    private SharedPreferences.Editor editor;
 
     public EveningFragment() {
         // Required empty public constructor
@@ -58,7 +61,6 @@ public class EveningFragment extends Fragment {
 
         typeface = Typeface.createFromAsset(getActivity().getAssets(), "almushaf.ttf");
         binding.tvTitle.setTypeface(typeface);
-
     }
 
     @Override
@@ -76,4 +78,5 @@ public class EveningFragment extends Fragment {
         });
 
     }
+
 }

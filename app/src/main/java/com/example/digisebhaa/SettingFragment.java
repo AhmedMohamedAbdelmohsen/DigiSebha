@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.CompoundButton;
 import android.widget.ImageButton;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -73,6 +74,7 @@ public class SettingFragment extends Fragment {
 
         setMainFonts();
         timePicker();
+        saveVibrationStatus();
         binding.btnChangeFontType.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -304,6 +306,30 @@ public class SettingFragment extends Fragment {
         cancelNotification(0);
         cancelNotification(1);
         cancelNotification(2);
+    }
+
+    private void saveVibrationStatus() {
+        binding.switchVibrationDhikr.setChecked(preferences.getBoolean("vibration", true));
+        if (binding.switchVibrationDhikr.isChecked()) {
+            binding.tvSwitchVibrationStatus.setVisibility(View.GONE);
+        } else {
+            binding.tvSwitchVibrationStatus.setVisibility(View.VISIBLE);
+        }
+        binding.switchVibrationDhikr.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    editor.putBoolean("vibration", true).apply();
+                    binding.tvSwitchVibrationStatus.setVisibility(View.GONE);
+                    Toast.makeText(getContext(), "لقد فعلت وضع الإهتزاز", Toast.LENGTH_SHORT).show();
+                } else {
+                    editor.putBoolean("vibration", false).apply();
+                    binding.tvSwitchVibrationStatus.setVisibility(View.VISIBLE);
+                    Toast.makeText(getContext(), "لقد أغلقت وضع الإهتزاز", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
     }
 
 }
