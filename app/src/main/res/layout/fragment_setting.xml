@@ -491,7 +491,7 @@
                 app:layout_constraintTop_toTopOf="@id/tv_general_title" />
 
             <Button
-                android:id="@+id/btn_share_chairty"
+                android:id="@+id/btn_sadaka_garia"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/lightGreen"
@@ -514,7 +514,7 @@
                 android:textSize="22sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/btn_share_chairty" />
+                app:layout_constraintTop_toBottomOf="@id/btn_sadaka_garia" />
 
             <TextView
                 android:layout_width="match_parent"

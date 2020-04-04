@@ -57,4 +57,13 @@
     <string name="switch_vibration_dhikr">تفعيل وضع الإهتزاز للأذكار</string>
     <string name="status_dhikr_vibration_tv">تنبيه:وضع الإهتزاز للأذكار غير مفعل الآن</string>
     <string name="share">مشاركة</string>
+    <string name="sadaka">\"صدقة جارية\"</string>
+    <string name="Person_name">اسم الشخص</string>
+    <string name="description_sadaka_person">اللهم أجعل ثواب هذا  إلى</string>
+    <string name="sadaka_desc">شارك التطبيق ليصبح صدقة جارية لك او لأى شخص آخر بحيث يتناقله آلاف الناس من بعدك!</string>
+    <string name="whatsapp">واتس اب</string>
+    <string name="facebook">فيسبوك</string>
+    <string name="twitter">تويتر</string>
+    <string name="copy">نسخ</string>
+
 </resources>

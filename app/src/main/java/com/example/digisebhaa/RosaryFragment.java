@@ -61,8 +61,8 @@ public class RosaryFragment extends Fragment {
 
         ImageButton darkModeButton = Objects.requireNonNull(getActivity()).findViewById(R.id.btn_dark_mode);
         darkModeButton.setVisibility(View.VISIBLE);
-
         binding.tgbtnVibration.setChecked(true);
+//        setAlarmHadith();
 
         typeface = Typeface.createFromAsset(getActivity().getAssets(), "almushaf.ttf");
         binding.tvTitle.setTypeface(typeface);

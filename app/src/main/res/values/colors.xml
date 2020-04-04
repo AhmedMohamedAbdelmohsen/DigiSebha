@@ -16,6 +16,8 @@
     <color name="orange">@android:color/holo_orange_dark</color>
     <color name="darkGreen">@android:color/holo_green_dark</color>
     <color name="violet">@android:color/holo_purple</color>
-
+    <color name="whatsapp">#25D366</color>
+    <color name="facebook">#4267B2</color>
+    <color name="twitter">#38A1F3</color>
 
 </resources>

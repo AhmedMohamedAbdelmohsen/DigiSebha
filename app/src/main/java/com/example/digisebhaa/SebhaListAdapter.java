@@ -100,7 +100,8 @@ public class SebhaListAdapter extends RecyclerView.Adapter<SebhaListAdapter.Sebh
                         Toast.makeText(v.getContext(), "اضغط علي الشاشة لحساب عدد التكرار", Toast.LENGTH_SHORT).show();
                     }
                 });
-
+                holder.counterButton.setText(String.valueOf(current.getCounter()));
+                holder.resetlButton.setVisibility(View.GONE);
                 holder.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -110,13 +111,13 @@ public class SebhaListAdapter extends RecyclerView.Adapter<SebhaListAdapter.Sebh
                             vibrator.cancel();
                         }
                         int count = Integer.parseInt(holder.counterButton.getText().toString());
-                        if (count < current.getCounter()) {
-                            holder.counterButton.setText(String.valueOf(count + 1));
+                        if (count > 1) {
+                            holder.counterButton.setText(String.valueOf(count - 1));
                         } else {
-                            //holder.itemView.setVisibility(View.GONE);
-//                            getList.remove(position);
-//                            notifyItemRemoved(position);
-//                            notifyItemRangeChanged(position, getList.size());
+//                            holder.itemView.setVisibility(View.GONE);
+                            getList.remove(position);
+                            notifyItemRemoved(position);
+                            notifyItemRangeChanged(position, getList.size());
                             vibrator.vibrate(400);
                             holder.resetlButton.setVisibility(View.VISIBLE);
                             Toast.makeText(v.getContext(), "اضغط علي الزر الأحمر لإعادة العد من جديد", Toast.LENGTH_SHORT).show();

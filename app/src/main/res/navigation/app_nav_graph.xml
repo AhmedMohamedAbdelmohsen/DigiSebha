@@ -16,6 +16,10 @@
     <action
         android:id="@+id/action_to_morning_fragment"
         app:destination="@id/morning" />
+
+    <action
+        android:id="@+id/action_to_hadith_fragment"
+        app:destination="@id/hadith_sharif" />
     <fragment
         android:id="@+id/splashFragment"
         android:name="com.example.digisebhaa.SplashFragment"

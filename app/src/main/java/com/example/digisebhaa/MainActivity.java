@@ -1,6 +1,11 @@
 package com.example.digisebhaa;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
@@ -8,6 +13,7 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,6 +22,7 @@ import androidx.navigation.ui.NavigationUI;
 
 import com.example.digisebhaa.databinding.ActivityMainBinding;
 
+import java.util.Calendar;
 import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
@@ -24,14 +31,11 @@ public class MainActivity extends AppCompatActivity {
     private View view;
     private NavHostFragment navHostFragment;
 
-    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         view = binding.getRoot();
         setContentView(view);
-
-
         ImageButton imageButton = findViewById(R.id.btn_exit);
         imageButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -44,12 +48,13 @@ public class MainActivity extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         //set navHost fragment
         navHostFragment();
+//        setNotifications();
+//        firstStartOfApp();
         //set NavBar Visible
         binding.bottomNavBar.setVisibility(View.VISIBLE);
         //move to rosary fragment
         moveToRosaryFragment();
         moveToDarkFragment();
-
     }
 
     private void closeApp() {
@@ -97,7 +102,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void moveToDarkFragment() {
         binding.btnDarkMode.setOnClickListener(new View.OnClickListener() {
-            @Override
+
             public void onClick(View v) {
 //                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
 //                    if (!Settings.System.canWrite(getApplicationContext())) {
@@ -112,9 +117,47 @@ public class MainActivity extends AppCompatActivity {
 //                } else {
 //                    Toast.makeText(MainActivity.this, "Dark mode", Toast.LENGTH_SHORT).show();
 //                }
+//
                 navHostFragment.getNavController().navigate(R.id.action_to_dark_fragment);
             }
         });
     }
 
+    void setNotifications() {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTimeInMillis(System.currentTimeMillis());
+        calendar.set(Calendar.HOUR_OF_DAY, 5);
+        calendar.set(Calendar.MINUTE, 8);
+
+        Calendar currentTime = Calendar.getInstance();
+        currentTime.setTimeInMillis(System.currentTimeMillis());
+        currentTime.getTimeInMillis();
+
+        SharedPreferences preferences = this.getSharedPreferences("pref", Context.MODE_PRIVATE);
+        long hadithCalendar = preferences.getLong("hadith_time_notif", calendar.getTimeInMillis());
+        Intent intent = new Intent(this, HadithAlertReceiver.class);
+        AlarmManager alarmManager = (AlarmManager) this.getSystemService(Context.ALARM_SERVICE);
+        alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, hadithCalendar, AlarmManager.INTERVAL_DAY
+                , PendingIntent.getBroadcast(this, 2, intent, PendingIntent.FLAG_UPDATE_CURRENT));
+
+    }
+
+    void firstStartOfApp() {
+        SharedPreferences preferences = MainActivity.this.getSharedPreferences("pref", Context.MODE_PRIVATE);
+        boolean isFirstTime = preferences.getBoolean("first_time", true);
+        if (isFirstTime) {
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTimeInMillis(System.currentTimeMillis());
+            calendar.set(Calendar.HOUR_OF_DAY, 5);
+            calendar.set(Calendar.MINUTE, 39);
+            calendar.add(Calendar.MINUTE, 2);
+            long hadithCalendar = preferences.getLong("hadith_time_notif", calendar.getTimeInMillis());
+            Intent intent = new Intent(MainActivity.this, HadithAlertReceiver.class);
+            AlarmManager alarmManager = (AlarmManager) MainActivity.this.getSystemService(Context.ALARM_SERVICE);
+            alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), AlarmManager.INTERVAL_DAY
+                    , PendingIntent.getBroadcast(MainActivity.this, 2, intent, PendingIntent.FLAG_UPDATE_CURRENT));
+            Toast.makeText(MainActivity.this, "first Time open app", Toast.LENGTH_LONG).show();
+            preferences.edit().putBoolean("first_time", false).apply();
+        }
+    }
 }

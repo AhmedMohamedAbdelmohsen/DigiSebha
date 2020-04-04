@@ -11,7 +11,8 @@ import androidx.core.app.NotificationCompat;
 public class HadithAlertReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
-        PendingIntent pendingIntent = PendingIntent.getActivity(context, 2, new Intent(context, MainActivity.class), 0);
+        intent = new Intent(context, MainActivity.class);
+        PendingIntent pendingIntent = PendingIntent.getActivity(context, 2, intent, 0);
         NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context)
                 .setNumber(3)
@@ -23,8 +24,6 @@ public class HadithAlertReceiver extends BroadcastReceiver {
         builder.setAutoCancel(true);
         builder.setStyle(new NotificationCompat.BigTextStyle()
                 .bigText("قال رسول الله صلى الله عليه وسلم"));
-
-        notificationManager.cancel(3);
         notificationManager.notify(3, builder.build());
     }
 }

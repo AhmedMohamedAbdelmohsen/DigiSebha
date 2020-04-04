@@ -41,6 +41,7 @@ public class SettingFragment extends Fragment {
     private Calendar calendarMorning = Calendar.getInstance();
     private Calendar calendarEvening = Calendar.getInstance();
     private Calendar calendarHadith = Calendar.getInstance();
+    private Calendar calenderHadithDefault = Calendar.getInstance();
     private String am_pm;
     private String am = " ص ";
     private String pm = " م ";
@@ -96,6 +97,13 @@ public class SettingFragment extends Fragment {
             }
         });
 
+        binding.btnSadakaGaria.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sadakaGaria();
+            }
+        });
+
     }
 
     private void setMainFonts() {
@@ -121,12 +129,19 @@ public class SettingFragment extends Fragment {
         dialog.show();
     }
 
+    private void sadakaGaria() {
+        SadakaGariaDialog dialog = new SadakaGariaDialog(getActivity());
+        dialog.show();
+    }
+
     public void timePicker() {
         binding.tvMorningNotifTime.setText(preferences.getString("morning_time", "06:00" + am));
         binding.tvEveningNotifTime.setText(preferences.getString("evening_time", "06:00" + pm));
-        binding.tvHadithNotifTime.setText(preferences.getString("hadith_time", "12:00" + pm));
+        binding.tvHadithNotifTime.setText(preferences.getString("hadith_time", "3:00" + pm));
+
         getSwitchDhikrStatus();
         getSwitchHadithStatus();
+
         binding.switchDhikr.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -138,7 +153,6 @@ public class SettingFragment extends Fragment {
                     binding.btnNotifMorningDhikr.setEnabled(true);
                     binding.btnNotifEveningDhikr.setEnabled(true);
                 } else {
-                    cancelAllNotifications();
                     editor.putBoolean("dhikr_status", false).apply();
                     binding.tvSwitchDhikrStatus.setVisibility(View.VISIBLE);
                     binding.viewMorningDisabled.setVisibility(View.VISIBLE);
@@ -152,17 +166,25 @@ public class SettingFragment extends Fragment {
         binding.switchHadith.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                calenderHadithDefault.setTimeInMillis(System.currentTimeMillis());
+                calenderHadithDefault.set(Calendar.HOUR_OF_DAY, 14);
+                long hadithCalendar = preferences.getLong("hadith_time_notif", calenderHadithDefault.getTimeInMillis());
+                Intent intent = new Intent(getActivity(), HadithAlertReceiver.class);
+                AlarmManager alarmManager = (AlarmManager) getActivity().getSystemService(Context.ALARM_SERVICE);
                 if (isChecked) {
                     editor.putBoolean("switch_hadith_status", true).apply();
                     binding.tvSwitchHadithStatus.setVisibility(View.GONE);
                     binding.viewHadithDisabled.setVisibility(View.GONE);
                     binding.btnNotifHadith.setEnabled(true);
-
+                    alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, hadithCalendar, AlarmManager.INTERVAL_DAY
+                            , PendingIntent.getBroadcast(getActivity(), 2, intent, PendingIntent.FLAG_UPDATE_CURRENT));
                 } else {
                     editor.putBoolean("switch_hadith_status", false).apply();
                     binding.tvSwitchHadithStatus.setVisibility(View.VISIBLE);
                     binding.viewHadithDisabled.setVisibility(View.VISIBLE);
                     binding.btnNotifHadith.setEnabled(false);
+                    PendingIntent pendingIntent = PendingIntent.getBroadcast(getActivity(), 2, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+                    alarmManager.cancel(pendingIntent);
                 }
             }
         });
@@ -173,7 +195,7 @@ public class SettingFragment extends Fragment {
                 calendarMorning.set(Calendar.HOUR_OF_DAY, hourOfDay);
                 calendarMorning.set(Calendar.MINUTE, minute);
                 calendarMorning.set(Calendar.SECOND, 0);
-                String myFormat = "HH:mm";
+                String myFormat = "hh:mm";
                 if (calendarMorning.get(Calendar.AM_PM) == Calendar.AM)
                     am_pm = " ص ";
                 else if (calendarMorning.get(Calendar.AM_PM) == Calendar.PM)
@@ -194,13 +216,14 @@ public class SettingFragment extends Fragment {
                 calendarEvening.set(Calendar.HOUR_OF_DAY, hourOfDay);
                 calendarEvening.set(Calendar.MINUTE, minute);
                 calendarEvening.set(Calendar.SECOND, 0);
-                String myFormat = "HH:mm";
+                String myFormat = "hh:mm";
                 if (calendarEvening.get(Calendar.AM_PM) == Calendar.AM)
                     am_pm = " ص ";
                 else if (calendarEvening.get(Calendar.AM_PM) == Calendar.PM)
                     am_pm = " م ";
                 SimpleDateFormat format = new SimpleDateFormat(myFormat, Locale.getDefault());
                 editor.putString("evening_time", format.format(calendarEvening.getTime()) + am_pm).apply();
+                editor.putLong("evening_time_notif", calendarEvening.getTimeInMillis()).apply();
                 Intent intent = new Intent(getActivity(), EveningAlertReceiver.class);
                 AlarmManager alarmManager = (AlarmManager) getActivity().getSystemService(Context.ALARM_SERVICE);
                 alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendarEvening.getTimeInMillis(), AlarmManager.INTERVAL_DAY
@@ -215,18 +238,24 @@ public class SettingFragment extends Fragment {
                 calendarHadith.set(Calendar.HOUR_OF_DAY, hourOfDay);
                 calendarHadith.set(Calendar.MINUTE, minute);
                 calendarHadith.set(Calendar.SECOND, 0);
-                String myFormat = "HH:mm";
+                String myFormat = "hh:mm";
                 if (calendarHadith.get(Calendar.AM_PM) == Calendar.AM)
                     am_pm = " ص ";
                 else if (calendarHadith.get(Calendar.AM_PM) == Calendar.PM)
                     am_pm = " م ";
                 SimpleDateFormat format = new SimpleDateFormat(myFormat, Locale.getDefault());
                 editor.putString("hadith_time", format.format(calendarHadith.getTime()) + am_pm).apply();
+                editor.putLong("hadith_time_notif", calendarHadith.getTimeInMillis()).apply();
+
+                calenderHadithDefault.setTimeInMillis(System.currentTimeMillis());
+                calenderHadithDefault.set(Calendar.HOUR_OF_DAY, 14);
+
+                long hadithCalendar = preferences.getLong("hadith_time_notif", calenderHadithDefault.getTimeInMillis());
                 Intent intent = new Intent(getActivity(), HadithAlertReceiver.class);
                 AlarmManager alarmManager = (AlarmManager) getActivity().getSystemService(Context.ALARM_SERVICE);
-                alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendarHadith.getTimeInMillis(), AlarmManager.INTERVAL_DAY
+                alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, hadithCalendar, AlarmManager.INTERVAL_DAY
                         , PendingIntent.getBroadcast(getActivity(), 2, intent, PendingIntent.FLAG_UPDATE_CURRENT));
-                binding.tvHadithNotifTime.setText(preferences.getString("hadith_time", "12:00" + pm));
+                binding.tvHadithNotifTime.setText(preferences.getString("hadith_time", "2:00" + pm));
             }
         };
 
@@ -284,28 +313,12 @@ public class SettingFragment extends Fragment {
             binding.tvSwitchHadithStatus.setVisibility(View.GONE);
             binding.viewHadithDisabled.setVisibility(View.GONE);
             binding.btnNotifHadith.setEnabled(true);
+
         } else {
             binding.tvSwitchHadithStatus.setVisibility(View.VISIBLE);
             binding.viewHadithDisabled.setVisibility(View.VISIBLE);
             binding.btnNotifHadith.setEnabled(false);
         }
-    }
-
-    public void cancelNotification(int requestCode) {
-        try {
-            Intent intent = new Intent(getActivity(), EveningAlertReceiver.class);
-            PendingIntent pendingIntent = PendingIntent.getBroadcast(getActivity(), requestCode, intent, PendingIntent.FLAG_UPDATE_CURRENT);
-            AlarmManager alarmManager = (AlarmManager) getActivity().getSystemService(Context.ALARM_SERVICE);
-            alarmManager.cancel(pendingIntent);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    public void cancelAllNotifications() {
-        cancelNotification(0);
-        cancelNotification(1);
-        cancelNotification(2);
     }
 
     private void saveVibrationStatus() {
