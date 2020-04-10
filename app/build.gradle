@@ -61,6 +61,9 @@ dependencies {
     implementation 'com.getbase:floatingactionbutton:1.10.1'
     // Floating Action Button Menu 2
     implementation 'com.github.clans:fab:1.6.4'
+    // ads
+    implementation 'com.google.android.gms:play-services-ads:19.0.1'
+
 
 
 
