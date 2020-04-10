@@ -12,7 +12,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CompoundButton;
-import android.widget.ImageButton;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
@@ -21,6 +20,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.digisebhaa.databinding.FragmentSettingBinding;
+import com.getbase.floatingactionbutton.FloatingActionsMenu;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import org.jetbrains.annotations.NotNull;
@@ -68,8 +68,9 @@ public class SettingFragment extends Fragment {
         BottomNavigationView bottomNavigationView = Objects.requireNonNull(getActivity()).findViewById(R.id.bottom_nav_bar);
         bottomNavigationView.setVisibility(View.VISIBLE);
 
-        ImageButton darkModeButton = Objects.requireNonNull(getActivity()).findViewById(R.id.btn_dark_mode);
-        darkModeButton.setVisibility(View.GONE);
+        FloatingActionsMenu floatingActionsMenu = getActivity().findViewById(R.id.fab_menu);
+        floatingActionsMenu.setVisibility(View.GONE);
+
         preferences = this.getActivity().getSharedPreferences("pref", Context.MODE_PRIVATE);
         editor = preferences.edit();
 

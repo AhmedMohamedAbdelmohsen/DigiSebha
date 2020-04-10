@@ -53,6 +53,7 @@ public class SebhaListAdapter extends RecyclerView.Adapter<SebhaListAdapter.Sebh
 
     @Override
     public void onBindViewHolder(@NonNull final SebhaViewHolder holder, final int position) {
+        holder.setIsRecyclable(false);
         if (getList != null) {
             final SebhaModel current = getList.get(position);
             final String appName = "تطبيق السبحة الإلكترونية";
@@ -114,10 +115,7 @@ public class SebhaListAdapter extends RecyclerView.Adapter<SebhaListAdapter.Sebh
                         if (count > 1) {
                             holder.counterButton.setText(String.valueOf(count - 1));
                         } else {
-//                            holder.itemView.setVisibility(View.GONE);
-                            getList.remove(position);
-                            notifyItemRemoved(position);
-                            notifyItemRangeChanged(position, getList.size());
+                            holder.counterButton.setText("0");
                             vibrator.vibrate(400);
                             holder.resetlButton.setVisibility(View.VISIBLE);
                             Toast.makeText(v.getContext(), "اضغط علي الزر الأحمر لإعادة العد من جديد", Toast.LENGTH_SHORT).show();
@@ -129,7 +127,7 @@ public class SebhaListAdapter extends RecyclerView.Adapter<SebhaListAdapter.Sebh
                     @Override
                     public void onClick(View v) {
                         vibrator.vibrate(300);
-                        holder.counterButton.setText("0");
+                        holder.counterButton.setText(String.valueOf(current.getCounter()));
                         holder.resetlButton.setVisibility(View.GONE);
                     }
                 });
@@ -147,6 +145,16 @@ public class SebhaListAdapter extends RecyclerView.Adapter<SebhaListAdapter.Sebh
                 }
             });
         }
+    }
+
+    @Override
+    public long getItemId(int position) {
+        return position;
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+        return position;
     }
 
     void setList(List<SebhaModel> model) {
@@ -177,7 +185,6 @@ public class SebhaListAdapter extends RecyclerView.Adapter<SebhaListAdapter.Sebh
             super(itemView);
             almushaf_font = Typeface.createFromAsset(itemView.getContext().getAssets(), "almushaf.ttf");
             quran_font = Typeface.createFromAsset(itemView.getContext().getAssets(), "Mothanna.ttf");
-            //this.text.setTypeface(typeface);
             counterButton = itemView.findViewById(R.id.btn_counter);
             resetlButton = itemView.findViewById(R.id.btn_counter_reset);
             shareButton = itemView.findViewById(R.id.btn_share);

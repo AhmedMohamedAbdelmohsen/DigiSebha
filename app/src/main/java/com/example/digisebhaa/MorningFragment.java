@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -16,6 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.example.digisebhaa.databinding.FragmentMorningBinding;
 import com.example.digisebhaa.pojo.SebhaModel;
+import com.getbase.floatingactionbutton.FloatingActionsMenu;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import org.jetbrains.annotations.NotNull;
@@ -53,11 +53,12 @@ public class MorningFragment extends Fragment {
         BottomNavigationView bottomNavigationView = Objects.requireNonNull(getActivity()).findViewById(R.id.bottom_nav_bar);
         bottomNavigationView.setVisibility(View.VISIBLE);
 
-        ImageButton darkModeButton = Objects.requireNonNull(getActivity()).findViewById(R.id.btn_dark_mode);
-        darkModeButton.setVisibility(View.GONE);
+        FloatingActionsMenu floatingActionsMenu = getActivity().findViewById(R.id.fab_menu);
+        floatingActionsMenu.setVisibility(View.VISIBLE);
 
         typeface = Typeface.createFromAsset(getActivity().getAssets(), "almushaf.ttf");
         binding.tvTitle.setTypeface(typeface);
+
 
     }
 
@@ -67,6 +68,8 @@ public class MorningFragment extends Fragment {
         final SebhaListAdapter adapter = new SebhaListAdapter(getActivity());
         binding.rvMorningDhikr.setLayoutManager(new LinearLayoutManager(getActivity()));
         binding.rvMorningDhikr.setAdapter(adapter);
+//        binding.rvMorningDhikr.getRecycledViewPool().setMaxRecycledViews(5, 20);
+//        adapter.notifyDataSetChanged();
         viewModel = new ViewModelProvider(Objects.requireNonNull(getActivity())).get(SebhaViewModel.class);
         viewModel.GetAllMorningDhikr().observe(getViewLifecycleOwner(), new Observer<List<SebhaModel>>() {
             @Override

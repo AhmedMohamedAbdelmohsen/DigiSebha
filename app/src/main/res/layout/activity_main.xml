@@ -19,35 +19,54 @@
         app:layout_constraintTop_toTopOf="parent"
         app:navGraph="@navigation/app_nav_graph" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/btn_exit"
-        style="@style/Widget.MaterialComponents.FloatingActionButton"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_margin="20dp"
-        android:backgroundTint="@android:color/white"
-        android:contentDescription="@string/exit"
-        android:src="@drawable/ic_exit"
-        android:visibility="visible"
-        app:borderWidth="0dp"
+    <com.getbase.floatingactionbutton.FloatingActionsMenu
+        android:id="@+id/fab_menu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:layout_marginTop="20dp"
+        app:fab_addButtonColorNormal="@android:color/white"
+        app:fab_addButtonColorPressed="@android:color/white"
+        app:fab_addButtonPlusIconColor="@color/lightBlue"
+        app:fab_addButtonSize="mini"
+        app:fab_expandDirection="down"
+        app:fab_labelStyle="@style/custom_fab"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/btn_dark_mode"
-        style="@style/Widget.MaterialComponents.FloatingActionButton"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_margin="20dp"
-        android:backgroundTint="@android:color/white"
-        android:contentDescription="@string/exit"
-        android:src="@drawable/ic_brightness"
-        android:visibility="gone"
-        app:borderWidth="0dp"
-        app:fabCustomSize="50dp"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btn_exit"
-        app:maxImageSize="24dp" />
+        <com.getbase.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab_contact_us"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:borderWidth="1dp"
+            app:fab_colorNormal="@android:color/white"
+            app:fab_colorPressed="@color/lightGreen"
+            app:fab_icon="@drawable/ic_contactus"
+            app:fab_size="mini"
+            app:fab_title="@string/contactus" />
+
+        <com.getbase.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab_rating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:borderWidth="1dp"
+            app:fab_colorNormal="@android:color/white"
+            app:fab_colorPressed="@color/lightGreen"
+            app:fab_icon="@drawable/ic_rating"
+            app:fab_size="mini"
+            app:fab_title="@string/evaluation_app" />
+
+        <com.getbase.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab_sadaka_garia"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:borderWidth="1dp"
+            app:fab_colorNormal="@android:color/white"
+            app:fab_colorPressed="@color/lightGreen"
+            app:fab_icon="@drawable/ic_chairty"
+            app:fab_size="mini"
+            app:fab_title="@string/sadaka_garia" />
+    </com.getbase.floatingactionbutton.FloatingActionsMenu>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_nav_bar"

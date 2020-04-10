@@ -15,6 +15,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.digisebhaa.databinding.FragmentDarkModeBinding;
+import com.getbase.floatingactionbutton.FloatingActionsMenu;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.Objects;
@@ -50,8 +51,8 @@ public class DarkModeFragment extends Fragment {
         ImageButton darkModeButton = Objects.requireNonNull(getActivity()).findViewById(R.id.btn_dark_mode);
         darkModeButton.setVisibility(View.GONE);
 
-        ImageButton exitButton = Objects.requireNonNull(getActivity()).findViewById(R.id.btn_exit);
-        exitButton.setVisibility(View.GONE);
+        FloatingActionsMenu floatingActionsMenu = getActivity().findViewById(R.id.fab_menu);
+        floatingActionsMenu.setVisibility(View.GONE);
 
         vibrator = (Vibrator) getActivity().getSystemService(Context.VIBRATOR_SERVICE);
         binding.tgbtnVibration.setChecked(true);
@@ -117,6 +118,12 @@ public class DarkModeFragment extends Fragment {
             }
         });
 
+        binding.btnLightMode.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getActivity().onBackPressed();
+            }
+        });
     }
 
     @Override

@@ -9,7 +9,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.widget.ImageButton;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -18,6 +17,7 @@ import androidx.navigation.NavDirections;
 import androidx.navigation.Navigation;
 
 import com.example.digisebhaa.databinding.FragmentSplashBinding;
+import com.getbase.floatingactionbutton.FloatingActionsMenu;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import org.jetbrains.annotations.NotNull;
@@ -59,14 +59,14 @@ public class SplashFragment extends Fragment {
         setNavigationViewVisibility();
         setPostDelayed(view);
 
-        ImageButton exitButton = Objects.requireNonNull(getActivity()).findViewById(R.id.btn_exit);
-        exitButton.setVisibility(View.GONE);
-
     }
     //set bottom navigation view gone
     public void setNavigationViewVisibility() {
         bottomNavigationView = Objects.requireNonNull(getActivity()).findViewById(R.id.bottom_nav_bar);
         bottomNavigationView.setVisibility(View.GONE);
+
+        FloatingActionsMenu floatingActionsMenu = getActivity().findViewById(R.id.fab_menu);
+        floatingActionsMenu.setVisibility(View.GONE);
     }
 
     //Make Animations

@@ -85,6 +85,22 @@
         app:layout_constraintRight_toLeftOf="@id/iv_rosary"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btn_dark_mode"
+        style="@style/Widget.MaterialComponents.FloatingActionButton"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_margin="20dp"
+        android:backgroundTint="#231F20"
+        android:contentDescription="@string/exit"
+        android:src="@drawable/ic_darkmode"
+        android:visibility="visible"
+        app:borderWidth="0dp"
+        app:fabCustomSize="50dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/et_get_counter"
+        app:maxImageSize="40dp" />
+
     <TextView
         android:id="@+id/tv_counter"
         android:layout_width="0dp"
@@ -124,6 +140,8 @@
         android:layout_height="50dp"
         android:layout_margin="4dp"
         android:background="@drawable/ic_vibrat"
+        android:textOff="@string/unenabled"
+        android:textOn="@string/enabled"
         app:layout_constraintBottom_toBottomOf="@id/first_linear_font"
         app:layout_constraintLeft_toLeftOf="@id/first_linear_font"
         app:layout_constraintRight_toLeftOf="@id/fab_counter"

@@ -65,5 +65,10 @@
     <string name="facebook">فيسبوك</string>
     <string name="twitter">تويتر</string>
     <string name="copy">نسخ</string>
+    <string name="reset">reset</string>
+    <string name="sadaka_garia">صدقة جارية</string>
+    <string name="contactus">للتواصل معنا</string>
+    <string name="enabled">مفعل</string>
+    <string name="unenabled">غير مفعل</string>
 
 </resources>

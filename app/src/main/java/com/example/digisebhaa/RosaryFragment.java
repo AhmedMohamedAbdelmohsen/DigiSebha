@@ -14,8 +14,10 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.digisebhaa.databinding.FragmentRosaryBinding;
+import com.getbase.floatingactionbutton.FloatingActionsMenu;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import org.jetbrains.annotations.NotNull;
@@ -33,6 +35,7 @@ public class RosaryFragment extends Fragment {
     private SharedPreferences sharedPreferences;
     private SharedPreferences.Editor editor;
     private Vibrator vibrator;
+    private NavHostFragment navHostFragment;
 
     public RosaryFragment() {
         // Required empty public constructor
@@ -54,10 +57,13 @@ public class RosaryFragment extends Fragment {
         BottomNavigationView bottomNavigationView = Objects.requireNonNull(getActivity()).findViewById(R.id.bottom_nav_bar);
         bottomNavigationView.setVisibility(View.VISIBLE);
 
-        vibrator = (Vibrator) getActivity().getSystemService(Context.VIBRATOR_SERVICE);
+        FloatingActionsMenu floatingActionsMenu = getActivity().findViewById(R.id.fab_menu);
+        floatingActionsMenu.setVisibility(View.VISIBLE);
 
-        ImageButton imageButton = getActivity().findViewById(R.id.btn_exit);
-        imageButton.setVisibility(View.VISIBLE);
+        navHostFragment = (NavHostFragment) getActivity().getSupportFragmentManager()
+                .findFragmentById(R.id.nav_host_fragment);
+        moveToDarkFragment();
+        vibrator = (Vibrator) getActivity().getSystemService(Context.VIBRATOR_SERVICE);
 
         ImageButton darkModeButton = Objects.requireNonNull(getActivity()).findViewById(R.id.btn_dark_mode);
         darkModeButton.setVisibility(View.VISIBLE);
@@ -130,5 +136,29 @@ public class RosaryFragment extends Fragment {
         });
 
     }
+
+    private void moveToDarkFragment() {
+        binding.btnDarkMode.setOnClickListener(new View.OnClickListener() {
+
+            public void onClick(View v) {
+//                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+//                    if (!Settings.System.canWrite(getApplicationContext())) {
+//                        //set brightness value
+//                        Settings.System.putInt(getApplicationContext().getContentResolver(),
+//                                Settings.System.SCREEN_BRIGHTNESS, 10);
+//                    }
+//                } else if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.M) {
+//                    //set brightness value
+//                    Settings.System.putInt(getApplicationContext().getContentResolver(),
+//                            Settings.System.SCREEN_BRIGHTNESS, 10);
+//                } else {
+//                    Toast.makeText(MainActivity.this, "Dark mode", Toast.LENGTH_SHORT).show();
+//                }
+//
+                navHostFragment.getNavController().navigate(R.id.action_to_dark_fragment);
+            }
+        });
+    }
+
 
 }
