@@ -16,12 +16,22 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.NavigationUI;
 
 import com.example.digisebhaa.databinding.ActivityMainBinding;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
+import com.google.android.gms.ads.rewarded.RewardItem;
+import com.google.android.gms.ads.rewarded.RewardedAd;
+import com.google.android.gms.ads.rewarded.RewardedAdCallback;
+import com.google.android.gms.ads.rewarded.RewardedAdLoadCallback;
 
 import java.util.Calendar;
 import java.util.Objects;
@@ -31,12 +41,27 @@ public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding binding;
     private View view;
     private NavHostFragment navHostFragment;
+    private AdView mAdView;
+    private RewardedAd rewardedAd;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         view = binding.getRoot();
         setContentView(view);
+        //ads initialize
+        MobileAds.initialize(this, new OnInitializationCompleteListener() {
+            @Override
+            public void onInitializationComplete(InitializationStatus initializationStatus) {
+            }
+        });
+        // Ads Banner
+        mAdView = findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
+        //Ads Rewarded Videos
+        loadRewardedVidAds();
+        sadakaGariaAds();
         //Hide status bar
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         //set navHost fragment
@@ -98,6 +123,60 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 SadakaGariaDialog dialog = new SadakaGariaDialog(MainActivity.this);
                 dialog.show();
+            }
+        });
+    }
+
+    private void loadRewardedVidAds() {
+
+        rewardedAd = new RewardedAd(this,
+                "ca-app-pub-6572636131062240/9041451464");
+
+        RewardedAdLoadCallback adLoadCallback = new RewardedAdLoadCallback() {
+            @Override
+            public void onRewardedAdLoaded() {
+                // Ad successfully loaded.
+            }
+
+            @Override
+            public void onRewardedAdFailedToLoad(int errorCode) {
+                // Ad failed to load.
+            }
+        };
+        rewardedAd.loadAd(new AdRequest.Builder().build(), adLoadCallback);
+    }
+
+    private void sadakaGariaAds() {
+        binding.fabContactUs.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (rewardedAd.isLoaded()) {
+//                    Activity activityContext = new MainActivity();
+                    RewardedAdCallback adCallback = new RewardedAdCallback() {
+                        @Override
+                        public void onRewardedAdOpened() {
+                            // Ad opened.
+                        }
+
+                        @Override
+                        public void onRewardedAdClosed() {
+                            loadRewardedVidAds();
+                        }
+
+                        @Override
+                        public void onUserEarnedReward(@NonNull RewardItem reward) {
+                            Toast.makeText(MainActivity.this, "هنيئاً لك ثواب هذه الصدقة", Toast.LENGTH_SHORT).show();
+                        }
+
+                        @Override
+                        public void onRewardedAdFailedToShow(int errorCode) {
+                            // Ad failed to display.
+                        }
+                    };
+                    rewardedAd.show(MainActivity.this, adCallback);
+                } else {
+                    loadRewardedVidAds();
+                }
             }
         });
     }

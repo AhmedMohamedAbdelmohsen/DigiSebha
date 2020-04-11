@@ -68,6 +68,21 @@
             app:fab_title="@string/sadaka_garia" />
     </com.getbase.floatingactionbutton.FloatingActionsMenu>
 
+    <com.google.android.gms.ads.AdView xmlns:ads="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/adView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="5dp"
+        ads:adSize="BANNER"
+        ads:adUnitId="ca-app-pub-6572636131062240/8480050975"
+        ads:layout_constraintBottom_toTopOf="@id/bottom_nav_bar"
+        ads:layout_constraintEnd_toEndOf="@id/bottom_nav_bar"
+        ads:layout_constraintStart_toStartOf="@id/bottom_nav_bar">
+
+    </com.google.android.gms.ads.AdView>
+
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_nav_bar"
         android:layout_width="match_parent"

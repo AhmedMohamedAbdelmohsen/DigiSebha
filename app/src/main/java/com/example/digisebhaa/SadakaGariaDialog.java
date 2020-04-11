@@ -36,21 +36,21 @@ public class SadakaGariaDialog extends Dialog {
         getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         setCancelable(true);
 
-        whatsButton = (Button) findViewById(R.id.btn_whats_app);
-        faceButton = (Button) findViewById(R.id.btn_face_book);
-        twitterButton = (Button) findViewById(R.id.btn_twitter);
-        copyButton = (Button) findViewById(R.id.btn_copy);
-        nameEt = (EditText) findViewById(R.id.et_person_name);
+        whatsButton = findViewById(R.id.btn_whats_app);
+        faceButton = findViewById(R.id.btn_face_book);
+        twitterButton = findViewById(R.id.btn_twitter);
+        copyButton = findViewById(R.id.btn_copy);
+        nameEt = findViewById(R.id.et_person_name);
 
         whatsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String ayaQuran = "﴿ فَاذْكُرُونِي أَذْكُرْكُمْ﴾";
                 String nameDesc = "اللهم أجعل ثواب هذا  إلى: ";
-                String name = nameEt.getText().toString();
+                String name = nameEt.getText().toString().trim();
                 String appName = "تطبيق السبحة الإلكترونية:";
                 String url = "https://bit.ly/2UpOykL";
-                String text = ayaQuran + "\n" + nameDesc + "\n" + name + "\n" + appName + "\n" + url;
+                String text = ayaQuran + "\n" + nameDesc + "\n" + "*" + name + "*" + "\n" + appName + "\n" + url;
                 Intent waIntent = new Intent(Intent.ACTION_SEND);
                 waIntent.setType("text/plain");
                 waIntent.setPackage("com.whatsapp");
@@ -72,7 +72,7 @@ public class SadakaGariaDialog extends Dialog {
             public void onClick(View v) {
                 String ayaQuran = "﴿ فَاذْكُرُونِي أَذْكُرْكُمْ﴾";
                 String nameDesc = "اللهم أجعل ثواب هذا  إلى: ";
-                String name = nameEt.getText().toString();
+                String name = nameEt.getText().toString().trim();
                 String appName = "تطبيق السبحة الإلكترونية:";
                 String url = "https://bit.ly/2UpOykL";
                 String text = ayaQuran + "\n" + nameDesc + "\n" + name + "\n" + appName + "\n" + url;
@@ -96,7 +96,7 @@ public class SadakaGariaDialog extends Dialog {
             public void onClick(View v) {
                 String ayaQuran = "﴿ فَاذْكُرُونِي أَذْكُرْكُمْ﴾";
                 String nameDesc = "اللهم أجعل ثواب هذا  إلى: ";
-                String name = nameEt.getText().toString();
+                String name = nameEt.getText().toString().trim();
                 String appName = "تطبيق السبحة الإلكترونية:";
                 String url = "https://bit.ly/2UpOykL";
                 String text = ayaQuran + "\n" + nameDesc + "\n" + name + "\n" + appName + "\n" + url;
@@ -120,7 +120,7 @@ public class SadakaGariaDialog extends Dialog {
             public void onClick(View v) {
                 String ayaQuran = "﴿ فَاذْكُرُونِي أَذْكُرْكُمْ﴾";
                 String nameDesc = "اللهم أجعل ثواب هذا  إلى: ";
-                String name = nameEt.getText().toString();
+                String name = nameEt.getText().toString().trim();
                 String appName = "تطبيق السبحة الإلكترونية:";
                 String url = "https://bit.ly/2UpOykL";
                 String text = ayaQuran + "\n" + nameDesc + "\n" + name + "\n" + appName + "\n" + url;
