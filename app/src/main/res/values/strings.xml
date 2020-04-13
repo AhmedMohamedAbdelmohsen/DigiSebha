@@ -58,11 +58,16 @@
     <string name="status_dhikr_vibration_tv">تنبيه:وضع الإهتزاز للأذكار غير مفعل الآن</string>
     <string name="share">مشاركة</string>
     <string name="sadaka">\"صدقة جارية\"</string>
+    <string name="sadaka_ads">\"إخراج صدقة\"</string>
+    <string name="title_ads">إخراج صدقة</string>
     <string name="Person_name">اسم الشخص</string>
     <string name="description_sadaka_person">اللهم أجعل ثواب هذا  إلى</string>
     <string name="sadaka_desc">شارك التطبيق ليصبح صدقة جارية لك او لأى شخص آخر بحيث يتناقله آلاف الناس من بعدك!</string>
+    <string name="sadaka_desc_ads">(ظِلُّ المؤمنِ يومَ القيامةِ صَدقتُه) \n اجعل صدقتك هي مشاهدتك هذه الإعلانات ونتعهد أمام الله أن عائد هذا الجزء من الإعلانات سوف يكون صدقة جارية لكل من شارك فى ذلك.</string>
     <string name="whatsapp">واتس اب</string>
+    <string name="video_ads">مشاهدة فيديو</string>
     <string name="facebook">فيسبوك</string>
+    <string name="page_ads">مشاهدة إعلان</string>
     <string name="twitter">تويتر</string>
     <string name="copy">نسخ</string>
     <string name="reset">reset</string>
@@ -70,5 +75,13 @@
     <string name="contactus">للتواصل معنا</string>
     <string name="enabled">مفعل</string>
     <string name="unenabled">غير مفعل</string>
+
+    <string-array name="spinner_azkar">
+        <item>الله أكبر</item>
+        <item>سبحان الله</item>
+        <item>الحمد لله</item>
+        <item>استغفر الله</item>
+        <item>لا إله إلا الله</item>
+    </string-array>
 
 </resources>

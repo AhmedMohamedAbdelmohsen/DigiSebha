@@ -60,6 +60,7 @@ public class SplashFragment extends Fragment {
         setPostDelayed(view);
 
     }
+
     //set bottom navigation view gone
     public void setNavigationViewVisibility() {
         bottomNavigationView = Objects.requireNonNull(getActivity()).findViewById(R.id.bottom_nav_bar);
@@ -67,6 +68,7 @@ public class SplashFragment extends Fragment {
 
         FloatingActionsMenu floatingActionsMenu = getActivity().findViewById(R.id.fab_menu);
         floatingActionsMenu.setVisibility(View.GONE);
+
     }
 
     //Make Animations

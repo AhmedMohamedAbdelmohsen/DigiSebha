@@ -18,6 +18,10 @@ import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.digisebhaa.databinding.FragmentRosaryBinding;
 import com.getbase.floatingactionbutton.FloatingActionsMenu;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import org.jetbrains.annotations.NotNull;
@@ -59,6 +63,15 @@ public class RosaryFragment extends Fragment {
 
         FloatingActionsMenu floatingActionsMenu = getActivity().findViewById(R.id.fab_menu);
         floatingActionsMenu.setVisibility(View.VISIBLE);
+        //ads initialize
+        MobileAds.initialize(getActivity(), new OnInitializationCompleteListener() {
+            @Override
+            public void onInitializationComplete(InitializationStatus initializationStatus) {
+            }
+        });
+        // Ads Banner
+        AdRequest adRequest = new AdRequest.Builder().build();
+        binding.adView.loadAd(adRequest);
 
         navHostFragment = (NavHostFragment) getActivity().getSupportFragmentManager()
                 .findFragmentById(R.id.nav_host_fragment);
@@ -76,7 +89,6 @@ public class RosaryFragment extends Fragment {
         sharedPreferences = this.getActivity().getSharedPreferences("pref", Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
         binding.tvCounter.setText(String.valueOf(sharedPreferences.getInt("counter", 0)));
-
         binding.fabCounter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -137,6 +149,10 @@ public class RosaryFragment extends Fragment {
 
     }
 
+    public void displayToast(String message) {
+        Toast.makeText(getActivity(), message, Toast.LENGTH_LONG).show();
+    }
+
     private void moveToDarkFragment() {
         binding.btnDarkMode.setOnClickListener(new View.OnClickListener() {
 
@@ -160,5 +176,10 @@ public class RosaryFragment extends Fragment {
         });
     }
 
-
+    @Override
+    public void onResume() {
+        super.onResume();
+        AdRequest adRequest = new AdRequest.Builder().build();
+        binding.adView.loadAd(adRequest);
+    }
 }

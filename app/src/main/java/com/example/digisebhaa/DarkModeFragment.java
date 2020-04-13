@@ -16,6 +16,10 @@ import androidx.fragment.app.Fragment;
 
 import com.example.digisebhaa.databinding.FragmentDarkModeBinding;
 import com.getbase.floatingactionbutton.FloatingActionsMenu;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.Objects;
@@ -53,6 +57,16 @@ public class DarkModeFragment extends Fragment {
 
         FloatingActionsMenu floatingActionsMenu = getActivity().findViewById(R.id.fab_menu);
         floatingActionsMenu.setVisibility(View.GONE);
+
+        //ads initialize
+        MobileAds.initialize(getActivity(), new OnInitializationCompleteListener() {
+            @Override
+            public void onInitializationComplete(InitializationStatus initializationStatus) {
+            }
+        });
+        // Ads Banner
+        AdRequest adRequest = new AdRequest.Builder().build();
+        binding.adView.loadAd(adRequest);
 
         vibrator = (Vibrator) getActivity().getSystemService(Context.VIBRATOR_SERVICE);
         binding.tgbtnVibration.setChecked(true);
@@ -124,6 +138,13 @@ public class DarkModeFragment extends Fragment {
                 getActivity().onBackPressed();
             }
         });
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        AdRequest adRequest = new AdRequest.Builder().build();
+        binding.adView.loadAd(adRequest);
     }
 
     @Override
