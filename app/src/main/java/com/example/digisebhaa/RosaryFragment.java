@@ -82,12 +82,14 @@ public class RosaryFragment extends Fragment {
         darkModeButton.setVisibility(View.VISIBLE);
         binding.tgbtnVibration.setChecked(true);
 //        setAlarmHadith();
+        sharedPreferences = this.getActivity().getSharedPreferences("pref", Context.MODE_PRIVATE);
+        editor = sharedPreferences.edit();
+        setNotificationsfromDilaog();
 
         typeface = Typeface.createFromAsset(getActivity().getAssets(), "almushaf.ttf");
         binding.tvTitle.setTypeface(typeface);
         binding.tvDescribe.setTypeface(typeface);
-        sharedPreferences = this.getActivity().getSharedPreferences("pref", Context.MODE_PRIVATE);
-        editor = sharedPreferences.edit();
+
         binding.tvCounter.setText(String.valueOf(sharedPreferences.getInt("counter", 0)));
         binding.fabCounter.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -174,6 +176,15 @@ public class RosaryFragment extends Fragment {
                 navHostFragment.getNavController().navigate(R.id.action_to_dark_fragment);
             }
         });
+    }
+
+    void setNotificationsfromDilaog() {
+        boolean isFirstTime = sharedPreferences.getBoolean("first_time", true);
+        if (isFirstTime) {
+            DialogSetNotifications dialog = new DialogSetNotifications(getActivity());
+            dialog.show();
+        }
+
     }
 
     @Override

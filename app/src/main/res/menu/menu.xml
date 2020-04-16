@@ -16,7 +16,7 @@
         android:title="" />
     <item
         android:id="@+id/hadith_sharif"
-        android:icon="@drawable/ic_book"
+        android:icon="@drawable/ic_book_outline"
         android:title="@string/hadiths" />
     <item
         android:id="@+id/setting"

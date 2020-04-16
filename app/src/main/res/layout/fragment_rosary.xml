@@ -80,6 +80,7 @@
         android:paddingStart="8dp"
         android:paddingEnd="8dp"
         android:singleLine="true"
+        android:imeOptions="actionDone"
         android:textDirection="rtl"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@id/iv_rosary"
@@ -97,7 +98,7 @@
         android:visibility="visible"
         app:borderWidth="0dp"
         app:fabCustomSize="50dp"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/et_get_counter"
         app:maxImageSize="40dp" />
 

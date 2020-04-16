@@ -154,7 +154,7 @@ public class MainActivity extends AppCompatActivity {
             Calendar calendar = Calendar.getInstance();
             calendar.setTimeInMillis(System.currentTimeMillis());
             calendar.set(Calendar.HOUR_OF_DAY, 5);
-            calendar.set(Calendar.MINUTE, 39);
+            calendar.set(Calendar.MINUTE, 18);
             calendar.add(Calendar.MINUTE, 2);
             long hadithCalendar = preferences.getLong("hadith_time_notif", calendar.getTimeInMillis());
             Intent intent = new Intent(MainActivity.this, HadithAlertReceiver.class);

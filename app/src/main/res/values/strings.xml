@@ -42,7 +42,10 @@
     <string name="notif_for_hadith">تفعيل التنبيهات للأحاديث</string>
     <string name="_6_00">6:00 ص</string>
     <string name="morning_dhikr_time">موعد التنبيهات لأذكار الصباح</string>
+    <string name="morning_notif_time">ضبط تنبيهات أذكار الصباح</string>
     <string name="evening_dhikr_time">موعد التنبيهات لأذكار المساء</string>
+    <string name="evening_notif_time">ضبط تنبيهات أذكار المساء</string>
+    <string name="hadith_notif_time">ضبط تنبيهات الأحاديث</string>
     <string name="_6_0">6:00 م</string>
     <string name="hadith_time">موعد التنبيهات للأحاديث</string>
     <string name="sadka_garia">صدقة جارية</string>
@@ -56,6 +59,7 @@
     <string name="repeats">التكرار</string>
     <string name="switch_vibration_dhikr">تفعيل وضع الإهتزاز للأذكار</string>
     <string name="status_dhikr_vibration_tv">تنبيه:وضع الإهتزاز للأذكار غير مفعل الآن</string>
+    <string name="status_tv">تنبيه: لن تغلق هذه النافذة إلا بعد ضبط التنبيهات جميعاً</string>
     <string name="share">مشاركة</string>
     <string name="sadaka">\"صدقة جارية\"</string>
     <string name="sadaka_ads">\"إخراج صدقة\"</string>
@@ -64,6 +68,7 @@
     <string name="description_sadaka_person">اللهم أجعل ثواب هذا  إلى</string>
     <string name="sadaka_desc">شارك التطبيق ليصبح صدقة جارية لك او لأى شخص آخر بحيث يتناقله آلاف الناس من بعدك!</string>
     <string name="sadaka_desc_ads">(ظِلُّ المؤمنِ يومَ القيامةِ صَدقتُه) \n اجعل صدقتك هي مشاهدتك هذه الإعلانات ونتعهد أمام الله أن عائد هذا الجزء من الإعلانات سوف يكون صدقة جارية لكل من شارك فى ذلك.</string>
+    <string name="notif_dilog_desc">هذه النافذه لن تظهر لك مرة آخري\n من فضلك اضبط مواعيد التنبيهات التي تريدها لتذكيرك بأوقات قراءة الأذكار والأحاديث.</string>
     <string name="whatsapp">واتس اب</string>
     <string name="video_ads">مشاهدة فيديو</string>
     <string name="facebook">فيسبوك</string>

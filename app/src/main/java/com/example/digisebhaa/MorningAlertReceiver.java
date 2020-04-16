@@ -5,6 +5,7 @@ import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 
 import androidx.core.app.NotificationCompat;
 import androidx.navigation.NavDeepLinkBuilder;
@@ -28,9 +29,10 @@ public class MorningAlertReceiver extends BroadcastReceiver {
         builder.setContentIntent(pendingIntent1);
         builder.setDefaults(NotificationCompat.DEFAULT_SOUND);
         builder.setAutoCancel(true);
+        builder.setVibrate(new long[]{2000});
+        builder.setLights(Color.YELLOW, 1000, 1000);
         builder.setStyle(new NotificationCompat.BigTextStyle()
                 .bigText("حان الأن موعد قراءة أذكار الصباح"));
-
         notificationManager.cancel(1);
         notificationManager.notify(1, builder.build());
     }

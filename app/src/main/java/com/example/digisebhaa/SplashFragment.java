@@ -68,7 +68,6 @@ public class SplashFragment extends Fragment {
 
         FloatingActionsMenu floatingActionsMenu = getActivity().findViewById(R.id.fab_menu);
         floatingActionsMenu.setVisibility(View.GONE);
-
     }
 
     //Make Animations

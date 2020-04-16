@@ -5,6 +5,7 @@ import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 
 import androidx.core.app.NotificationCompat;
 import androidx.navigation.NavDeepLinkBuilder;
@@ -24,10 +25,12 @@ public class HadithAlertReceiver extends BroadcastReceiver {
                 .setNumber(3)
                 .setContentTitle("حديث شريف")
                 .setContentText("قال رسول الله صلى الله عليه وسلم")
-                .setSmallIcon(R.drawable.ic_moon);
+                .setSmallIcon(R.drawable.ic_book);
         builder.setContentIntent(pendingIntent1);
         builder.setDefaults(NotificationCompat.DEFAULT_SOUND);
         builder.setAutoCancel(true);
+        builder.setVibrate(new long[]{2000});
+        builder.setLights(Color.YELLOW, 1000, 1000);
         builder.setStyle(new NotificationCompat.BigTextStyle()
                 .bigText("قال رسول الله صلى الله عليه وسلم"));
         notificationManager.notify(3, builder.build());

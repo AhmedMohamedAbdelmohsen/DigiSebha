@@ -38,7 +38,7 @@ public class SadakaAdsDialog extends Dialog {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
-        setContentView(R.layout.sadka_garia_ads);
+        setContentView(R.layout.dialog_sadka_garia_ads);
         getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         setCancelable(true);
         videoButton = findViewById(R.id.btn_video_ads);
