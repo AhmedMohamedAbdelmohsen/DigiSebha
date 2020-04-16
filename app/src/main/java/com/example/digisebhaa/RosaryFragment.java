@@ -1,18 +1,23 @@
 package com.example.digisebhaa;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.Vibrator;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
@@ -85,7 +90,7 @@ public class RosaryFragment extends Fragment {
         sharedPreferences = this.getActivity().getSharedPreferences("pref", Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
         setNotificationsfromDilaog();
-
+        totalCounter();
         typeface = Typeface.createFromAsset(getActivity().getAssets(), "almushaf.ttf");
         binding.tvTitle.setTypeface(typeface);
         binding.tvDescribe.setTypeface(typeface);
@@ -101,13 +106,15 @@ public class RosaryFragment extends Fragment {
                     vibrator.cancel();
                 }
                 int x = Integer.parseInt(binding.tvCounter.getText().toString());
+                int y = sharedPreferences.getInt("totalCounter", 0);
                 String counter = binding.etGetCounter.getText().toString();
                 String status = binding.etGetCounter.getText().toString();
                 if (status.isEmpty()) {
-                    if (x <= 1000000) {
+                    if (x <= 1000000 && y <= 1000000) {
                         x++;
+                        y++;
                     } else {
-                        Toast.makeText(v.getContext(), "لقد أتممت عدد التسبيح المحدد فى الأعلي", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(v.getContext(), "لقد أتممت مليون تسبيح من فضلك أعد تصفير جميع الأعداد", Toast.LENGTH_SHORT).show();
                         if (binding.tgbtnVibration.isChecked()) {
                             vibrator.vibrate(400);
                         }
@@ -115,6 +122,7 @@ public class RosaryFragment extends Fragment {
                 } else {
                     if (x < Integer.parseInt(counter)) {
                         x++;
+                        y++;
                     } else {
                         Toast.makeText(v.getContext(), "لقد أتممت عدد التسبيح المحدد فى الأعلي", Toast.LENGTH_SHORT).show();
                         if (binding.tgbtnVibration.isChecked()) {
@@ -122,8 +130,9 @@ public class RosaryFragment extends Fragment {
                         }
                     }
                 }
-                editor.putInt("counter", x);
-                editor.apply();
+                editor.putInt("counter", x).apply();
+                editor.putInt("totalCounter", y).apply();
+                binding.tvTotalCounter.setText(String.valueOf(y));
                 binding.tvCounter.setText(String.valueOf(x));
 
             }
@@ -141,8 +150,7 @@ public class RosaryFragment extends Fragment {
                 if (y == 0) {
                     Toast.makeText(v.getContext(), "عدد التسبيحات 0 بالفعل", Toast.LENGTH_SHORT).show();
                 } else if (y > 0) {
-                    editor.putInt("counter", 0);
-                    editor.apply();
+                    editor.putInt("counter", 0).apply();
                     binding.tvCounter.setText(String.valueOf(0));
 
                 }
@@ -185,6 +193,47 @@ public class RosaryFragment extends Fragment {
             dialog.show();
         }
 
+    }
+
+    private void totalCounter() {
+        binding.tvTotalCounter.setText(String.valueOf(sharedPreferences.getInt("totalCounter", 0)));
+        binding.btnTotalCounterReset.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(), R.style.AlertDialogStyle);
+                builder.setMessage("هل تريد تصفير إجمالي عدد التسبيحات الخاصة بك ؟").setCancelable(false)
+                        .setPositiveButton("نعم", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                int y = sharedPreferences.getInt("totalCounter", 0);
+                                if (y == 0) {
+                                    Toast.makeText(getActivity(), "إجمالي عدد التسبيحات 0 بالفعل", Toast.LENGTH_LONG).show();
+                                } else if (y > 0) {
+                                    editor.putInt("totalCounter", 0).apply();
+                                    binding.tvTotalCounter.setText(String.valueOf(0));
+                                    Toast.makeText(getActivity(), "تم تصفير إجمالي التسبيحات", Toast.LENGTH_LONG).show();
+                                }
+                            }
+                        }).setNegativeButton("لا", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+
+                AlertDialog dialog = builder.create();
+                dialog.setTitle("تنبيه!!");
+                dialog.show();
+
+                final Button lPositiveButton = dialog.getButton(AlertDialog.BUTTON_POSITIVE);
+                // Fetch the LinearLayout.
+                final LinearLayout lParent = (LinearLayout) lPositiveButton.getParent();
+                // Ensure the Parent of the Buttons aligns it's contents to the right.
+                lParent.setGravity(Gravity.LEFT);
+                // Hide the LeftSpacer. (Strict dependence on the order of the layout!)
+                lParent.getChildAt(1).setVisibility(View.GONE);
+            }
+        });
     }
 
     @Override

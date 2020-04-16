@@ -74,13 +74,13 @@
         android:layout_margin="20dp"
         android:background="@drawable/rectangle_radius"
         android:hint="@string/enter_counter"
+        android:imeOptions="actionDone"
         android:inputType="number"
         android:maxLength="6"
         android:padding="5dp"
         android:paddingStart="8dp"
         android:paddingEnd="8dp"
         android:singleLine="true"
-        android:imeOptions="actionDone"
         android:textDirection="rtl"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@id/iv_rosary"
@@ -162,6 +162,47 @@
         app:layout_constraintTop_toBottomOf="@id/tv_counter"
         app:layout_constraintTop_toTopOf="@id/fab_counter"
         app:maxImageSize="15dp" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btn_total_counter_reset"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_margin="10dp"
+        android:src="@drawable/ic_reset"
+        app:fabCustomSize="30dp"
+        app:layout_constraintBottom_toTopOf="@id/adView"
+        app:layout_constraintLeft_toRightOf="@id/tv_total"
+        app:layout_constraintTop_toBottomOf="@id/first_linear_font"
+        app:maxImageSize="30dp" />
+
+    <TextView
+        android:id="@+id/tv_total"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:fontFamily="@font/janna"
+        android:shadowRadius="5"
+        android:text="إجمالي التسبيحات: "
+        android:textColor="@color/lightBlue"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@id/adView"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/first_linear_font" />
+
+    <TextView
+        android:id="@+id/tv_total_counter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:fontFamily="@font/janna"
+        android:shadowRadius="5"
+        android:text="0"
+        android:textColor="@color/lightBlue"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@id/adView"
+        app:layout_constraintRight_toLeftOf="@id/tv_total"
+        app:layout_constraintTop_toBottomOf="@id/first_linear_font" />
 
     <com.google.android.gms.ads.AdView xmlns:ads="http://schemas.android.com/apk/res-auto"
         android:id="@+id/adView"

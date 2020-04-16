@@ -84,11 +84,13 @@ public class DarkModeFragment extends Fragment {
                     vibrator.cancel();
                 }
                 int x = Integer.parseInt(binding.tvCounter.getText().toString());
+                int y = sharedPreferences.getInt("totalCounter", 0);
                 String counter = binding.etGetCounter.getText().toString();
                 String status = binding.etGetCounter.getText().toString();
                 if (status.isEmpty()) {
-                    if (x <= 1000000) {
+                    if (x <= 1000000 && y <= 1000000) {
                         x++;
+                        y++;
                     } else {
                         Toast.makeText(v.getContext(), "لقد أتممت عدد التسبيح المحدد فى الأعلي", Toast.LENGTH_SHORT).show();
                         if (binding.tgbtnVibration.isChecked()) {
@@ -98,6 +100,7 @@ public class DarkModeFragment extends Fragment {
                 } else {
                     if (x < Integer.parseInt(counter)) {
                         x++;
+                        y++;
                     } else {
                         Toast.makeText(v.getContext(), "لقد أتممت عدد التسبيح المحدد فى الأعلي", Toast.LENGTH_SHORT).show();
                         if (binding.tgbtnVibration.isChecked()) {
@@ -105,8 +108,8 @@ public class DarkModeFragment extends Fragment {
                         }
                     }
                 }
-                editor.putInt("counter", x);
-                editor.apply();
+                editor.putInt("counter", x).apply();
+                editor.putInt("totalCounter", y).apply();
                 binding.tvCounter.setText(String.valueOf(x));
 
             }
