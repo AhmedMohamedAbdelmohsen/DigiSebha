@@ -23,8 +23,8 @@ public class HadithAlertReceiver extends BroadcastReceiver {
         NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context)
                 .setNumber(3)
-                .setContentTitle("حديث شريف")
-                .setContentText("قال رسول الله صلى الله عليه وسلم")
+                .setContentTitle("فضل الصلاة على النبي")
+                .setContentText("قال رسول الله صلى الله عليه :من صلَّى عليَّ صلاةً واحدةً صلَّى اللَّهُ عليهِ عشرَ صلواتٍ، وحُطَّت عنهُ عَشرُ خطيئاتٍ، ورُفِعَت لَهُ عشرُ درجات.")
                 .setSmallIcon(R.drawable.ic_book);
         builder.setContentIntent(pendingIntent1);
         builder.setDefaults(NotificationCompat.DEFAULT_SOUND);
@@ -32,7 +32,7 @@ public class HadithAlertReceiver extends BroadcastReceiver {
         builder.setVibrate(new long[]{2000});
         builder.setLights(Color.YELLOW, 1000, 1000);
         builder.setStyle(new NotificationCompat.BigTextStyle()
-                .bigText("قال رسول الله صلى الله عليه وسلم"));
+                .bigText("قال رسول الله صلى الله عليه :من صلَّى عليَّ صلاةً واحدةً صلَّى اللَّهُ عليهِ عشرَ صلواتٍ، وحُطَّت عنهُ عَشرُ خطيئاتٍ، ورُفِعَت لَهُ عشرُ درجات."));
         notificationManager.notify(3, builder.build());
     }
 }

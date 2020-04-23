@@ -98,7 +98,7 @@ public class SebhaListAdapter extends RecyclerView.Adapter<SebhaListAdapter.Sebh
                 holder.counterButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Toast.makeText(v.getContext(), "اضغط علي الشاشة لحساب عدد التكرار", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(v.getContext(), "اضغط علي الشاشة لحساب عدد التكرار", Toast.LENGTH_LONG).show();
                     }
                 });
                 holder.counterButton.setText(String.valueOf(current.getCounter()));
@@ -118,7 +118,7 @@ public class SebhaListAdapter extends RecyclerView.Adapter<SebhaListAdapter.Sebh
                             holder.counterButton.setText("0");
                             vibrator.vibrate(400);
                             holder.resetlButton.setVisibility(View.VISIBLE);
-                            Toast.makeText(v.getContext(), "اضغط علي الزر الأحمر لإعادة العد من جديد", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(v.getContext(), "لقد اتممت عدد تكرار هذا الذكر اضغط علي الزر الأحمر لإعادة العد من جديد", Toast.LENGTH_LONG).show();
                         }
                     }
                 });

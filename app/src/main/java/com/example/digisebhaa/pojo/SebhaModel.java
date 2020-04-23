@@ -10,6 +10,9 @@ public class SebhaModel {
 
     @PrimaryKey()
     @NonNull
+    @ColumnInfo(name = "id")
+    private final int id;
+
     @ColumnInfo(name = "text")
     private final String text;
 
@@ -28,13 +31,18 @@ public class SebhaModel {
     @ColumnInfo(name = "counter")
     private final int counter;
 
-    public SebhaModel(@NonNull String text, String narated_by, String description, String repeats, int type, int counter) {
+    @ColumnInfo(name = "periority")
+    private final int periority;
+
+    public SebhaModel(@NonNull int id, String text, String narated_by, String description, String repeats, int type, int counter, int periority) {
+        this.id = id;
         this.text = text;
         this.narated_by = narated_by;
         this.description = description;
         this.repeats = repeats;
         this.type = type;
         this.counter = counter;
+        this.periority = periority;
     }
 
     @NonNull
@@ -60,5 +68,13 @@ public class SebhaModel {
 
     public int getCounter() {
         return counter;
+    }
+
+    public int getPeriority() {
+        return periority;
+    }
+
+    public int getId() {
+        return id;
     }
 }

@@ -12,7 +12,7 @@ import androidx.sqlite.db.SupportSQLiteDatabase;
 import com.example.digisebhaa.pojo.SebhaDao;
 import com.example.digisebhaa.pojo.SebhaModel;
 
-@Database(entities = {SebhaModel.class}, version = 5, exportSchema = false)
+@Database(entities = {SebhaModel.class}, version = 8, exportSchema = false)
 public abstract class SebhaDataBase extends RoomDatabase {
     public static SebhaDataBase instance;
 

@@ -48,6 +48,8 @@ public class MainActivity extends AppCompatActivity {
         //sadaka garia dialog
         sadakaGaria();
         sadakaGariaAds();
+        //contact us
+        contactUs();
     }
 
     private void navHostFragment() {
@@ -80,6 +82,16 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 SadakaAdsDialog dialog = new SadakaAdsDialog(MainActivity.this);
+                dialog.show();
+            }
+        });
+    }
+
+    private void contactUs() {
+        binding.fabContactUs.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DialogContactUs dialog = new DialogContactUs(MainActivity.this);
                 dialog.show();
             }
         });

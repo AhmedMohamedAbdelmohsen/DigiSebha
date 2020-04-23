@@ -18,13 +18,13 @@ public interface SebhaDao {
     @Query("DELETE FROM sebha_table")
     void deleteALL();
 
-    @Query("SELECT * FROM sebha_table WHERE type IN (:x) ORDER BY counter ASC")
+    @Query("SELECT * FROM sebha_table WHERE type IN (:x) ORDER BY periority ASC")
     LiveData<List<SebhaModel>> getAllMorningDhikr(int x);
 
-    @Query("SELECT * FROM sebha_table WHERE type IN (:x) ORDER BY counter ASC")
+    @Query("SELECT * FROM sebha_table WHERE type IN (:x) ORDER BY periority ASC")
     LiveData<List<SebhaModel>> getAllEveningDhikr(int x);
 
-    @Query("SELECT * FROM sebha_table WHERE type IN (:x) ORDER BY counter ASC")
+    @Query("SELECT * FROM sebha_table WHERE type IN (:x) ORDER BY periority ASC")
     LiveData<List<SebhaModel>> getAllHadith(int x);
 
 //    @Query("SELECT * FROM sebha_table WHERE type IN (:x)")
