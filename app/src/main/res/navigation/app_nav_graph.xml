@@ -22,7 +22,7 @@
         app:destination="@id/hadith_sharif" />
     <fragment
         android:id="@+id/splashFragment"
-        android:name="com.example.digisebhaa.SplashFragment"
+        android:name="com.ahmedabdelmohsen.digisebhaa.SplashFragment"
         android:label="fragment_splash"
         tools:layout="@layout/fragment_splash">
 
@@ -34,33 +34,33 @@
     </fragment>
     <fragment
         android:id="@+id/morning"
-        android:name="com.example.digisebhaa.MorningFragment"
+        android:name="com.ahmedabdelmohsen.digisebhaa.MorningFragment"
         android:label="fragment_morning"
         tools:layout="@layout/fragment_morning" />
     <fragment
         android:id="@+id/evening"
-        android:name="com.example.digisebhaa.EveningFragment"
+        android:name="com.ahmedabdelmohsen.digisebhaa.EveningFragment"
         android:label="fragment_evening"
         tools:layout="@layout/fragment_evening">
 
     </fragment>
     <fragment
         android:id="@+id/rosary"
-        android:name="com.example.digisebhaa.RosaryFragment"
+        android:name="com.ahmedabdelmohsen.digisebhaa.RosaryFragment"
         android:label="fragment_rosary"
         tools:layout="@layout/fragment_rosary">
 
     </fragment>
     <fragment
         android:id="@+id/hadith_sharif"
-        android:name="com.example.digisebhaa.HadithSharifFragment"
+        android:name="com.ahmedabdelmohsen.digisebhaa.HadithSharifFragment"
         android:label="fragment_hadith_sharif"
         tools:layout="@layout/fragment_hadith_sharif">
 
     </fragment>
     <fragment
         android:id="@+id/setting"
-        android:name="com.example.digisebhaa.SettingFragment"
+        android:name="com.ahmedabdelmohsen.digisebhaa.SettingFragment"
         android:label="fragment_setting"
         tools:layout="@layout/fragment_setting">
 
@@ -68,7 +68,7 @@
 
     <fragment
         android:id="@+id/dark_fragment"
-        android:name="com.example.digisebhaa.DarkModeFragment"
+        android:name="com.ahmedabdelmohsen.digisebhaa.DarkModeFragment"
         android:label="fragment_dark_mode"
         tools:layout="@layout/fragment_dark_mode">
 

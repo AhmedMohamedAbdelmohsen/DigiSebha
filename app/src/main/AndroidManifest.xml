@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.example.digisebhaa">
+    package="com.ahmedabdelmohsen.digisebhaa">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -13,7 +13,7 @@
         tools:ignore="ProtectedPermissions" />
 
     <application
-        android:name=".AlertsManagerApplication"
+        android:name="com.ahmedabdelmohsen.digisebhaa.AlertsManagerApplication"
         android:allowBackup="true"
         android:fullBackupContent="@xml/backup_descriptor"
         android:icon="@mipmap/ic_launcher"
@@ -22,7 +22,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".MainActivity"
+            android:name="com.ahmedabdelmohsen.digisebhaa.MainActivity"
             android:screenOrientation="nosensor">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -38,9 +38,9 @@
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
 
-        <receiver android:name=".MorningAlertReceiver" />
-        <receiver android:name=".EveningAlertReceiver" />
-        <receiver android:name=".HadithAlertReceiver" />
+        <receiver android:name="com.ahmedabdelmohsen.digisebhaa.MorningAlertReceiver" />
+        <receiver android:name="com.ahmedabdelmohsen.digisebhaa.EveningAlertReceiver" />
+        <receiver android:name="com.ahmedabdelmohsen.digisebhaa.HadithAlertReceiver" />
 
     </application>
 
