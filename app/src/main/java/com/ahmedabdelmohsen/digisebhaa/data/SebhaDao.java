@@ -1,9 +1,11 @@
-package com.ahmedabdelmohsen.digisebhaa.pojo;
+package com.ahmedabdelmohsen.digisebhaa.data;
 
 import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.Query;
+
+import com.ahmedabdelmohsen.digisebhaa.pojo.SebhaModel;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package com.ahmedabdelmohsen.digisebhaa;
+package com.ahmedabdelmohsen.digisebhaa.main.destinations;
 
 import android.graphics.Typeface;
 import android.graphics.drawable.AnimationDrawable;
@@ -16,6 +16,7 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.NavDirections;
 import androidx.navigation.Navigation;
 
+import com.ahmedabdelmohsen.digisebhaa.R;
 import com.ahmedabdelmohsen.digisebhaa.databinding.FragmentSplashBinding;
 import com.getbase.floatingactionbutton.FloatingActionsMenu;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -56,13 +57,13 @@ public class SplashFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         setAnimations();
-        setNavigationViewVisibility();
+        setVisibility();
         setPostDelayed(view);
 
     }
 
     //set bottom navigation view gone
-    public void setNavigationViewVisibility() {
+    public void setVisibility() {
         bottomNavigationView = Objects.requireNonNull(getActivity()).findViewById(R.id.bottom_nav_bar);
         bottomNavigationView.setVisibility(View.GONE);
 

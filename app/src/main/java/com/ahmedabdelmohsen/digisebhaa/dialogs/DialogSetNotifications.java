@@ -1,4 +1,4 @@
-package com.ahmedabdelmohsen.digisebhaa;
+package com.ahmedabdelmohsen.digisebhaa.dialogs;
 
 import android.app.Activity;
 import android.app.AlarmManager;
@@ -20,6 +20,11 @@ import android.widget.TimePicker;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+
+import com.ahmedabdelmohsen.digisebhaa.EveningAlertReceiver;
+import com.ahmedabdelmohsen.digisebhaa.HadithAlertReceiver;
+import com.ahmedabdelmohsen.digisebhaa.MorningAlertReceiver;
+import com.ahmedabdelmohsen.digisebhaa.R;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;

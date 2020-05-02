@@ -1,4 +1,4 @@
-package com.ahmedabdelmohsen.digisebhaa;
+package com.ahmedabdelmohsen.digisebhaa.dialogs;
 
 import android.app.Activity;
 import android.app.Dialog;
@@ -13,6 +13,8 @@ import android.view.Window;
 import android.widget.ImageButton;
 
 import androidx.annotation.NonNull;
+
+import com.ahmedabdelmohsen.digisebhaa.R;
 
 public class DialogContactUs extends Dialog {
     public Activity activity;
@@ -32,7 +34,12 @@ public class DialogContactUs extends Dialog {
         getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         setCancelable(true);
 
-        whatsButton = findViewById(R.id.btn_contact_whats_app);
+        setFaceButton();
+
+        setWhatsButton();
+    }
+
+    public void setFaceButton() {
         faceButton = findViewById(R.id.btn_contact_facebook);
         faceButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -57,6 +64,10 @@ public class DialogContactUs extends Dialog {
                 }
             }
         });
+    }
+
+    public void setWhatsButton() {
+        whatsButton = findViewById(R.id.btn_contact_whats_app);
         whatsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

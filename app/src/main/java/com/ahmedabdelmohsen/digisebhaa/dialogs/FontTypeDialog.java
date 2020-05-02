@@ -1,4 +1,4 @@
-package com.ahmedabdelmohsen.digisebhaa;
+package com.ahmedabdelmohsen.digisebhaa.dialogs;
 
 import android.app.Activity;
 import android.app.Dialog;
@@ -13,6 +13,8 @@ import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+
+import com.ahmedabdelmohsen.digisebhaa.R;
 
 public class FontTypeDialog extends Dialog {
     public Activity activity;
@@ -34,6 +36,10 @@ public class FontTypeDialog extends Dialog {
         setContentView(R.layout.dialog_change_font_type);
         getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         setCancelable(true);
+        setRadioGroup();
+    }
+
+    public void setRadioGroup() {
         radioGroup = (RadioGroup) findViewById(R.id.radio_group);
         sharedPreferences = getContext().getSharedPreferences("pref", Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
@@ -80,6 +86,5 @@ public class FontTypeDialog extends Dialog {
 
             }
         });
-
     }
 }

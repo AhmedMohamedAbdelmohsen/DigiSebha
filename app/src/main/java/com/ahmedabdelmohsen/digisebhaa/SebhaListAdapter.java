@@ -33,7 +33,7 @@ public class SebhaListAdapter extends RecyclerView.Adapter<SebhaListAdapter.Sebh
     private Vibrator vibrator;
     private Context context;
 
-    SebhaListAdapter(Context context) {
+    public SebhaListAdapter(Context context) {
         this.context = context;
         layoutInflater = LayoutInflater.from(context);
         sharedPreferences = context.getSharedPreferences("pref", Context.MODE_PRIVATE);
@@ -157,7 +157,7 @@ public class SebhaListAdapter extends RecyclerView.Adapter<SebhaListAdapter.Sebh
         return position;
     }
 
-    void setList(List<SebhaModel> model) {
+    public void setList(List<SebhaModel> model) {
         getList = model;
         notifyDataSetChanged();
     }

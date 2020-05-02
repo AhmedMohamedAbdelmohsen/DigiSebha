@@ -3,6 +3,7 @@
   <component name="CompilerConfiguration">
     <bytecodeTargetLevel>
       <module name="app" target="1.7" />
+      <module name="Digi_Sebhaa.app" target="1.7" />
     </bytecodeTargetLevel>
   </component>
 </project>

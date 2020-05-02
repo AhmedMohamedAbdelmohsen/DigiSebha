@@ -1,4 +1,4 @@
-package com.ahmedabdelmohsen.digisebhaa;
+package com.ahmedabdelmohsen.digisebhaa.dialogs;
 
 import android.app.Activity;
 import android.app.Dialog;
@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
+import com.ahmedabdelmohsen.digisebhaa.R;
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.InterstitialAd;
@@ -61,6 +62,7 @@ public class SadakaAdsDialog extends Dialog {
             }
 
         });
+
         loadRewardedVidAds();
         sadakaGariaVideoAds();
         SadakaGariaInterstitialAds();

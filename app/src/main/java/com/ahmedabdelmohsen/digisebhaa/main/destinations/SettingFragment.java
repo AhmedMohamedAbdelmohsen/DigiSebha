@@ -1,4 +1,4 @@
-package com.ahmedabdelmohsen.digisebhaa;
+package com.ahmedabdelmohsen.digisebhaa.main.destinations;
 
 import android.app.AlarmManager;
 import android.app.PendingIntent;
@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Typeface;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,7 +20,15 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.ahmedabdelmohsen.digisebhaa.EveningAlertReceiver;
+import com.ahmedabdelmohsen.digisebhaa.HadithAlertReceiver;
+import com.ahmedabdelmohsen.digisebhaa.MorningAlertReceiver;
+import com.ahmedabdelmohsen.digisebhaa.R;
 import com.ahmedabdelmohsen.digisebhaa.databinding.FragmentSettingBinding;
+import com.ahmedabdelmohsen.digisebhaa.dialogs.FontColorDialog;
+import com.ahmedabdelmohsen.digisebhaa.dialogs.FontSizeDialog;
+import com.ahmedabdelmohsen.digisebhaa.dialogs.FontTypeDialog;
+import com.ahmedabdelmohsen.digisebhaa.dialogs.SadakaGariaDialog;
 import com.getbase.floatingactionbutton.FloatingActionsMenu;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -75,7 +84,7 @@ public class SettingFragment extends Fragment {
 
         preferences = this.getActivity().getSharedPreferences("pref", Context.MODE_PRIVATE);
         editor = preferences.edit();
-
+        rattingApp();
         setMainFonts();
         timePicker();
         saveVibrationStatus();
@@ -376,6 +385,20 @@ public class SettingFragment extends Fragment {
             }
         });
 
+    }
+
+    public void rattingApp() {
+        binding.btnEvaluationChairty.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final String appPackageName = "com.ahmedabdelmohsen.digisebhaa"; // getPackageName() from Context or Activity  object
+                try {
+                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + appPackageName)));
+                } catch (android.content.ActivityNotFoundException anfe) {
+                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=" + appPackageName)));
+                }
+            }
+        });
     }
 
 }

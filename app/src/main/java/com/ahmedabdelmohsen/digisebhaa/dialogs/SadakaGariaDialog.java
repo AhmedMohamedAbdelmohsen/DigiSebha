@@ -1,4 +1,4 @@
-package com.ahmedabdelmohsen.digisebhaa;
+package com.ahmedabdelmohsen.digisebhaa.dialogs;
 
 import android.app.Activity;
 import android.app.Dialog;
@@ -18,6 +18,8 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
+import com.ahmedabdelmohsen.digisebhaa.R;
+
 public class SadakaGariaDialog extends Dialog {
     public Activity activity;
     public Button whatsButton, faceButton, twitterButton, copyButton;
@@ -36,20 +38,24 @@ public class SadakaGariaDialog extends Dialog {
         getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         setCancelable(true);
 
-        whatsButton = findViewById(R.id.btn_whats_app);
-        faceButton = findViewById(R.id.btn_face_book);
-        twitterButton = findViewById(R.id.btn_twitter);
-        copyButton = findViewById(R.id.btn_copy);
         nameEt = findViewById(R.id.et_person_name);
 
+        setWhatsButton();
+        setFaceButton();
+        setTwitterButton();
+        setCopyButton();
+    }
+
+    public void setWhatsButton() {
+        whatsButton = findViewById(R.id.btn_whats_app);
         whatsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String ayaQuran = "﴿ فَاذْكُرُونِي أَذْكُرْكُمْ﴾";
-                String nameDesc = "اللهم أجعل ثواب هذا  إلى: ";
+                String nameDesc = "اللهم أجعل ثواب هذا إلى: ";
                 String name = nameEt.getText().toString().trim();
-                String appName = "تطبيق سبحة:";
-                String url = "https://bit.ly/2UpOykL";
+                String appName = "تطبيق سُّبْحَةُ:";
+                String url = "https://play.google.com/store/apps/details?id=com.ahmedabdelmohsen.digisebhaa";
                 String text = ayaQuran + "\n" + nameDesc + "\n" + "*" + name + "*" + "\n" + appName + "\n" + url;
                 Intent waIntent = new Intent(Intent.ACTION_SEND);
                 waIntent.setType("text/plain");
@@ -67,14 +73,18 @@ public class SadakaGariaDialog extends Dialog {
             }
         });
 
+    }
+
+    public void setFaceButton() {
+        faceButton = findViewById(R.id.btn_face_book);
         faceButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String ayaQuran = "﴿ فَاذْكُرُونِي أَذْكُرْكُمْ﴾";
-                String nameDesc = "اللهم أجعل ثواب هذا  إلى: ";
+                String nameDesc = "اللهم أجعل ثواب هذا إلى: ";
                 String name = nameEt.getText().toString().trim();
-                String appName = "تطبيق سبحة:";
-                String url = "https://bit.ly/2UpOykL";
+                String appName = "تطبيق سُّبْحَةُ:";
+                String url = "https://play.google.com/store/apps/details?id=com.ahmedabdelmohsen.digisebhaa";
                 String text = ayaQuran + "\n" + nameDesc + "\n" + name + "\n" + appName + "\n" + url;
                 Intent facebookIntent = new Intent(Intent.ACTION_SEND);
                 facebookIntent.setType("text/plain");
@@ -91,14 +101,18 @@ public class SadakaGariaDialog extends Dialog {
                 }
             }
         });
+    }
+
+    public void setTwitterButton() {
+        twitterButton = findViewById(R.id.btn_twitter);
         twitterButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String ayaQuran = "﴿ فَاذْكُرُونِي أَذْكُرْكُمْ﴾";
-                String nameDesc = "اللهم أجعل ثواب هذا  إلى: ";
+                String nameDesc = "اللهم أجعل ثواب هذا إلى: ";
                 String name = nameEt.getText().toString().trim();
-                String appName = "تطبيق سبحة:";
-                String url = "https://bit.ly/2UpOykL";
+                String appName = "تطبيق سُّبْحَةُ:";
+                String url = "https://play.google.com/store/apps/details?id=com.ahmedabdelmohsen.digisebhaa";
                 String text = ayaQuran + "\n" + nameDesc + "\n" + name + "\n" + appName + "\n" + url;
                 Intent twitterIntent = new Intent(Intent.ACTION_SEND);
                 twitterIntent.setType("text/plain");
@@ -115,14 +129,18 @@ public class SadakaGariaDialog extends Dialog {
                 }
             }
         });
+    }
+
+    public void setCopyButton() {
+        copyButton = findViewById(R.id.btn_copy);
         copyButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String ayaQuran = "﴿ فَاذْكُرُونِي أَذْكُرْكُمْ﴾";
-                String nameDesc = "اللهم أجعل ثواب هذا  إلى: ";
+                String nameDesc = "اللهم أجعل ثواب هذا إلى: ";
                 String name = nameEt.getText().toString().trim();
-                String appName = "تطبيق سبحة:";
-                String url = "https://bit.ly/2UpOykL";
+                String appName = "تطبيق سُّبْحَةُ:";
+                String url = "https://play.google.com/store/apps/details?id=com.ahmedabdelmohsen.digisebhaa";
                 String text = ayaQuran + "\n" + nameDesc + "\n" + name + "\n" + appName + "\n" + url;
                 if (TextUtils.isEmpty(name)) {
                     nameEt.setError("أدخل اسم شخص من فضلك");
@@ -134,6 +152,5 @@ public class SadakaGariaDialog extends Dialog {
                 }
             }
         });
-
     }
 }

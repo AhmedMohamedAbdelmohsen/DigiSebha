@@ -1,11 +1,10 @@
-package com.ahmedabdelmohsen.digisebhaa;
+package com.ahmedabdelmohsen.digisebhaa.data;
 
 import android.app.Application;
 import android.os.AsyncTask;
 
 import androidx.lifecycle.LiveData;
 
-import com.ahmedabdelmohsen.digisebhaa.pojo.SebhaDao;
 import com.ahmedabdelmohsen.digisebhaa.pojo.SebhaModel;
 
 import java.util.List;
@@ -17,7 +16,7 @@ public class SebhaRepository {
     private final LiveData<List<SebhaModel>> getAllHadith;
 
 
-    SebhaRepository(Application application) {
+    public SebhaRepository(Application application) {
         SebhaDataBase dataBase = SebhaDataBase.getDataBase(application);
         sebhaDao = dataBase.sebhaDao();
         getAllMorningDhikr = sebhaDao.getAllMorningDhikr(0);
@@ -26,20 +25,20 @@ public class SebhaRepository {
 
     }
 
-    LiveData<List<SebhaModel>> getGetAllMorningDhikr() {
+    public LiveData<List<SebhaModel>> getGetAllMorningDhikr() {
         return getAllMorningDhikr;
     }
 
-    LiveData<List<SebhaModel>> getGetAllEveningDhikr() {
+    public LiveData<List<SebhaModel>> getGetAllEveningDhikr() {
         return getAllEveningDhikr;
     }
 
-    LiveData<List<SebhaModel>> getGetAllHadith() {
+    public LiveData<List<SebhaModel>> getGetAllHadith() {
         return getAllHadith;
     }
 
 
-    void insert(SebhaModel model) {
+    public void insert(SebhaModel model) {
         new insertAsyncTask(sebhaDao).execute();
     }
 

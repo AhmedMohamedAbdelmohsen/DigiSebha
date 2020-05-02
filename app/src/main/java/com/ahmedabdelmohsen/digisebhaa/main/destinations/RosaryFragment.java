@@ -1,4 +1,4 @@
-package com.ahmedabdelmohsen.digisebhaa;
+package com.ahmedabdelmohsen.digisebhaa.main.destinations;
 
 import android.content.Context;
 import android.content.DialogInterface;
@@ -21,7 +21,9 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
+import com.ahmedabdelmohsen.digisebhaa.R;
 import com.ahmedabdelmohsen.digisebhaa.databinding.FragmentRosaryBinding;
+import com.ahmedabdelmohsen.digisebhaa.dialogs.DialogSetNotifications;
 import com.getbase.floatingactionbutton.FloatingActionsMenu;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.MobileAds;
@@ -63,11 +65,8 @@ public class RosaryFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        BottomNavigationView bottomNavigationView = Objects.requireNonNull(getActivity()).findViewById(R.id.bottom_nav_bar);
-        bottomNavigationView.setVisibility(View.VISIBLE);
 
-        FloatingActionsMenu floatingActionsMenu = getActivity().findViewById(R.id.fab_menu);
-        floatingActionsMenu.setVisibility(View.VISIBLE);
+        setVisibility();
         //ads initialize
         MobileAds.initialize(getActivity(), new OnInitializationCompleteListener() {
             @Override
@@ -81,15 +80,27 @@ public class RosaryFragment extends Fragment {
         navHostFragment = (NavHostFragment) getActivity().getSupportFragmentManager()
                 .findFragmentById(R.id.nav_host_fragment);
         moveToDarkFragment();
-        vibrator = (Vibrator) getActivity().getSystemService(Context.VIBRATOR_SERVICE);
+        setRosary();
+    }
+
+    public void setVisibility() {
+        BottomNavigationView bottomNavigationView = Objects.requireNonNull(getActivity()).findViewById(R.id.bottom_nav_bar);
+        bottomNavigationView.setVisibility(View.VISIBLE);
+
+        FloatingActionsMenu floatingActionsMenu = getActivity().findViewById(R.id.fab_menu);
+        floatingActionsMenu.setVisibility(View.VISIBLE);
 
         ImageButton darkModeButton = Objects.requireNonNull(getActivity()).findViewById(R.id.btn_dark_mode);
         darkModeButton.setVisibility(View.VISIBLE);
+    }
+
+    public void setRosary() {
+        vibrator = (Vibrator) getActivity().getSystemService(Context.VIBRATOR_SERVICE);
         binding.tgbtnVibration.setChecked(true);
 //        setAlarmHadith();
         sharedPreferences = this.getActivity().getSharedPreferences("pref", Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
-        setNotificationsfromDilaog();
+        setNotificationsOfDialog();
         totalCounter();
         typeface = Typeface.createFromAsset(getActivity().getAssets(), "almushaf.ttf");
         binding.tvTitle.setTypeface(typeface);
@@ -159,10 +170,6 @@ public class RosaryFragment extends Fragment {
 
     }
 
-    public void displayToast(String message) {
-        Toast.makeText(getActivity(), message, Toast.LENGTH_LONG).show();
-    }
-
     private void moveToDarkFragment() {
         binding.btnDarkMode.setOnClickListener(new View.OnClickListener() {
 
@@ -186,7 +193,7 @@ public class RosaryFragment extends Fragment {
         });
     }
 
-    void setNotificationsfromDilaog() {
+    void setNotificationsOfDialog() {
         boolean isFirstTime = sharedPreferences.getBoolean("first_time", true);
         if (isFirstTime) {
             DialogSetNotifications dialog = new DialogSetNotifications(getActivity());
@@ -234,6 +241,10 @@ public class RosaryFragment extends Fragment {
                 lParent.getChildAt(1).setVisibility(View.GONE);
             }
         });
+    }
+
+    public void displayToast(String message) {
+        Toast.makeText(getActivity(), message, Toast.LENGTH_LONG).show();
     }
 
     @Override

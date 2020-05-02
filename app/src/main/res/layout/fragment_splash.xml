@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/rosary_prayer"
-    tools:context=".SplashFragment">
+    tools:context=".main.destinations.SplashFragment">
 
     <ImageView
         android:id="@+id/iv_splash"

@@ -1,4 +1,4 @@
-package com.ahmedabdelmohsen.digisebhaa;
+package com.ahmedabdelmohsen.digisebhaa.data;
 
 import android.content.Context;
 import android.os.AsyncTask;
@@ -9,7 +9,6 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
-import com.ahmedabdelmohsen.digisebhaa.pojo.SebhaDao;
 import com.ahmedabdelmohsen.digisebhaa.pojo.SebhaModel;
 
 @Database(entities = {SebhaModel.class}, version = 8, exportSchema = false)
@@ -53,8 +52,6 @@ public abstract class SebhaDataBase extends RoomDatabase {
             sebhaDao.deleteALL();
             Data data = new Data();
             data.getAllData(sebhaDao);
-//            sebhaDao.insert(new SebhaModel("لا إله الا الله", "البخاري", "من قالها صباحا", 3, 0));
-//            sebhaDao.insert(new SebhaModel("سبحان الله", "البخاري", "من قالها صباحا", 3, 1));
             return null;
 
         }

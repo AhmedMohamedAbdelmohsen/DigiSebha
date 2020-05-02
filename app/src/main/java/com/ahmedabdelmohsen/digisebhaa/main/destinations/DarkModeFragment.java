@@ -1,4 +1,4 @@
-package com.ahmedabdelmohsen.digisebhaa;
+package com.ahmedabdelmohsen.digisebhaa.main.destinations;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -14,6 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.ahmedabdelmohsen.digisebhaa.R;
 import com.ahmedabdelmohsen.digisebhaa.databinding.FragmentDarkModeBinding;
 import com.getbase.floatingactionbutton.FloatingActionsMenu;
 import com.google.android.gms.ads.AdRequest;
@@ -48,16 +49,9 @@ public class DarkModeFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
-        BottomNavigationView bottomNavigationView = Objects.requireNonNull(getActivity()).findViewById(R.id.bottom_nav_bar);
-        bottomNavigationView.setVisibility(View.GONE);
-
-        ImageButton darkModeButton = Objects.requireNonNull(getActivity()).findViewById(R.id.btn_dark_mode);
-        darkModeButton.setVisibility(View.GONE);
-
-        FloatingActionsMenu floatingActionsMenu = getActivity().findViewById(R.id.fab_menu);
-        floatingActionsMenu.setVisibility(View.GONE);
-
+        //hide & show Views from activity
+        setVisibility();
+        setRosary();
         //ads initialize
         MobileAds.initialize(getActivity(), new OnInitializationCompleteListener() {
             @Override
@@ -67,7 +61,21 @@ public class DarkModeFragment extends Fragment {
         // Ads Banner
         AdRequest adRequest = new AdRequest.Builder().build();
         binding.adView.loadAd(adRequest);
+    }
 
+    public void setVisibility() {
+        BottomNavigationView bottomNavigationView = Objects.requireNonNull(getActivity()).findViewById(R.id.bottom_nav_bar);
+        bottomNavigationView.setVisibility(View.GONE);
+
+        ImageButton darkModeButton = Objects.requireNonNull(getActivity()).findViewById(R.id.btn_dark_mode);
+        darkModeButton.setVisibility(View.GONE);
+
+        FloatingActionsMenu floatingActionsMenu = getActivity().findViewById(R.id.fab_menu);
+        floatingActionsMenu.setVisibility(View.GONE);
+
+    }
+
+    public void setRosary() {
         vibrator = (Vibrator) getActivity().getSystemService(Context.VIBRATOR_SERVICE);
         binding.tgbtnVibration.setChecked(true);
         sharedPreferences = this.getActivity().getSharedPreferences("pref", Context.MODE_PRIVATE);
